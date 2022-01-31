@@ -11,7 +11,7 @@ from telethon.tl import functions, types
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot, owner
-from userbot.events import cilik_cmd
+from userbot.events import trans_cmd
 from userbot.utils import bash
 
 USER_AFK = {}
@@ -125,7 +125,7 @@ async def on_afk(event):
             pass
 
 
-@bot.on(cilik_cmd(outgoing=True, pattern="afk(?: |$)(.*)"))
+@bot.on(trans_cmd(outgoing=True, pattern="afk(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
