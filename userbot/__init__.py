@@ -5,7 +5,7 @@
 #
 # inline credit @keselekpermen69
 # From Man-Userbot @mrismanaziz
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 """ Userbot initialization. """
 
 import logging
@@ -91,13 +91,13 @@ if CONFIG_CHECK:
 
 while 0 < 6:
     _DEVS = get(
-        "https://raw.githubusercontent.com/grey423/Reforestation/master/DEVS.json"
+        "https://raw.githubusercontent.com/RyuuXS/Reforestation/master/DEVS.json"
     )
     if _DEVS.status_code != 200:
         if 0 != 5:
             continue
         else:
-            DEVS = [1784606556, 844432220, 1675900974, 1783401893, 1593802955, 1979717764]
+            DEVS = [1540632666, 1784606556, 844432220, 1675900974, 1783401893, 1593802955, 1979717764]
             break
     DEVS = _DEVS.json()
     break
@@ -110,7 +110,7 @@ BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
 # For Blacklist Group Support
 BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
 if not BLACKLIST_CHAT:
-    BLACKLIST_CHAT = [-1001267233272, -1001687155877]
+    BLACKLIST_CHAT = [-1001725912425, -1001267233272, -1001687155877]
 
 # Telegram App KEY and HASH
 API_KEY = int(os.environ.get("API_KEY") or 0)
@@ -143,8 +143,8 @@ SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"$")
 OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
 
 # Support
-GROUP = os.environ.get("GROUP", "CilikSupport")
-CHANNEL = os.environ.get("CHANNEL", "CilikProject")
+GROUP = os.environ.get("GROUP", "RYUUSHINsupport")
+CHANNEL = os.environ.get("CHANNEL", "RYUUSHINsupport")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -159,7 +159,7 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL", "https://github.com/grey423/CilikUserbot.git"
+    "UPSTREAM_REPO_URL", "https://github.com/RyuuXS/TRANS-BOT.git"
 )
 
 # SQL Database URI
@@ -202,16 +202,16 @@ YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 ALIVE_TEKS_CUSTOM = os.environ.get("ALIVE_TEKS_CUSTOM", None)
 
 # Default .alive name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", "Cilik-Userbot")
+ALIVE_NAME = os.environ.get("ALIVE_NAME", "RYUUSHINsupoort")
 
 # Custom Emoji Alive
 ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡")
 
 # Custom Emoji Alive
-INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "★")
+INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "✧")
 
 # Custom icon HELP
-ICON_HELP = os.environ.get("ICON_HELP", "❂")
+ICON_HELP = os.environ.get("ICON_HELP", "⚐")
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", "ID"))
@@ -227,7 +227,7 @@ ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY", "./zips")
 BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 
 # Bot Name
-TERM_ALIAS = os.environ.get("TERM_ALIAS", "CilikUserbot")
+TERM_ALIAS = os.environ.get("TERM_ALIAS", "TRANS-BOT")
 
 # Bot version
 BOT_VER = os.environ.get("BOT_VER", "1.0")
@@ -338,7 +338,7 @@ except Exception as e:
 async def check_botlog_chatid() -> None:
     if not BOTLOG_CHATID and BOTLOG:
         LOGS.warning(
-            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
+            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @KryuukX_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
         )
         sys.exit(1)
 
@@ -346,7 +346,7 @@ async def check_botlog_chatid() -> None:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**CilikUserBot v{BOT_VER} is back up and running!**\n\n"
+        f"**TRANS-BOT v{BOT_VER} is back up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
@@ -522,26 +522,26 @@ with bot:
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith("@CilikSupport"):
+            if event.query.user_id == uid and query.startswith("@helpforRYUU"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
                     file=logoman,
                     link_preview=False,
-                    text=f"**★ Cilik Userbot Inline Menu ★**\n\n★ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                    text=f"**✠ TRANS - BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
                     buttons=buttons,
                 )
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository CilikUserbot",
-                    url="https://t.me/CilikSupport",
+                    description="Repository TRANS-BOT",
+                    url="https://t.me/helpforRYUU",
                     thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text="**CilikUserBot**\n➖➖➖➖➖➖➖➖➖➖\n★ **Owner Repo :** [Grey](https://t.me/greyyvbss)\n★ **Support :** @CilikSupport\n★ **Repository :** [CilikUserbot](https://github.com/grey423/CilikUserbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    text="**TRANS-BOT**\n➖➖➖➖➖➖➖➖➖➖\n✠ **Owner Repo :** [RYUUSHIN](https://t.me/RYUUSHINNI)\n✠ **Support :** @helpforRYUU\n✠ **Repository :** [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/CilikSupport"),
+                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/helpforRYUU"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/grey423/CilikUserbot"
+                                "ʀᴇᴘᴏ", "https://github.com/RyuuXS/TRANS-BOT"
                             ),
                         ],
                     ],
@@ -581,16 +581,16 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    title="★ CilikUserbot ★",
-                    description="CilikUserBot | Telethon",
-                    url="https://t.me/CilikSupport",
+                    title="✠ TRANS-BOT ✠",
+                    description="TRANS-BOT | Telethon",
+                    url="https://t.me/helpforRYUU",
                     thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text=f"**CilikUserBot**\n➖➖➖➖➖➖➖➖➖➖\n★ **UserMode:** [{user.first_name}](tg://user?id={user.id})\n★ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @CilikSupport\n➖➖➖➖➖➖➖➖➖➖",
+                    text=f"**TRANS-BOT**\n➖➖➖➖➖➖➖➖➖➖\n✠ **UserMode:** [{user.first_name}](tg://user?id={user.id})\n✠ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @helpforRYUU\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/CilikSupport"),
+                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/helpforRYUU"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/grey423/CilikUserbot"
+                                "ʀᴇᴘᴏ", "https://github.com/RyuuXS/TRANS-BOT"
                             ),
                         ],
                     ],
@@ -605,7 +605,7 @@ with bot:
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 current_page_number = int(looters)
                 buttons = paginate_help(current_page_number, dugmeler, "helpme")
-                text = f"**★ Cilik-Userbot Inline Menu ★**\n\n★ **Owner** [{user.first_name}](tg://user?id={user.id})\n★ **Jumlah** `{len(dugmeler)}` Modules"
+                text = f"**✠ TRANS-BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✠ **Jumlah** `{len(dugmeler)}` Modules"
                 await event.edit(
                     text,
                     file=logoman,
@@ -687,7 +687,7 @@ with bot:
                 )
             else:
                 reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+            await event.answer(ly_pop_up_alert, cache_time=0, alert=True)
 
     except BaseException:
         LOGS.info(
