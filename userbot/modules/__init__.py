@@ -5,7 +5,7 @@
 #
 # Ported by @mrismanaziz
 # FROM Man-Userbot
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 import sys
 
