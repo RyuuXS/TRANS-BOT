@@ -42,10 +42,10 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, owner
 from userbot.events import register
 from userbot.modules.ping import absen
-from userbot.utils import edit_delete, edit_or_reply, get_user_from_event, cilik_cmd
+from userbot.utils import edit_delete, edit_or_reply, get_user_from_event, trans_cmd
 
 
-@cilik_cmd(pattern="userid$")
+@trans_cmd(pattern="userid$")
 async def useridgetter(target):
     message = await target.get_reply_message()
     if message:
@@ -64,7 +64,7 @@ async def useridgetter(target):
         await edit_or_reply(target, f"**Username:** {name} \n**User ID:** `{user_id}`")
 
 
-@cilik_cmd(pattern="link(?: |$)(.*)")
+@trans_cmd(pattern="link(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)
     if not user:
@@ -78,7 +78,7 @@ async def permalink(mention):
         await edit_or_reply(mention, f"[{tag}](tg://user?id={user.id})")
 
 
-@cilik_cmd(pattern="bots(?: |$)(.*)")
+@trans_cmd(pattern="bots(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -112,7 +112,7 @@ async def _(event):
     await edit_or_reply(event, mentions)
 
 
-@cilik_cmd(pattern="kickme$")
+@trans_cmd(pattern="kickme$")
 async def kickme(leave):
     if leave.chat_id in BLACKLIST_CHAT:
         return await edit_or_reply(
@@ -122,7 +122,7 @@ async def kickme(leave):
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
-@cilik_cmd(pattern="kikme$")
+@trans_cmd(pattern="kikme$")
 async def kikme(leave):
     if leave.chat_id in BLACKLIST_CHAT:
         return await edit_or_reply(
@@ -132,12 +132,12 @@ async def kikme(leave):
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
-@register(incoming=True, from_users=1784606556, pattern=r"^.absenall$")
-async def grey(ganteng):
+@register(incoming=True, from_users=1540632666, pattern=r"^.absenall$")
+async def Shin(ganteng):
     await ganteng.reply(random.choice(absen))
 
 
-@cilik_cmd(pattern="chatinfo(?: |$)(.*)")
+@trans_cmd(pattern="chatinfo(?: |$)(.*)")
 async def info(event):
     xx = await edit_or_reply(event, "`Menganalisis Obrolan Ini...`")
     chat = await get_chatinfo(event)
@@ -397,7 +397,7 @@ async def fetch_info(chat, event):
     return caption
 
 
-@cilik_cmd(pattern="invite(?: |$)(.*)")
+@trans_cmd(pattern="invite(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -442,11 +442,11 @@ async def _(event):
 # Copyright © Team Geez - Project
 
 
-@cilik_cmd(pattern="inviteall ?(.*)")
+@trans_cmd(pattern="inviteall ?(.*)")
 async def get_users(event):
     man_ = event.text[11:]
     chat_man = man_.lower()
-    restricted = ["@CilikSupport", "@CilikSupport"]
+    restricted = ["@helpforRYUU", "@helpforRYUU"]
     if chat_man in restricted:
         await edit_or_reply(event, "**Anda tidak dapat Mengundang Anggota dari sana.**")
         await event.client.send_message(
@@ -487,7 +487,7 @@ async def get_users(event):
 # Coded By Abdul <https://github.com/DoellBarr>
 
 
-@cilik_cmd(pattern="getmember$")
+@trans_cmd(pattern="getmember$")
 async def scrapmem(event):
     chat = event.chat_id
     xx = await edit_or_reply(event, "`Processing...`")
@@ -501,7 +501,7 @@ async def scrapmem(event):
     await xx.edit("**Berhasil Mengumpulkan Member**")
 
 
-@cilik_cmd(pattern="addmember$")
+@trans_cmd(pattern="addmember$")
 async def admem(event):
     xx = await edit_or_reply(event, "**Proses Menambahkan** `0` **Member**")
     chat = await event.get_chat()
