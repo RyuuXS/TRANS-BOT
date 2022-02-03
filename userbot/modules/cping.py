@@ -70,6 +70,6 @@ async def get_readable_time(seconds: int) -> str:
 
 @register(incoming=True, from_users=1784606556, pattern=r"^.cping$")
 
-async def _(cilik):
+async def _(trans):
 
-    await cilik.reply(random.choice(cping))
+    await trans.reply(random.choice(cping))
