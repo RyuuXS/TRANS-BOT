@@ -8,14 +8,14 @@ from telethon.errors.rpcerrorlist import MessageIdInvalidError
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot, owner
-from userbot.events import cilik_cmd
+from userbot.events import trans_cmd
 
 # ================= CONSTANT =================
 DEFAULTUSER = owner
 # ============================================
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -52,7 +52,7 @@ async def _(event):
             await event.edit(animation_chars[i % 103])
 
 
-@bot.on(cilik_cmd(outgoing=True, pattern=r"earth(?: |$)(.*)"))
+@bot.on(trans_cmd(outgoing=True, pattern=r"earth(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +63,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@bot.on(cilik_cmd(pattern=r"bombs", outgoing=True))
+@bot.on(trans_cmd(pattern=r"bombs", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -94,7 +94,7 @@ async def _(event):
 """Available Commands: .gift"""
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -138,7 +138,7 @@ async def _(event):
             await event.edit(animation_chars[i % 17])
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -177,7 +177,7 @@ async def _(event):
             await event.edit(animation_chars[i % 12])
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.ontm(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -212,7 +212,7 @@ async def _(event):
             await event.edit(animation_chars[i % 103])
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -250,7 +250,7 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -288,7 +288,7 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-@bot.on(cilik_cmd(pattern=r"(.*)", outgoing=True))
+@bot.on(trans_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
