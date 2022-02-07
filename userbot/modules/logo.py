@@ -1,4 +1,4 @@
-#@greyyvbss
+#@RYUUSHINNI
 #@tofik_dn
 
 import asyncio
@@ -8,10 +8,10 @@ from telethon.tl.functions.contacts import UnblockRequest
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, owner
-from userbot.utils import edit_delete, edit_or_reply, cilik_cmd
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
 
-@cilik_cmd(pattern=r"logo(?: |$)(.*)")
+@trans_cmd(pattern=r"logo(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -21,7 +21,7 @@ async def _(event):
         await edit_delete(event, "**Silahkan Masukan Text Untuk Logo**")
     else:
         await edit_or_reply(event, "`Processing...`")
-    chat = "@GreyCilik_bot"
+    chat = "@KryuukX_bot"
     async with event.client.conversation(chat) as conv:
         try:
             msg = await conv.send_message(f"/logo {text}")
@@ -44,7 +44,7 @@ async def _(event):
         await event.delete()
 
 
-@cilik_cmd(pattern=r"slogo(?: |$)(.*)")
+@trans_cmd(pattern=r"slogo(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -54,7 +54,7 @@ async def _(event):
         await edit_delete(event, "**Silahkan Masukan Text Untuk Logo**")
     else:
         await edit_or_reply(event, "`Processing...`")
-    chat = "@GreyCilik_bot"
+    chat = "@KryuukX_bot"
     async with event.client.conversation(chat) as conv:
         try:
             msg = await conv.send_message(f"/slogo {text}")
