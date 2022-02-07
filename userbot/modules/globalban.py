@@ -1,7 +1,7 @@
 # Copyright (C) 2020 Catuserbot <https://github.com/sandy1709/catuserbot>
 # Ported by @mrismanaziz
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# ReCode by @greyyvbss
+# ReCode by @RYUUSHINNI
 
 import asyncio
 from datetime import datetime
@@ -17,7 +17,7 @@ from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS, bot
 from userbot.events import register
-from userbot.utils import edit_or_reply, get_user_from_event, cilik_cmd
+from userbot.utils import edit_or_reply, get_user_from_event, trans_cmd
 
 from .admin import BANNED_RIGHTS, UNBAN_RIGHTS
 
@@ -39,7 +39,7 @@ def mentionuser(name, userid):
     return f"[{name}](tg://user?id={userid})"
 
 
-@cilik_cmd(pattern="gban(?: |$)(.*)")
+@trans_cmd(pattern="gban(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cgban(?: |$)(.*)")
 async def gban(event):
     if event.fwd_from:
@@ -93,7 +93,7 @@ async def gban(event):
         )
 
 
-@cilik_cmd(pattern="ungban(?: |$)(.*)")
+@trans_cmd(pattern="ungban(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cungban(?: |$)(.*)")
 async def ungban(event):
     if event.fwd_from:
@@ -142,7 +142,7 @@ async def ungban(event):
         )
 
 
-@cilik_cmd(pattern="listgban$")
+@trans_cmd(pattern="listgban$")
 async def gablist(event):
     if event.fwd_from:
         return
