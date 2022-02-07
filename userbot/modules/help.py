@@ -5,6 +5,7 @@
 #
 """ Userbot help command """
 
+from userbot import GROUB
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, ICON_HELP, bot
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -29,7 +30,7 @@ async def help(event):
             string += f"`\t\t\t{ICON_HELP}\t\t\t"
         await edit_or_reply(
             event,
-            f"**✦ Daftar Perintah [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT):**\n"
+            f"**⋄ Daftar Perintah [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT):**\n"
             f"**✦ Jumlah** `{len(modules)}` **Modules**\n"
             f"**✦ Owner:** [{user.first_name}](tg://user?id={user.id})\n\n"
             f"{ICON_HELP}   {string}"
