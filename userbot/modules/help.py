@@ -34,7 +34,7 @@ async def help(event):
             f"**✦ Jumlah** `{len(modules)}` **Modules**\n"
             f"**✦ Owner:** [{user.first_name}](tg://user?id={user.id})\n\n"
             f"{ICON_HELP}   {string}"
-            f"\n\nSupport @{CHANNEL}",
+            f"\n\nSupport @{GROUB}",
         )
         await event.reply(
             f"\n**Contoh Ketik** `{cmd}help afk` **Untuk Melihat Informasi Module**"
