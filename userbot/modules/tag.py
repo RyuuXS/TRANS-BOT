@@ -2,7 +2,7 @@
 # Copyright (C) 2020 TeamUltroid
 #
 # Ported by @mrismanaziz
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 from telethon.tl.types import ChannelParticipantAdmin as admin
 from telethon.tl.types import ChannelParticipantCreator as owner
@@ -13,10 +13,10 @@ from telethon.utils import get_display_name
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import cilik_cmd
+from userbot.utils import trans_cmd
 
 
-@cilik_cmd(pattern="tag(on|off|all|bots|rec|admins|owner)?(.*)")
+@trans_cmd(pattern="tag(on|off|all|bots|rec|admins|owner)?(.*)")
 async def _(e):
     okk = e.text
     lll = e.pattern_match.group(2)
