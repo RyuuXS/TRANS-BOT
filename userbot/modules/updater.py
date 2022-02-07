@@ -11,7 +11,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL, bot
-from userbot.events import cilik_cmd, register
+from userbot.events import trans_cmd, register
 
 
 async def gen_chlog(repo, diff):
@@ -58,7 +58,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         if heroku_app is None:
             await event.edit(
                 f"{txt}\n"
-                "**Kredensial Heroku tidak valid untuk deploy Cilik-Userbot dyno.**"
+                "**Kredensial Heroku tidak valid untuk deploy TRANS-BOT dyno.**"
             )
             return repo.__del__()
         try:
@@ -89,7 +89,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             await asyncio.sleep(5)
             return await event.delete()
         await event.edit(
-            "`Cilik-Userbot Berhasil Di Deploy! Userbot bisa di gunakan kembali.`"
+            "`TRANS-BOT Berhasil Di Deploy! Userbot bisa di gunakan kembali.`"
         )
 
     else:
@@ -119,7 +119,7 @@ async def update(event, repo, ups_rem, ac_br):
     execle(sys.executable, *args, environ)
 
 
-@bot.on(cilik_cmd(outgoing=True, pattern=r"update( now| deploy|$)"))
+@bot.on(trans_cmd(outgoing=True, pattern=r"update( now| deploy|$)"))
 @register(incoming=True, from_users=DEVS, pattern=r"cupdate( now| deploy|$)")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
@@ -162,12 +162,12 @@ async def upstream(event):
 
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     if conf == "deploy":
-        await event.edit("`[HEROKU]: Update Deploy Cilik-Userbot Sedang Dalam Proses...`")
+        await event.edit("`[HEROKU]: Update Deploy TRANS-BOT Sedang Dalam Proses...`")
         await deploy(event, repo, ups_rem, ac_br, txt)
         return
 
     if changelog == "" and not force_update:
-        await event.edit("**⚡ Cilik-Userbot Sudah Versi Terbaru**")
+        await event.edit("**⚡ TRANS-BOT Sudah Versi Terbaru**")
         await asyncio.sleep(15)
         await event.delete()
         return repo.__del__()
@@ -205,9 +205,9 @@ CMD_HELP.update(
     {
         "update": f"**Plugin : **`update`\
         \n\n  •  **Syntax :** `{cmd}update`\
-        \n  •  **Function : **Untuk Melihat Pembaruan Terbaru Cilik-Userbot.\
+        \n  •  **Function : **Untuk Melihat Pembaruan Terbaru TRANS-BOT.\
         \n\n  •  **Syntax :** `{cmd}update deploy`\
-        \n  •  **Function : **Untuk MengUpdate Fitur Terbaru Dari Cilik-Userbot.\
+        \n  •  **Function : **Untuk MengUpdate Fitur Terbaru Dari TRANS-BOT.\
     "
     }
 )
