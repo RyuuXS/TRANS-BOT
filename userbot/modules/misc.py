@@ -3,7 +3,7 @@
 # you may not use this file except in compliance with the License.
 # You can find misc modules, which dont fit in anything xD
 # Copyright (C) 2022 @mrismanaziz
-# ReCode by @greyyvbss
+# ReCode by @RYUUSHINNI
 
 import io
 import os
@@ -22,7 +22,7 @@ from PIL import Image
 from userbot import BOT_VER, BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME, SUDO_USERS
-from userbot.utils import edit_or_reply, cilik_cmd, time_formatter
+from userbot.utils import edit_or_reply, trans_cmd, time_formatter
 
 # ================= CONSTANT =================
 HEROKU_APP = from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME]
@@ -35,7 +35,7 @@ repo = Repo()
 branch = repo.active_branch.name
 
 
-@cilik_cmd(pattern="sleep ([0-9]+)$")
+@trans_cmd(pattern="sleep ([0-9]+)$")
 async def sleepybot(time):
     if time.sender_id in SUDO_USERS:
         return
@@ -51,7 +51,7 @@ async def sleepybot(time):
     await xx.edit("**Oke, saya sudah bangun sekarang.**")
 
 
-@cilik_cmd(pattern="shutdown$")
+@trans_cmd(pattern="shutdown$")
 async def shutdown_bot(event):
     if event.fwd_from:
         return
@@ -61,39 +61,39 @@ async def shutdown_bot(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             "**#SHUTDOWN** \n"
-            "**Cilik Userbot** telah di matikan!\nJika ingin menghidupkan kembali silahkan buka heroku",
+            "**TRANS-BOT** telah di matikan!\nJika ingin menghidupkan kembali silahkan buka heroku",
         )
-    await edit_or_reply(event, "**Cilik Userbot Berhasil di matikan!**")
+    await edit_or_reply(event, "**TRANS-BOT Berhasil di matikan!**")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
         sys.exit(0)
 
 
-@cilik_cmd(pattern="restart$")
+@trans_cmd(pattern="restart$")
 async def restart_bot(event):
     if event.sender_id in SUDO_USERS:
         return
-    await edit_or_reply(event, "**Cilik Userbot Berhasil di Restart**")
+    await edit_or_reply(event, "**TRANS-BOT Berhasil di Restart**")
     if BOTLOG_CHATID:
         await event.client.send_message(
-            BOTLOG_CHATID, "#RESTART \n" "**Cilik Userbot Berhasil Di Restart**"
+            BOTLOG_CHATID, "#RESTART \n" "**TRANS-BOT Berhasil Di Restart**"
         )
     args = [sys.executable, "-m", "userbot"]
     execle(sys.executable, *args, environ)
 
 
-@cilik_cmd(pattern="readme$")
+@trans_cmd(pattern="readme$")
 async def reedme(event):
     await edit_or_reply(
         event,
         "**Berikut sesuatu untuk kamu baca:**\n"
-        "\n┌❏ [Userbot Repo](https://github.com/grey423/CilikUserbot/blob/PocongUserbot/README.md)"
+        "\n┌❏ [Userbot Repo](https://github.com/RyuuXS/TRANS-BOT/blob/PocongUserbot/README.md)"
         "\n└❏ [Setup Guide - LastFM Module](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)",
     )
 
 
-@cilik_cmd(pattern="repeat (.*)")
+@trans_cmd(pattern="repeat (.*)")
 async def repeat(event):
     cnt, txt = event.pattern_match.group(1).split(" ", 1)
     replyCount = int(cnt)
@@ -107,32 +107,32 @@ async def repeat(event):
     await edit_or_reply(event, replyText)
 
 
-@cilik_cmd(pattern="repo$")
+@trans_cmd(pattern="repo$")
 async def repo_is_here(event):
     xx = await edit_or_reply(event, "`Processing...`")
     await xx.edit(
-        f"**Hey**, Saya Menggunakan  **Cilik Userbot** \n\n"
+        f"**Hey**, Saya Menggunakan  **TRANS-BOT** \n\n"
         f"┌❏ **UserbotVersion :** `{BOT_VER}@{branch}`\n"
-        f"├❏ **GroupSupport :** [Cilik Userbot](t.me/CilikSupport)\n"
-        f"├❏ **Channel  :** [Cilik Userbot](t.me/greyyvbss)\n"
-        f"├❏ **OwnerRepo :** [Grey](t.me/greyyvbss)\n"
-        f"└❏ **Repo :** [Cilik Userbot](https://github.com/grey423/CilikUserbot)\n"
+        f"├❏ **GroupSupport :** [RyuuShinSUPPORT](t.me/helpforRYUU)\n"
+        f"├❏ **Channel  :** [RyuuProjext](t.me/Belajarbersamaryuu)\n"
+        f"├❏ **OwnerRepo :** [SHIN](t.me/RYUUSHINNI)\n"
+        f"└❏ **Repo :** [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT)\n"
     )
 
 
-@cilik_cmd(pattern="string$")
+@trans_cmd(pattern="string$")
 async def string_is_here(event):
     await edit_or_reply(
         event,
         "**List Bot**\n"
         "\n┌❏ **GET STRING BOT:**"
-        "\n├❏ [[ KLIK DISINI ]](https://t.me/CilikStringbot)"
+        "\n├❏ [[ KLIK DISINI ]](https://t.me/RyuuString_bot)"
         "\n├❏ **GET API ID & API HASH :**"
         "\n└❏ [[ KLIK DISINI ]](https://t.me/pocongscrapbot)",
     )
 
 
-@cilik_cmd(pattern="raw$")
+@trans_cmd(pattern="raw$")
 async def raw(event):
     the_real_message = None
     reply_to_id = None
@@ -158,7 +158,7 @@ async def raw(event):
         )
 
 
-@cilik_cmd(pattern="reverse(?: |$)(\d*)")
+@trans_cmd(pattern="reverse(?: |$)(\d*)")
 async def okgoogle(img):
     if os.path.isfile("okgoogle.png"):
         os.remove("okgoogle.png")
@@ -251,7 +251,7 @@ async def scam(results, lim):
     return imglinks
 
 
-@cilik_cmd(pattern="send (.*)")
+@trans_cmd(pattern="send (.*)")
 async def send(event):
     if not event.is_reply:
         return await edit_or_reply(
