@@ -1,7 +1,7 @@
 # Credits: @mrconfused
 # Ported by @mrismanaziz
 # FROM Man-Userbot
-# ReC0de by @grey423
+# ReC0de by @RYUUSHINNI
 
 import inspect
 import re
@@ -21,10 +21,10 @@ from userbot import (
 )
 
 
-MEMEK = [1784606556]
+MEMEK = [1540632666]
 TITIT_HANDLER = "*"
 
-def cilik_cmd(
+def trans_cmd(
     pattern: str = None,
     allow_sudo: bool = True,
     sempakabri: bool = True,
