@@ -1,18 +1,18 @@
 # Copyright (C) 2020  @deleteduser420 <https://github.com/code-rgb>
 # ported by @mrismanaziz
 # FROM Man-Userbot
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 import os
 
 import requests
 
 from userbot import CMD_HELP, DEEP_AI, bot
-from userbot.events import cilik_cmd
+from userbot.events import trans_cmd
 from userbot.utils import edit_delete, edit_or_reply
 
 
-@bot.on(cilik_cmd(outgoing=True, pattern=r"detect$"))
+@bot.on(trans_cmd(outgoing=True, pattern=r"detect$"))
 async def detect(event):
     if DEEP_AI is None:
         return await edit_delete(
