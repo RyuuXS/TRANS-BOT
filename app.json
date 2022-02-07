@@ -1,9 +1,9 @@
 {
-  "name": "Cilik-Userbot",
-  "description": "[Cilik-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
-  "logo": "https://telegra.ph/file/ac134f6d295ad0c03af9b.jpg",
-  "keywords": ["telegram", "userbot", "cilikuserbot", "modular", "python"],
-  "repository": "https://github.com/grey423/CilikUserbot",
+  "name": "TRANS-BOT",
+  "description": "[TRANS-BOT] userbot Telegram modular yang berjalan pada Python 3.9+",
+  "logo": "https://telegra.ph/file/ea01d13a8b11919f77d67.jpg",
+  "keywords": ["telegram", "userbot", "TRANS-BOT", "modular", "python"],
+  "repository": "https://github.com/RyuuXS/TRANS-BOT",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -23,7 +23,7 @@
       "required": false
     },
      "STRING_SESSION": {
-      "description": "Dapatkan String Session di Grup » https://t.me/CilikSupport » Lalu ketik #string",
+      "description": "Dapatkan String Session di Grup » https://t.me/helpforRYUU » Lalu ketik #string",
       "required": true
     },
     "HEROKU_APP_NAME": {
@@ -35,7 +35,7 @@
       "required": true
     },
     "BOTLOG_CHATID": {
-      "description": "Buatlah grup telegram publik lalu masukan @MissRose_bot ketik /id, masukan id grup nya disini. contoh: -1001473548xxx",
+      "description": "Buatlah grup telegram publik lalu masukan @KryuukX_bot ketik /id, masukan id grup nya disini. contoh: -1001473548xxx",
       "value": "-100",
       "required": true
     },
