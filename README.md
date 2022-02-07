@@ -1,6 +1,6 @@
 <h1 align="center"><img src="./resources/GeezFire.gif" width="35px">☣🆃︎🆁︎🅰︎🅽︎🆂︎ - 乃ㄖㄒ☣<img src="./resources/GeezFire.gif" width="35px"></h1>
 <p align="center">
-    <img alt="CILIK VERSION" src="https://img.shields.io/badge/CILIK%20VERSION-4.+-brightgreen"/>
+    <img alt="TRANS VERSION" src="https://img.shields.io/badge/CILIK%20VERSION-4.+-brightgreen"/>
     <img alt="BUILD IN" src="https://img.shields.io/badge/BUILD%20-Last Day-brightgreen"/>
            <a href="https://travis-ci.com/grey423/CilikUserbot.svg?branch=main" /></a>
     <a href="https://github.com/grey423/CilikUserbot/network/members"> <img src="https://img.shields.io/github/forks/grey423/CilikUserbot?logo=github&style=for-the-badge" /></a>
@@ -10,10 +10,10 @@
    </p>
 
 <p align="center">
-  <img src="https://telegra.ph/file/ac134f6d295ad0c03af9b.jpg">
+  <img src="https://telegra.ph/file/d3114eda313e5f3ce5c78.jpg">
 </p>
 
-Cilik-Userbot adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
+TRANS-BOT adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
 
 Berbasis [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) dan [ProjectBish](https://github.com/adekmaulana/ProjectBish) userbot.
 Saya membuat repository ini untuk memilih dan menambahkan beberapa modul yang saya butuhkan dengan banyak perubahan, fitur dan modul.
@@ -42,8 +42,8 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
 <details>
     <summary> <b>Update and support</b></summary><br/>
 
-<a href="https://t.me/CilikProject"><img src="https://img.shields.io/badge/Join-Channel%20Updates-purple.svg?style=for-the-badge&logo=Telegram"></a>
-<a href="https://t.me/CilikSupport"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/Belajarbersamaryuu"><img src="https://img.shields.io/badge/Join-Channel%20Updates-purple.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/helpforRYUU"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </details>
 
 <details>
