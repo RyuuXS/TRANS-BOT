@@ -1,7 +1,7 @@
 # Copyright (C) 2021 Man-Userbot
 # Created by mrismanaziz
 # FROM <https://github.com/mrismanaziz/Man-Userbot>
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 from asyncio.exceptions import TimeoutError
 
@@ -10,10 +10,10 @@ from telethon.tl.functions.contacts import UnblockRequest
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, cilik_cmd
+from userbot.utils import edit_or_reply, trans_cmd
 
 
-@cilik_cmd(pattern="short(?: |$)(.*)")
+@trans_cmd(pattern="short(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
