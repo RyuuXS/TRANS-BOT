@@ -1,4 +1,4 @@
-<h1 align="center"><img src="./resources/GeezFire.gif" width="35px">☣🆃︎🆁︎🅰︎🅽︎🆂︎ - 乃ㄖㄒ☣<img src="./resources/GeezFire.gif" width="35px"></h1>
+<h1 align="center"><img src="./resources/GeezFire.gif" width="35px">☣ᴛʀᴀɴsʙᴏᴛ☣<img src="./resources/GeezFire.gif" width="35px"></h1>
 <p align="center">
     <img alt="TRANS VERSION" src="https://img.shields.io/badge/CILIK%20VERSION-4.+-brightgreen"/>
     <img alt="BUILD IN" src="https://img.shields.io/badge/BUILD%20-Last Day-brightgreen"/>
