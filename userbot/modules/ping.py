@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # Ported by @mrismanaziz
 # FROM Man-Userbot
-# ReCode by @greyyvbss
+# ReCode by @RYUUSHINNI
 
 import random
 import asyncio
@@ -14,13 +14,13 @@ from speedtest import Speedtest
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, StartTime, bot, DEVS
 from userbot.events import register
-from userbot.utils import edit_or_reply, humanbytes, cilik_cmd
+from userbot.utils import edit_or_reply, humanbytes, trans_cmd
 
 absen = [
-    "**Hadir bang grey** 😁",
+    "**Hadir bang SHIN** 😁",
     "**Hadir kak** 😉",
     "**Hadir dong** 😁",
-    "**Hadir grey ganteng** 🥵",
+    "**Hadir SHIN ganteng** 🥵",
     "**Hadir bro** 😎",
     "**Hadir kak maap telat** 🥺",
 ]
@@ -29,7 +29,7 @@ salam = [
     "**Wa'alaikumsalam ganteng** 🥰🥰",
     "**Wa'alaikumsalam WR WB** 👋🏻",
     "**Iyah Waalaikusalam** 🥵",
-    "**Wa'alaikumsalam bang Grey**",
+    "**Wa'alaikumsalam bang Shin**",
     "**Wa'alaikumsalam** 🥰",
     "**Wa'alaikumsalan Warohmatullohi Wabarokatu**",
     "**Wa'alaikumsalam Ustad**",
@@ -43,9 +43,9 @@ pacar = [
     "**Mau ga bang jadi pacar aku?** 😁",
     "**Mending pc aku bang** 🥺",
     "**Main Sama Aku yuk**🥵🥵💦",
-    "**Grey Mau Aku Cium Ga??**🥵",
-    "**Grey I Love You**",
-    "**Grey Aku Sayang Kamu ,Mwahhh😘**",
+    "**Shin Mau Aku Cium Ga??**🥵",
+    "**Bang SHIN I Love You**",
+    "**Shin Aku Sayang Kamu ,Mwahhh😘**",
 ]
 
 roas = [
@@ -87,7 +87,7 @@ async def get_readable_time(seconds: int) -> str:
 
 
 
-@cilik_cmd(pattern="ping$")
+@trans_cmd(pattern="ping$")
 async def _(ping):
     """ For .ping command, ping the userbot from any chat  """
     start = datetime.now()
@@ -97,7 +97,7 @@ async def _(ping):
     await ping.edit("`Pong!\n%sms`" % (duration))
 
     
-@cilik_cmd(pattern="peng$")
+@trans_cmd(pattern="peng$")
 async def _(peng):
     """For .ping command, ping the userbot from any chat."""
     uptime = await get_readable_time((time.time() - StartTime))
@@ -118,7 +118,7 @@ async def _(peng):
     )
 
 
-@cilik_cmd(pattern="pink$")
+@trans_cmd(pattern="pink$")
 async def _(pink):
     """For .ping command, ping the userbot from any chat."""
     uptime = await get_readable_time((time.time() - StartTime))
@@ -149,7 +149,7 @@ async def _(pink):
     )
 
     
-@cilik_cmd(pattern="speed$")
+@trans_cmd(pattern="speed$")
 async def _(speed):
     """For .speedtest command, use SpeedTest to check server speeds."""
     xxnx = await edit_or_reply(speed, "`Running speed test...`")
@@ -181,7 +181,7 @@ async def _(speed):
     )
 
 
-@cilik_cmd(pattern="pong$")
+@trans_cmd(pattern="pong$")
 async def _(pong):
     """For .ping command, ping the userbot from any chat."""
     start = datetime.now()
@@ -193,26 +193,26 @@ async def _(pong):
 
 # KALO NGEFORK absen ini GA USAH DI HAPUS YA GOBLOK 😡
 @register(incoming=True, from_users=DEVS, pattern=r"^.absen$")
-async def grey(ganteng):
+async def shin(ganteng):
     await ganteng.reply(random.choice(absen))
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^P$")
-async def grey(ganteng):
+async def shin(ganteng):
     await ganteng.reply(random.choice(salam))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^.grey$")
-async def grey(ganteng):
+@register(incoming=True, from_users=DEVS, pattern=r"^.shin$")
+async def shin(ganteng):
     await ganteng.reply(random.choice(pacar))
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^.roasting$")
-async def grey(ganteng):
+async def shin(ganteng):
     await ganteng.reply(random.choice(roas))
 
 
-@cilik_cmd(pattern="pung(?: |$)(.*)")
+@trans_cmd(pattern="pung(?: |$)(.*)")
 async def _(event):  
     if event.fwd_from:
         return
