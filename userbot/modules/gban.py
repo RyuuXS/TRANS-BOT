@@ -1,10 +1,10 @@
 # Credits: @mrismanaziz
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 from telethon.events import ChatAction
 
 from userbot import DEVS, bot, owner
-from userbot.events import cilik_cmd, register
+from userbot.events import trans_cmd, register
 from userbot.utils import get_user_from_event
 
 # Ported For Lord-Userbot by liualvinas/Alvin
@@ -41,7 +41,7 @@ async def handler(tele):
                         return
 
 
-@bot.on(cilik_cmd(outgoing=True, pattern=r"gband(?: |$)(.*)"))
+@bot.on(trans_cmd(outgoing=True, pattern=r"gband(?: |$)(.*)"))
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cgband(?: |$)(.*)")
 async def gben(userbot):
     dc = userbot
@@ -109,7 +109,7 @@ async def gben(userbot):
         f"**Action:** `Global Banned by {owner}`"
     )
 
-@bot.on(cilik_cmd(outgoing=True, pattern=r"ungband(?: |$)(.*)"))
+@bot.on(trans_cmd(outgoing=True, pattern=r"ungband(?: |$)(.*)"))
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cungband(?: |$)(.*)")
 async def gunben(userbot):
     dc = userbot
@@ -139,7 +139,7 @@ async def gunben(userbot):
     if user:
         if user.id in DEVS:
             return await dark.edit(
-                "**Grey Tidak Bisa Terkena Perintah Ini, Karna Dia Pembuat saya**"
+                "**Bang SHIN Tidak Bisa Terkena Perintah Ini, Karna Dia Pembuat saya**"
             )
         try:
             from userbot.modules.sql_helper.gmute_sql import ungmute
