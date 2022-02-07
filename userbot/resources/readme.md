@@ -1,2 +1,2 @@
-# Extra Resources for CilikUserbot
-Repository [CilikUserbot](https://github.com/grey423/CilikUserbot)
+# Extra Resources for TRANS-BOT
+Repository [TransBot](https://github.com/RyuuXS/TRANS-BOT)
