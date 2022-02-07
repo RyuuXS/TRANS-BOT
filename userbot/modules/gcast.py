@@ -5,7 +5,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 # Ported by Koala @manusiarakitann
 # Copyright by @mrismanaziz
-# Recode by @greyyvbss
+# Recode by @RYUUSHINNI
 
 import asyncio
 
@@ -14,14 +14,14 @@ from telethon.errors.rpcerrorlist import FloodWaitError
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS
-from userbot.utils import edit_delete, edit_or_reply, cilik_cmd
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
 GCAST_BLACKLIST = get(
     "https://raw.githubusercontent.com/Poocoong/ListBl/main/blacklistgcast.json"
 ).json()
 
 
-@cilik_cmd(pattern="gcast(?: |$)(.*)")
+@trans_cmd(pattern="gcast(?: |$)(.*)")
 async def gcast(event):
     xx = event.pattern_match.group(1)
     if xx:
@@ -50,7 +50,7 @@ async def gcast(event):
     )
 
 
-@cilik_cmd(pattern="gucast(?: |$)(.*)")
+@trans_cmd(pattern="gucast(?: |$)(.*)")
 async def gucast(event):
     xx = event.pattern_match.group(1)
     if xx:
