@@ -2,38 +2,38 @@ from time import sleep
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, cilik_cmd
+from userbot.utils import edit_or_reply, trans_cmd
 
 
-@cilik_cmd(pattern="p(?: |$)(.*)")
+@trans_cmd(pattern="p(?: |$)(.*)")
 async def _(event):
     await edit_or_reply(event, "**Assalamualaikum Warohmatulohi Wabarokatu*")
 
 
-@cilik_cmd(pattern="^P(?: |$)(.*)")
+@trans_cmd(pattern="^P(?: |$)(.*)")
 async def _(event):
     await edit_or_reply(event, "**Assalamu'alaikum**")
     
-@cilik_cmd(pattern="^L(?: |$)(.*)")
+@trans_cmd(pattern="^L(?: |$)(.*)")
 async def _(event):
     await edit_or_reply(event, "**Wa'alaikumsalam**")
 
     
-@cilik_cmd(pattern="P(?: |$)(.*)")
+@trans_cmd(pattern="P(?: |$)(.*)")
 async def _(event):
     xx = await edit_or_reply(event, f"**Hy kaa 🥺**")
     sleep(2)
     await xx.edit("**Assalamualaikum...**")
 
 
-@cilik_cmd(pattern="l(?: |$)(.*)")
+@trans_cmd(pattern="l(?: |$)(.*)")
 async def _(event):
     xx = await edit_or_reply(event,f"**Astaghfirullah, Jawab salam dong**")
     sleep(2)
     await xx.edit("**Wa'alaikumsalam**")
 
 
-@cilik_cmd(pattern="L(?: |$)(.*)")
+@trans_cmd(pattern="L(?: |$)(.*)")
 async def _(event):
     xx = await edit_or_reply(event, f"**Astaghfirullah, Jawab salam dong**")
     sleep(2)
