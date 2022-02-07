@@ -1,10 +1,10 @@
 <h1 align="center"><img src="./resources/oie_711285YN125u1s.gif" width="35px">☣ᴛʀᴀɴsʙᴏᴛ☣<img src="./resources/oie_711285YN125u1s.gif" width="35px"></h1>
 <p align="center">
-    <img alt="TRANS VERSION" src="https://img.shields.io/badge/CILIK%20VERSION-4.+-brightgreen"/>
+    <img alt="TRANS VERSION" src="https://img.shields.io/badge/TRANS%20VERSION-4.+-brightgreen"/>
     <img alt="BUILD IN" src="https://img.shields.io/badge/BUILD%20-Last Day-brightgreen"/>
-           <a href="https://travis-ci.com/grey423/CilikUserbot.svg?branch=main" /></a>
-    <a href="https://github.com/grey423/CilikUserbot/network/members"> <img src="https://img.shields.io/github/forks/grey423/CilikUserbot?logo=github&style=for-the-badge" /></a>
-    <a href="https://github.com/grey423/CilikUserbot"> <img src="https://img.shields.io/github/repo-size/grey423/CilikUserbot?logo=github&style=for-the-badge" /></a>
+           <a href="https://travis-ci.com/RyuuXS/TRANS-BOT.svg?branch=main" /></a>
+    <a href="https://github.com/RyuuXS/TRANS-BOT/network/members"> <img src="https://img.shields.io/github/forks/RyuuXS/TRANS-BOT?logo=github&style=for-the-badge" /></a>
+    <a href="https://github.com/RyuuXS/TRANS-BOT"> <img src="https://img.shields.io/github/repo-size/RyuuXS/TRANS-BOT?logo=github&style=for-the-badge" /></a>
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=for-the-badge" /></a>
     <img alt="PYTHON" src="https://img.shields.io/badge/PYTHON-v3.9.0-blue?style=for-the-badge&logo=appveyor"/>
    </p>
@@ -27,7 +27,7 @@ mengelola grup secara efisien dan mengotomatiskan beberapa hal yang membosankan.
 Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 ```
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/grey423/Deploy"> <img 
+<p align="center"><a href="https://dashboard.heroku.com/deploy?template=https://github.com/RyuuXS/TRANS-BOT"> <img 
 src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
 
 
@@ -35,7 +35,7 @@ src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=flat&logo=he
 src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
 
 
-<p align="center"><a href="https://t.me/CilikStringBot"><img src="https://img.shields.io/badge/Generate%20String%20Session-blue?style=for-the-flat&logo=telegram" width="210" height"34.45" /</a></p>
+<p align="center"><a href="https://t.me/RyuuString_bot"><img src="https://img.shields.io/badge/Generate%20String%20Session-blue?style=for-the-flat&logo=telegram" width="210" height"34.45" /</a></p>
 
 <img src="./resources/70f81163393359.5ab4c75066483.gif">
 
@@ -61,4 +61,4 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
 *   [Alvin](https://github.com/Zora24/Lord-Userbot) : Lord-Userbot
 
 ## License
-Licensed under [Raphielscape Public License](https://github.com/grey423/CilikUserbot/blob/CilikUserbot/LICENSE) - Version 1.d, February 2020
+Licensed under [Raphielscape Public License](https://github.com/RyuuXS/TRANS-BOT/blob/TRANS-BOT/LICENSE) - Version 1.d, February 2020
