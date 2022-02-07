@@ -1,7 +1,7 @@
 # Copyright (C) 2020 Catuserbot <https://github.com/sandy1709/catuserbot>
 # Ported by @mrismanaziz
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# ReCode by @greyyvbss
+# ReCode by @RYUUSHINNI
 
 import asyncio
 
@@ -13,7 +13,7 @@ from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, LOGS
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
-from userbot.utils import edit_delete, edit_or_reply, cilik_cmd
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 from userbot.utils.tools import media_type
 
 
@@ -126,7 +126,7 @@ async def spam_function(event, spammer, xnxx, sleeptimem, sleeptimet, DelaySpam=
             )
 
 
-@cilik_cmd(pattern="spam ([\s\S]*)")
+@trans_cmd(pattern="spam ([\s\S]*)")
 async def nyespam(event):
     spammer = await event.get_reply_message()
     xnxx = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -148,7 +148,7 @@ async def nyespam(event):
     await spam_function(event, spammer, xnxx, sleeptimem, sleeptimet)
 
 
-@cilik_cmd(pattern="sspam$")
+@trans_cmd(pattern="sspam$")
 async def stickerpack_spam(event):
     reply = await event.get_reply_message()
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
@@ -205,7 +205,7 @@ async def stickerpack_spam(event):
         await event.client.send_file(BOTLOG_CHATID, reqd_sticker_set.documents[0])
 
 
-@cilik_cmd(pattern="cspam ([\s\S]*)")
+@trans_cmd(pattern="cspam ([\s\S]*)")
 async def tmeme(event):
     cspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = cspam.replace(" ", "")
@@ -230,7 +230,7 @@ async def tmeme(event):
             )
 
 
-@cilik_cmd(pattern="wspam ([\s\S]*)")
+@trans_cmd(pattern="wspam ([\s\S]*)")
 async def tmeme(event):
     wspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = wspam.split()
@@ -255,7 +255,7 @@ async def tmeme(event):
             )
 
 
-@cilik_cmd(pattern="(delayspam|dspam) ([\s\S]*)")
+@trans_cmd(pattern="(delayspam|dspam) ([\s\S]*)")
 async def dlyspam(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
