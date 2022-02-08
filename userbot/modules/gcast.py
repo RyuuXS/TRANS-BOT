@@ -1,12 +1,12 @@
 # Ultroid - UserBot
 # Copyright (C) 2020 TeamUltroid
+#
 # This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-# Ported by Koala @manusiarakitann
-# Copyright by @mrismanaziz
-# Recode by @RYUUSHINNI
-
+# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
+# t.me/SharingUserbot & t.me/Lunatic0de
+# recode by @RYUUSHINNI
 import asyncio
 
 from requests import get
@@ -16,9 +16,19 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
-GCAST_BLACKLIST = get(
-    "https://raw.githubusercontent.com/RyuuXS/ListBl/main/blacklistgcast.json"
-).json()
+while 0 < 6:
+    _GCAST_BLACKLIST = get(
+        "https://raw.githubusercontent.com/RyuuXS/Reforestation/master/blacklistgcast.json"
+    )
+    if _GCAST_BLACKLIST.status_code != 200:
+        if 0 != 5:
+            continue
+        GCAST_BLACKLIST = [-1001687155877, -1001473548283]
+        break
+    GCAST_BLACKLIST = _GCAST_BLACKLIST.json()
+    break
+
+del _GCAST_BLACKLIST
 
 
 @trans_cmd(pattern="gcast(?: |$)(.*)")
@@ -43,6 +53,8 @@ async def gcast(event):
                     done += 1
                 except FloodWaitError as anj:
                     await asyncio.sleep(int(anj.seconds))
+                    await event.client.send_message(chat, msg)
+                    done += 1
                 except BaseException:
                     er += 1
     await kk.edit(
@@ -72,6 +84,8 @@ async def gucast(event):
                     done += 1
                 except FloodWaitError as anj:
                     await asyncio.sleep(int(anj.seconds))
+                    await event.client.send_message(chat, msg)
+                    done += 1
                 except BaseException:
                     er += 1
     await kk.edit(
@@ -84,6 +98,14 @@ CMD_HELP.update(
         "gcast": f"**Plugin : **`gcast`\
         \n\n  •  **Syntax :** `{cmd}gcast` <text/reply media>\
         \n  •  **Function : **Mengirim Global Broadcast pesan ke Seluruh Grup yang kamu masuk. (Bisa Mengirim Media/Sticker)\
+    "
+    }
+)
+
+
+CMD_HELP.update(
+    {
+        "gucast": f"**Plugin : **`gucast`\
         \n\n  •  **Syntax :** `{cmd}gucast` <text/reply media>\
         \n  •  **Function : **Mengirim Global Broadcast pesan ke Seluruh Private Massage / PC yang masuk. (Bisa Mengirim Media/Sticker)\
     "
