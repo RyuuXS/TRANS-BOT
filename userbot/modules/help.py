@@ -5,7 +5,7 @@
 #
 """ Userbot help command """
 
-from userbot import CHANNEL
+from userbot import GROUP
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, ICON_HELP, bot
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -34,7 +34,7 @@ async def help(event):
             f"**✦ Jumlah** `{len(modules)}` **Modules**\n"
             f"**✦ Owner:** [{user.first_name}](tg://user?id={user.id})\n\n"
             f"{ICON_HELP}   {string}"
-            f"\n\nSupport @{CHANNEL}",
+            f"\n\nSupport @{GROUP}",
         )
         await event.reply(
             f"\n**Contoh Ketik** `{cmd}help afk` **Untuk Melihat Informasi Module**"
