@@ -111,12 +111,12 @@ async def repeat(event):
 async def repo_is_here(event):
     xx = await edit_or_reply(event, "`Processing...`")
     await xx.edit(
-        f"**Hey**, Saya Menggunakan  **TRANS-BOT** \n\n"
-        f"┌❏ **UserbotVersion :** `{BOT_VER}@{branch}`\n"
-        f"├❏ **GroupSupport :** [RyuuShinSUPPORT](t.me/helpforRYUU)\n"
-        f"├❏ **Channel  :** [RyuuProjext](t.me/Belajarbersamaryuu)\n"
-        f"├❏ **OwnerRepo :** [SHIN](t.me/RYUUSHINNI)\n"
-        f"└❏ **Repo :** [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT)\n"
+        "**Usᴇʀʙᴏᴛ Tᴇʟᴇɢʀᴀᴍ**\n"
+        "𝗥𝗲͠𝗽𝗼𝗿𝗶𝘀𝘁𝗼𝗿𝗶 🇮🇩\n"
+        "╰⧱⟢ [Ͳʀaɴƨ ʊʙ͠oͳ](https://github.com/RyuuXS/TRANS-BOT)\n"
+        "❖ **Oᴡɴᴇʀ​**    ⎘ [RyuuSHIN](t.me/RYUUSHINNI)\n"
+        "❖ **Sᴜᴘᴘᴏʀᴛ**​ ⎘ [groups](t.me/helpforRYUU)\n"
+        "❖ **Pʀᴏᴊᴇᴄᴛ**​  ⎘ [chanel](t.me/Belajarbersamaryuu)\n"
     )
 
 
