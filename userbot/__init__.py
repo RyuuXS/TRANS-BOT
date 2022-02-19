@@ -687,7 +687,7 @@ with bot:
                 )
             else:
                 f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
-            await event.answer(ly_pop_up_alert, cache_time=0, alert=True)
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     except BaseException:
         LOGS.info(
