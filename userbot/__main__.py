@@ -28,7 +28,7 @@ try:
     call_py.start()
     user = bot.get_me()
     blacklistman = requests.get(
-        "https://raw.githubusercontent.com/mrismanaziz/Reforestation/master/manblacklist.json"
+        "https://github.com/RyuuXS/Reforestation/blob/master/shinblacklist.json"
     ).json()
     if user.id in blacklistman:
         LOGS.warning(
