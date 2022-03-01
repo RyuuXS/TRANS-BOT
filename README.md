@@ -36,9 +36,7 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
     
 </details>
  
-<details>
-<summary><b>🔗 Deploy di VPS</b></summary>
-<br>
+<details><summary><b>🔗 Deploy di VPS</b></summary><br>
     
 ### REQUIREMENTS PACKAGE !
 -  Update & upgrade VPS anda `sudo apt update && upgrade -y`
