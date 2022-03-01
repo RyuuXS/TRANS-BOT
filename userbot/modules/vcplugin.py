@@ -170,7 +170,7 @@ async def vc_play(event):
                         ),
                         stream_type=StreamType().pulse_stream,
                     )
- add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
+                    add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                     caption = f"🏷 **Judul:** [{songname}]({url})\n**⏱ Durasi:** `{duration}`\n💡 **Status:** `Sedang Memutar`\n🎧 **Atas permintaan:** {from_user}"
                     await botman.delete()
                     await event.client.send_file(
