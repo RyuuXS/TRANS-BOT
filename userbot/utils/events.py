@@ -78,8 +78,8 @@ async def get_user_from_event(
 
 
 async def checking():
-    trans = str(pybase64.b64decode("QFBvY29uZ1Byb2plY3Q="))[2:13]
-    xtrans = str(pybase64.b64decode("QFBvY29uZ1VzZXJib3Q="))[2:17]
+    trans = str(pybase64.b64decode("QENpbGlrUHJvamVjdA=="))[2:13]
+    xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA=="))[2:17]
     userbot = str(pybase64.b64decode("QFRFQU1TcXVhZFVzZXJib3RTdXBwb3J0"))[2:13]
     xuserbot = str(pybase64.b64decode("QFVzZXJib3RURUFNX1R1dG9yaWFs"))[2:17]
     try:
@@ -92,8 +92,8 @@ async def checking():
         pass
 
 async def waiting():
-    trans = str(pybase64.b64decode("QFBvY29uZ1Byb2plY3Q="))[2:13]
-    xtrans = str(pybase64.b64decode("QFBvY29uZ1VzZXJib3Q="))[2:17]
+    trans = str(pybase64.b64decode("QENpbGlrUHJvamVjdA=="))[2:13]
+    xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA="))[2:17]
     userbot = str(pybase64.b64decode("QFRFQU1TcXVhZFVzZXJib3RTdXBwb3J0"))[2:13]
     xuserbot = str(pybase64.b64decode("QFVzZXJib3RURUFNX1R1dG9yaWFs"))[2:17]
     try:
