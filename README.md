@@ -49,12 +49,16 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
 
 ### Tutorial Deploy di VPS
 
--  `git clone https://github.com/mrismanaziz/Man-Userbot`
--  `cd Man-Userbot`
+-  `git clone https://github.com/RyuuXS/TRANS-BOT`
+-  `cd TRANS-BOT`
 -  `pip3 install -r requirements.txt`
 -  `mv sample_config.env config.env`
--  edit config.env Anda dan isi VARS menggunakan `nano config.env` `CTRL + S ` untuk menyimpan VARS Anda, gunakan `CTRL + X` untuk keluar dan kembali ke direktori Man-Userbot
--  Buka SCRREN di VPS Anda `screen -S Man-Userbot`
+-  edit config.env Anda dan isi VARS menggunakan `nano config.env` `CTRL + S ` untuk menyimpan VARS Anda, gunakan `CTRL + X` untuk keluar dan kembali ke direktori TRANS-BOT
+-  lalu ketik `cd userbot`, ketik lagi cd modules`, lalu ketik lagi `nano misc.py` hapus tulisan yang seperti ini"# ================= CONSTANT =================
+HEROKU_APP = from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME]
+# ============================================"
+-  Jika sudah siyap dan sudah hapus, lalu lanjut kembali ke direktori awal `cd` ketik `cd TRANS-BOT`
+-  Buka SCRREN di VPS Anda `screen -S TRANS-BOT
 -  Kemudian gunakan perintah ini untuk menyebarkan Man-Userbot `python3 -m userbot`
 
 </details>
