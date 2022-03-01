@@ -93,14 +93,14 @@ async def checking():
 
 async def waiting():
     trans = str(pybase64.b64decode("QENpbGlrUHJvamVjdA=="))[2:13]
-    xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA="))[2:17]
+    xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA=="))[2:17]
     userbot = str(pybase64.b64decode("QFRFQU1TcXVhZFVzZXJib3RTdXBwb3J0"))[2:13]
     xuserbot = str(pybase64.b64decode("QFVzZXJib3RURUFNX1R1dG9yaWFs"))[2:17]
     try:
-        await bot(Mansiez(trans))
+        await bot(Mansiez(cilik))
     except BaseException:
         pass
     try:
-        await bot(Mansiez(xtrans))
+        await bot(Mansiez(xcilik))
     except BaseException:
         pass
