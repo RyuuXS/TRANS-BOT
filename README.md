@@ -35,7 +35,6 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
 <p align="center"><a href="https://t.me/RyuuString_bot"><img src="https://img.shields.io/badge/Generate%20String%20Session-blue?style=for-the-flat&logo=telegram" width="210" height"34.45" /</a></p>
 
 ------
-<details>
 <summary><b>🔗 Deploy di VPS</b></summary>
 <br>
     
