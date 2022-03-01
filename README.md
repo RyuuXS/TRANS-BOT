@@ -26,10 +26,7 @@ Bot ini dimaksudkan untuk bersenang-senang sekaligus membantu Anda
 mengelola grup secara efisien dan mengotomatiskan beberapa hal yang membosankan.
 Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 ```
-
-<p align="center"><a href="https://dashboard.heroku.com/deploy?template=https://github.com/RyuuXS/TRANS-BOT"> <img 
-src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
-
+## DEPLOY TO HEROKU
 
 <p align="center"><a href="https://telegram.dog/XTZ_HerokuBot?start=Unl1dVhTL1RSQU5TLUJPVCBtYWlu"> <img 
 src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
