@@ -241,12 +241,12 @@ async def spider(spdr):
         return
     self_user = await spdr.client.get_me()
     if user.id == self_user.id:
-        return await edit_or_reply(cilik, "**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**")
+        return await edit_or_reply(trans, "**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**")
     if user.id in DEVS:
-        return await cilik.edit("**Gagal Mute, dia adalah Pembuat Saya 🤪**")
+        return await trans.edit("**Gagal Mute, dia adalah Pembuat Saya 🤪**")
     if user.id in WHITELIST:
-        return await cilik.edit("**Gagal Mute, dia adalah admin @SharingUserbot 🤪**")
-    await cilik.edit(
+        return await trans.edit("**Gagal Mute, dia adalah admin @SharingUserbot 🤪**")
+    await trans.edit(
         r"\\**#Muted_User**//"
         f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
         f"**User ID:** `{user.id}`\n"
