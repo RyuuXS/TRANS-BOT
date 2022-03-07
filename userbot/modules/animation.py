@@ -4,7 +4,7 @@ from time import sleep
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot
 from userbot.events import trans_cmd
-from userbot.utils import edit_or_reply
+from userbot.utils import edit_or_reply, trans_cmd
 from userbot import ALIVE_NAME
 
 
@@ -1210,7 +1210,7 @@ async def _(event):
             
 
 
-@bot.on(trans_cmd(pattern=f"trans$", outgoing=True))
+@trans_cmd(pattern="cilik(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
