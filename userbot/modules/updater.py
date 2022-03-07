@@ -9,7 +9,7 @@ from os import environ, execle, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import CMD_HANDLER as cmd
+from userbot import CMD_HANDLER as cmd, DEVS
 from userbot import CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -124,7 +124,7 @@ async def update(xx, repo, ups_rem, ac_br):
 
 
 @trans_cmd(pattern="update( now| deploy|$)")
-@register(pattern=r"^\.cupdate( now| deploy|$)", sudo=True)
+@register(incoming=True, from_users=DEVS, pattern=r"^\.cupdate( now| deploy|$)")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     xx = await edit_or_reply(event, "`Mengecek Pembaruan, Tunggu Sebentar...`")
