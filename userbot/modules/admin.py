@@ -185,7 +185,7 @@ async def ban(bon):
     user, reason = await get_user_from_event(bon)
     if not user:
         return
-    trans = await edit_or_reply(bon, "`Processing Banned...`")
+    await edit_or_reply(bon, "`Processing Banned...`")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
