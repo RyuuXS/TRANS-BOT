@@ -16,7 +16,7 @@
 #
 # (c) mrismanaziz
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# ReCode @Pocongonlen
+# ReCode @RYUUSHINNI
 
 
 import asyncio
