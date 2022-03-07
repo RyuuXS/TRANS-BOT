@@ -22,6 +22,7 @@ from sys import version_info
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
+from git import Repo
 from pytgcalls import PyTgCalls
 from requests import get
 from telethon import Button
@@ -42,6 +43,8 @@ def STORAGE(n):
 load_dotenv("config.env")
 
 StartTime = time.time()
+repo = Repo()
+branch = repo.active_branch.name
 
 # Global Variables
 COUNT_MSG = 0
@@ -230,7 +233,7 @@ BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 TERM_ALIAS = os.environ.get("TERM_ALIAS", "TRANS-BOT")
 
 # Bot version
-BOT_VER = os.environ.get("BOT_VER", "1.0")
+BOT_VER = os.environ.get("BOT_VER", "1.1")
 
 # Default .alive username
 ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
@@ -444,7 +447,7 @@ with bot:
         uid = user.id
         owner = user.first_name
         logo = ALIVE_LOGO
-        logoman = INLINE_PIC
+        logotrans = INLINE_PIC
         tgbotusername = BOT_USERNAME
         BTN_URL_REGEX = re.compile(
             r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)"
@@ -525,7 +528,7 @@ with bot:
             if event.query.user_id == uid and query.startswith("@helpforRYUU"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=logoman,
+                    file=logotrans,
                     link_preview=False,
                     text=f"**✠ TRANS - BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
                     buttons=buttons,
@@ -608,7 +611,7 @@ with bot:
                 text = f"**✠ TRANS-BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✠ **Jumlah** `{len(dugmeler)}` Modules"
                 await event.edit(
                     text,
-                    file=logoman,
+                    file=logotrans,
                     buttons=buttons,
                     link_preview=False,
                 )
