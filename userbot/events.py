@@ -125,6 +125,8 @@ def register(**args):
     trigger_on_fwd = args.get("trigger_on_fwd", False)
     disable_errors = args.get("disable_errors", False)
     insecure = args.get("insecure", False)
+    args.get("sudo", False)
+    args.get("own", False)
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -132,6 +134,11 @@ def register(**args):
     if "disable_edited" in args:
         del args["disable_edited"]
 
+    if "sudo" in args:
+        del args["sudo"]
+        args["incoming"] = True
+        args["from_users"] = DEVS
+        
     if "ignore_unsafe" in args:
         del args["ignore_unsafe"]
 
@@ -143,6 +150,11 @@ def register(**args):
 
     if "trigger_on_fwd" in args:
         del args["trigger_on_fwd"]
+
+    if "own" in args:
+        del args["own"]
+        args["incoming"] = True
+        args["from_users"] = DEFAULT
 
     if "insecure" in args:
         del args["insecure"]
