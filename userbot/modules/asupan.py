@@ -1,6 +1,7 @@
 
 # 🍀 © @tofik_dn
 # ⚠️ Do not remove credits
+# recode by @RYUUSHINNI
 
 
 from userbot import CMD_HANDLER as cmd
