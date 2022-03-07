@@ -7,11 +7,11 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import edit_delete, edit_or_reply, cilik_cmd
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 from userbot.utils.misc import create_quotly
 
 
-@cilik_cmd(pattern="q( (.*)|$)")
+@trans_cmd(pattern="q( (.*)|$)")
 async def quotly(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
