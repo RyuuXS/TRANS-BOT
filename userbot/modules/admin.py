@@ -191,14 +191,14 @@ async def ban(bon):
     except BadRequestError:
         return await edit_or_reply(bon, NO_PERM)
     if reason:
-        await cilik.edit(
+        await trans.edit(
             r"\\**#Banned_User**//"
             f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
             f"**User ID:** `{str(user.id)}`\n"
             f"**Reason:** `{reason}`",
         )
     else:
-        await cilik.edit(
+        await trans.edit(
             f"\\\\**#Banned_User**//\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n**User ID:** `{user.id}`\n**Action:** `Banned User by {me.first_name}`",
         )
 
