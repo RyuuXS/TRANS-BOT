@@ -9,7 +9,7 @@ from os import environ, execle, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import CMD_HANDLER as cmd, DEVS
+from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -25,7 +25,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(xx, ac_br, changelog):
     changelog_str = (
-        f"**✥ Tersedia Pembaruan Untuk [{ac_br}] :\n\n✥ Pembaruan:**\n`{changelog}`"
+        f"**⚠︎ Tersedia Pembaruan Untuk [{ac_br}] :\n\n✥ Pembaruan:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
         await edit_or_reply(xx, "**Changelog terlalu besar, dikirim sebagai file.**")
@@ -124,7 +124,7 @@ async def update(xx, repo, ups_rem, ac_br):
 
 
 @trans_cmd(pattern="update( now| deploy|$)")
-@register(incoming=True, from_users=DEVS, pattern=r"^\.cupdate( now| deploy|$)")
+@register(pattern=r"^\.cupdate( now| deploy|$)", sudo=True)
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     xx = await edit_or_reply(event, "`Mengecek Pembaruan, Tunggu Sebentar...`")
@@ -174,7 +174,7 @@ async def upstream(event):
         return
 
     if changelog == "" and not force_update:
-        await edit_delete(xx, "**✥ Cilik-Userbot Sudah Versi Terbaru**")
+        await edit_delete(xx, "**⚠︎ TRANS-Userbot Sudah Versi Terbaru ⚠︎**")
         return repo.__del__()
 
     if conf == "" and not force_update:
