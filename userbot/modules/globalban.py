@@ -17,7 +17,7 @@ from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS, bot
 from userbot.events import register
-from userbot.utils import edit_or_reply, get_user_from_event, trans_cmd
+from userbot.utils import chataction, edit_or_reply, get_user_from_event, trans_cmd
 
 from .admin import BANNED_RIGHTS, UNBAN_RIGHTS
 
@@ -40,7 +40,7 @@ def mentionuser(name, userid):
 
 
 @trans_cmd(pattern="gban(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^\.cgban(?: |$)(.*)")
+@register(pattern=r"^\.cgban(?: |$)(.*)", sudo=True)
 async def gban(event):
     if event.fwd_from:
         return
@@ -57,7 +57,7 @@ async def gban(event):
         return
     if gban_sql.is_gbanned(user.id):
         await gbun.edit(
-            f"**Si** [Kontol](tg://user?id={user.id}) **ini sudah ada di daftar gbanned**"
+            f"**Si** [JAMET TELE](tg://user?id={user.id}) **ini sudah ada di daftar gbanned**"
         )
     else:
         gban_sql.freakgban(user.id, reason)
@@ -69,7 +69,7 @@ async def gban(event):
         await gbun.edit("**Anda Tidak mempunyai GC yang anda admin 🥺**")
         return
     await gbun.edit(
-        f"**Mampus kao** [Kontol](tg://user?id={user.id}) **Ter gban** `{len(san)}` **groups**"
+        f"**Mampus kao** [JAMET TELE](tg://user?id={user.id}) **Ter gban** `{len(san)}` **groups**"
     )
     for i in range(fiz):
         try:
@@ -94,7 +94,7 @@ async def gban(event):
 
 
 @trans_cmd(pattern="ungban(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^\.cungban(?: |$)(.*)")
+@register(pattern=r"^\.cungban(?: |$)(.*)", sudo=True)
 async def ungban(event):
     if event.fwd_from:
         return
@@ -172,12 +172,12 @@ async def gablist(event):
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@bot.on(events.ChatAction)
+@chataction()
 async def _(event):
     if event.user_joined or event.added_by:
         user = await event.get_user()
         chat = await event.get_chat()
-        if gban_sql.is_gbanned(user.id) and chat.admin_rights:
+        if gban_sql.is_gbanned(user.id) and blacklistman and chat.admin_rights:
             try:
                 await event.client.edit_permissions(
                     chat.id,
@@ -191,6 +191,7 @@ async def _(event):
                 pass
 
 
+            
 # Ported by @mrismanaziz
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
 
