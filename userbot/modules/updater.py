@@ -58,7 +58,7 @@ async def deploy(xx, repo, ups_rem, ac_br, txt):
                 heroku_app = app
                 break
         if heroku_app is None:
-             await edit_or_reply(
+            await edit_or_reply(
                 xx,
                 f"{txt}\n"
                 "**Kredensial Heroku tidak valid untuk deploy TRANS-BOT dyno.**",
