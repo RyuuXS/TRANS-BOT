@@ -7,7 +7,6 @@ import asyncio
 from datetime import datetime
 from io import BytesIO
 
-from telethon import events
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import Channel
@@ -15,7 +14,7 @@ from telethon.tl.types import Channel
 import userbot.modules.sql_helper.gban_sql as gban_sql
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS, bot
+from userbot import CMD_HELP, DEVS
 from userbot.events import register
 from userbot.utils import chataction, edit_or_reply, get_user_from_event, trans_cmd
 
