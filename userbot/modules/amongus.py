@@ -13,11 +13,11 @@ from PIL import Image, ImageDraw, ImageFont
 from requests import get
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
+from userbot import CMD_HELP
+from userbot.utils import trans_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"imp (.*)"))
+@trans_cmd(pattern="imp (.*)")
 async def f_load(message):
     clrs = {
         "red": 1,
