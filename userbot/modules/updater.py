@@ -187,8 +187,6 @@ async def upstream(event):
     if force_update:
         await xx.edit("**Sinkronisasi Paksa Ke Kode Userbot Terbaru, Harap Tunggu...**")
         
-        )
-
     if conf == "now":
         for commit in changelog.splitlines():
             if (
