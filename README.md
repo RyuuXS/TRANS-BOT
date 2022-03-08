@@ -58,7 +58,7 @@ src="https://img.shields.io/badge/Deploy%20To%20Bot%20Heroku-blue?style=flat&log
 HEROKU_APP = from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME]
 # ============================================"
 -  Jika sudah siyap dan sudah hapus, lalu lanjut kembali ke direktori awal `cd` ketik `cd TRANS-BOT`
--  Buka SCRREN di VPS Anda `screen -S TRANS-BOT
+-  Buka SCRREN di VPS Anda `screen -S TRANS-BOT`
 -  Kemudian gunakan perintah ini untuk menyebarkan Man-Userbot `python3 -m userbot`
 
 </details>
