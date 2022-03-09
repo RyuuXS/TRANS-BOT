@@ -21,7 +21,6 @@ from userbot.utils import (
     chrome,
     human_to_bytes,
     humanbytes,
-    cilik_cmd,
     md5,
     time_formatter,
 )
