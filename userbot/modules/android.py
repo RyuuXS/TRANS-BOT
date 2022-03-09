@@ -228,7 +228,7 @@ async def download_api(dl):
     return
 
 
-@trans_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)")\s\S]*)"))
+@trans_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)")
 async def devices_specifications(request):
     """Mobile devices specifications"""
     textx = await request.get_reply_message()
