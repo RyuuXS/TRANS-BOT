@@ -12,7 +12,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME
 from userbot.events import register
-from userbot.utils import edit_delete, edit_or_reply
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
 
 async def gen_chlog(repo, diff):
@@ -123,7 +123,7 @@ async def update(xx, repo, ups_rem, ac_br):
     execle(sys.executable, *args, environ)
 
 
-@Trans_cmd(pattern="update( now| deploy|$)")
+@trans_cmd(pattern="update( now| deploy|$)")
 @register(pattern=r"^\.cupdate( now| deploy|$)", sudo=True)
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
