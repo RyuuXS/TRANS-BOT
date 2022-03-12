@@ -89,12 +89,22 @@ async def get_readable_time(seconds: int) -> str:
 
 @trans_cmd(pattern="ping$")
 async def _(ping):
-    """ For .ping command, ping the userbot from any chat  """
+    """For .ping command, ping the userbot from any chat."""
+    uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    await ping.edit("`Pong!`")
+    xx = await edit_or_reply(ping, "**⚞**")
+    await xx.edit("**╾╾**")
+    await xx.edit("**╾╾⚟**")
+    await xx.edit("**◕‿- PONG!**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
-    await ping.edit("`Pong!\n%sms`" % (duration))
+    user = await bot.get_me()
+    await xx.edit(
+        f"**PONG!!🏓**\n"
+        f"**⍣ Ping** - `%sms`\n"
+        f"**⎋ Uptime -** `{uptime}` \n"
+        f"**♔ Owner :** [{user.first_name}](tg://user?id={user.id})" % (duration)
+    )
 
     
 @trans_cmd(pattern="peng$")
