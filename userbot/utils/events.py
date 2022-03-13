@@ -78,10 +78,10 @@ async def get_user_from_event(
 
 
 async def checking():
-    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQo="))[2:13]
-    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVVCg=="))[2:17]
-    userbot = str(pybase64.b64decode("QEF4ZVN0b3JlRAo="))[2:13]
-    xuserbot = str(pybase64.b64decode("QFRJTkdHQUxKQURJCg=="))[2:17]
+    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
+    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
+    userbot = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1Q=="))[2:13]
+    xuserbot = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
     try:
         await bot(Shin(userbot))
     except BaseException:
@@ -92,10 +92,10 @@ async def checking():
         pass
 
 async def waiting():
-    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQo="))[2:13]
-    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVVCg=="))[2:17]
-    userbot = str(pybase64.b64decode("QEF4ZVN0b3JlRAo="))[2:13]
-    xuserbot = str(pybase64.b64decode("QFRJTkdHQUxKQURJCg=="))[2:17]
+    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
+    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
+    userbot = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
+    xuserbot = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
     try:
         await bot(Shin(trans))
     except BaseException:
