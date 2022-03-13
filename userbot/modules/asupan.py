@@ -18,7 +18,7 @@ async def _(event):
         asupannya = [
             asupan
             async for asupan in event.client.iter_messages(
-                "@tedeasupancache", filter=InputMessagesFilterVideo
+                "@asupancilikbot", filter=InputMessagesFilterVideo
             )
         ]
         aing = await event.client.get_me()
