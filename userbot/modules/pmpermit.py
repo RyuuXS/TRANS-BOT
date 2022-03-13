@@ -17,16 +17,13 @@ from userbot.events import trans_cmd, register
 from userbot.utils import edit_delete, edit_or_reply
 
 DEF_UNAPPROVED_MSG = (
-    "╔═════════════════════╗\n"
-    ".    ⚡ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⚡ ”\n"
-    "╚═════════════════════╝\n"
-    "**ᴛᴏʟᴏɴɢ ᴊᴀɴɢᴀɴ ᴍᴇʟᴀᴋᴜᴋᴀɴ sᴘᴀᴍ ᴄʜᴀᴛ ᴋᴇᴘᴀᴅᴀ ʙᴏs sᴀʏᴀ* \n"
-    "**ᴋᴀʀᴇɴᴀ sᴀʏᴀ ᴀᴋᴀɴ ᴏᴛᴏᴍᴀᴛɪs ᴍᴇᴍʙʟᴏᴋɪʀ ᴋᴀᴍᴜ** \n"
-    "╔═════════════════════╗\n"
-    "│○›ᴘᴇsᴀɴ ᴏᴛᴏᴍᴀᴛɪs           \n"
-    "│○›ʙʏ ᴛʀᴀɴs-ᴜʙᴏᴛ             \n"
-    "╚═════════════════════╝"
-)
+    f"__**ROOM CHAT || {DEFAULTUSER}**__\n"
+    "━━━━━━━━━━━━━━━━━━━━\n"
+    f"__HALLO SELAMAT DATANG, SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI {DEFAULTUSER} MENERIMA PESAN ANDA__\n"
+    "┏━━━━━━━━━━━━━━━━━━━\n"
+    "┣[• `PESAN OTOMATIS`\n"
+    "┣[• `BY TRANS USERBOT`\n"
+    "┗━━━━━━━━━━━━━━━━━━━")
 
 
 @register(incoming=True, disable_edited=True, disable_errors=True)
