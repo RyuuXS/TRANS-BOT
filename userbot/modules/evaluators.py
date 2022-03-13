@@ -13,7 +13,7 @@ from os import remove
 from pprint import pprint
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS
+from userbot import CMD_HELP
 from userbot.utils import trans_cmd
 from userbot.events import register
 
