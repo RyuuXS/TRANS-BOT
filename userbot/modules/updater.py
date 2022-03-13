@@ -130,7 +130,7 @@ async def upstream(event):
     xx = await edit_or_reply(event, "`Mengecek Pembaruan, Tunggu Sebentar...`")
     conf = event.pattern_match.group(1).strip()
     off_repo = b64decode(
-        "aHR0cHM6Ly9naXRodWIuY29tL1J5dXVYUy9UUkFOUy1CT1QuZ2l0Cg=="
+        "aHR0cHM6Ly9naXRodWIuY29tL1J5dXVYUy9UUkFOUy1CT1Q="
     ).decode("utf-8")
     force_update = False
     try:
