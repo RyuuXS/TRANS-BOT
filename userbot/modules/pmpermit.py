@@ -17,9 +17,9 @@ from userbot.events import trans_cmd, register
 from userbot.utils import edit_delete, edit_or_reply
 
 DEF_UNAPPROVED_MSG = (
-    f"__**ROOM CHAT || {DEFAULTUSER}**__\n"
+    f"__**ROOM CHAT || [{user.first_name}](tg://user?id={user.id})**__\n"
     "━━━━━━━━━━━━━━━━━━━━\n"
-    f"__HALLO SELAMAT DATANG, SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI {DEFAULTUSER} MENERIMA PESAN ANDA__\n"
+    f"__HALLO SELAMAT DATANG, SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI [{user.first_name}](tg://user?id={user.id}) MENERIMA PESAN ANDA__\n"
     "┏━━━━━━━━━━━━━━━━━━━\n"
     "┣[• `PESAN OTOMATIS`\n"
     "┣[• `BY TRANS USERBOT`\n"
