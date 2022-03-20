@@ -31,7 +31,7 @@ async def help(event):
         await edit_or_reply(
             event,
             f"**💡 Daftar Perintah [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT):**\n"
-            f"**☣ Jumlah** `{len(modules)}` **Modules**\n"
+            f"**✠ Jumlah** `{len(modules)}` **Modules**\n"
             f"**♕ Owner:** [{user.first_name}](tg://user?id={user.id})\n\n"
             f"{ICON_HELP}   {string}"
             f"\n\nSupport @{GROUP}",
