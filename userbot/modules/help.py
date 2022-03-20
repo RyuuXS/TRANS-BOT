@@ -26,7 +26,7 @@ from userbot import bot
 from userbot.utils import edit_or_reply, trans_cmd
 
 
-@trans_cmd(pattern="helpme")
+@trans_cmd(pattern="help")
 async def _(event):
     if event.fwd_from:
         return
