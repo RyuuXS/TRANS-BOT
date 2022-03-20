@@ -29,7 +29,7 @@ CUSTOM_HELP_EMOJI = "💡"
 
 
 
-@trans_cmd(pattern="help(?: |$)(.*)")
+@trans_cmd(pattern="helpme(?: |$)(.*)")
 async def cmd_list(event):
     args = event.pattern_match.group(1).lower()
     if args:
