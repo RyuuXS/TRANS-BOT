@@ -85,7 +85,7 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "base64": f"**Plugin : **`base64`\
+        "base64": f"**Plugiin : **`base64`\
         \n\n  •  **Syntax :** `{cmd}base64` [en atau de]\
         \n  •  **Function : **Temukan pengkodean base64 dari string yang diberikan atau pecahkan kodenya.\
         \n\n  •  **NOTE : en = encode , de = decode\
