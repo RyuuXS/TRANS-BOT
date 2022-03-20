@@ -294,11 +294,11 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "repo": f"**Plugin : **`Repository PocongUserbot`\
+        "repo": f"**Plugin : **`Repository TRANS-UBOT`\
         \n\n  •  **Syntax :** `{cmd}repo`\
-        \n  •  **Function : **Menampilan link Repository PocongUserbot\
+        \n  •  **Function : **Menampilan link Repository TRANS-UBOT\
         \n\n  •  **Syntax :** `{cmd}string`\
-        \n  •  **Function : **Menampilan link String PocongUserbot\
+        \n  •  **Function : **Menampilan link String TRANS-UBOT\
     "
     }
 )
