@@ -28,48 +28,7 @@ if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
 else:
     app = None
 
-
-async def autopilot():
-    if BOTLOG_CHATID:
-        return
-    await bot.start()
-        LOGS.info("Sedang Membuat Grup Logs....")
-        try:
-            r = await bot(
-                CreateChannelRequest(
-                    title="Bot Logs",
-                    about="Cilik Log Group\n\n Join @CilikSupport",
-                    megagroup=True,
-                ),
-            )
-        except ChannelsTooMuchError:
-            LOGS.info(
-                "Anda Berada di Terlalu Banyak Saluran & Grup, Tinggalkan Beberapa Dan Mulai Ulang Bot"
-            )
-            sys.exit(1)
-        except BaseException as er:
-            LOGS.info(er)
-            LOGS.info(
-                "Ada yang Salah, Buat Grup dan atur id-nya di config var LOG_CHANNEL."
-            )
-            sys.exit(1)
-        chat = r.chats[0]
-        channel = get_peer_id(chat)
-        heroku_var["BOTLOG_CHATID"] = str(channel)
-    if isinstance(chat.photo, ChatPhotoEmpty):
-        photo = await download_file(
-            "https://telegra.ph/file/a2472d5ab2b51b8cead3c.jpg", "logo.jpg"
-        )
-        grey = await bot.upload_file(photo)
-        try:
-            await bot(
-                EditPhotoRequest(int(channel), InputChatUploadedPhoto(grey))
-            )
-        except BaseException as er:
-            LOGS.exception(er)
-        os.remove(photo)
-
-
+    
 async def autobot():
     if BOT_TOKEN:
         return
@@ -144,7 +103,7 @@ async def autobot():
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
             await bot.send_message(
-                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @Belajarbersamaryuu ✨"
+                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @helpforRYUU ✨"
             )
             await bot.send_message(
                 BOTLOG_CHATID,
@@ -186,7 +145,7 @@ async def autobot():
         await bot.send_message(bf, f"@{username}")
         await asyncio.sleep(1)
         await bot.send_message(
-            bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @Belajarbersamaryuu ✨"
+            bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @helpforRYUU ✨"
         )
         await bot.send_message(
             BOTLOG_CHATID,
