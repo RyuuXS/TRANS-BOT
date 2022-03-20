@@ -38,9 +38,9 @@ async def get_adzan(adzan):
 
 CMD_HELP.update(
     {
-        "adzan": f"**Plugin : **`adzan`\
-        \n\n  •  **Syntax :** `{cmd}adzan` <nama kota>\
-        \n  •  **Function : **Menunjukkan waktu jadwal sholat dari kota yang diberikan.\
+        "adzan": f"➢ **Plugin : **`adzan`\
+        \n\n ┍⊛ **Syntax :** `{cmd}adzan` <nama kota>\
+        \n ┕⊛ **Function : **Menunjukkan waktu jadwal sholat dari kota yang diberikan.\
     "
     }
 )
