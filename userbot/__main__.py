@@ -78,8 +78,6 @@ bot.loop.run_until_complete(checking())
 bot.loop.run_until_complete(trans_userbot_on())
 if not BOT_TOKEN:
     bot.loop.run_until_complete(autobot())
-if not BOTLOG_CHATID:
-    bot.loop.run_until_complete(autopilot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
