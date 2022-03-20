@@ -31,6 +31,7 @@ from .tools import (
     human_to_bytes,
     humanbytes,
     md5,
+    text_set,
     media_to_pic,
     media_type,
     post_to_telegraph,
