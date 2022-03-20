@@ -386,7 +386,7 @@ else:
 
 
 def paginate_help(page_number, loaded_modules, prefix):
-    number_of_rows = 6
+    number_of_rows = 4
     number_of_cols = 2
     global looters
     looters = page_number
