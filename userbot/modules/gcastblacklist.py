@@ -2,7 +2,6 @@
 # t.me/helpforRYUU & t.me/Belajarbersamaryuu
 # ⚠️ JANGAN HAPUS CREDIT INI !!
 
-import asyncio
 import os
 
 import heroku3
