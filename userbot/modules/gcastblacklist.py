@@ -2,6 +2,7 @@
 # t.me/helpforRYUU & t.me/Belajarbersamaryuu
 # ⚠️ JANGAN HAPUS CREDIT INI !!
 
+import asyncio
 import os
 
 import heroku3
@@ -91,11 +92,11 @@ CMD_HELP.update(
     {
         "gcastblacklist": f"➢ **Plugin : **`gcastblacklist`\
         \n\n ┍⊛ **Command :** `{cmd}addblacklist`\
-        \n ┕⊛ **Function : *Untuk menambah blacklist Gcast kalian\
+        \n ┕⊛ **Function : **Untuk menambah blacklist Gcast kalian\
         \n\n ┍⊛ **Command :** `{cmd}delblacklist`\
         \n ┕⊛ **Function : **Untuk mengurangi blacklist Gcast kalian\
         \n\n ┍⊛ **Command :** `{cmd}blgcast`\
-        \n ┕⊛ **Function : **Untuk melihat info blacklist gcast Kalian.\
+        \n ┕⊛ **Function : *Untuk melihat info blacklist gcast Kalian.\
     "
     }
 )
