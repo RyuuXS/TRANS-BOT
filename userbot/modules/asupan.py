@@ -9,8 +9,8 @@ from userbot.utils import trans_cmd
 import random
 from userbot import owner
 from telethon.tl.types import InputMessagesFilterVideo
-from telethon.tl.types import InputMessagesFilterVoice
 from telethon.tl.types import InputMessagesFilterPhotos
+
 
 @trans_cmd(pattern="asupan$")
 async def _(event):
@@ -31,24 +31,6 @@ async def _(event):
     except Exception:
         await event.edit("Tidak bisa menemukan video asupan.")
 
-@trans_cmd(pattern="desah$")
-async def _(event):
-    try:
-        desahnya = [
-            desah
-            async for desah in event.client.iter_messages(
-                "@DESAHANFCE", filter=InputMessagesFilterVoice
-            )
-        ]
-        aing = await event.client.get_me()
-        await event.client.send_file(
-            event.chat_id,
-            file=random.choice(desahnya),
-            caption=f"Desahan special nih kak💦 [{owner}](tg://user?id={aing.id})",
-        )
-        await event.delete()
-    except Exception:
-        await event.edit("Tidak bisa menemukan desahan.")
 
 @trans_cmd(pattern="ayang$")
 async def _(event):
@@ -76,8 +58,6 @@ CMD_HELP.update(
         \n  •  **Function : **Untuk Mengirim video asupan secara random.\
         \n\n  •  **Syntax :** {cmd}ayang\
         \n  •  **Function : **Untuk Mencari Ayang.\
-        \n\n  •  **Syntax :** {cmd}desah\
-        \n  •  **Function : **Untuk Mengirim voice desah secara random.\
     "
     }
 )
