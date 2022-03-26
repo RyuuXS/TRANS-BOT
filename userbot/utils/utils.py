@@ -1,7 +1,6 @@
 # Credits: @mrismanaziz
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# Recode By @RYUUSHINNI
-# DONT REMOVE THE CREDIT!!
+# recode @RYUUSHINNI
 
 import asyncio
 import importlib
@@ -11,21 +10,17 @@ from pathlib import Path
 from random import randint
 
 import heroku3
-from telethon.tl.functions.contacts import UnblockRequest
 from telethon.errors import (
     ChannelsTooMuchError,
 )
 from telethon.tl.functions.channels import (
     CreateChannelRequest,
-    EditAdminRequest,
     EditPhotoRequest,
 )
+from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.types import (
     ChatAdminRights,
-)
-
-from telethon.tl.types import (
-    ChatAdminRights,
+    InputChatUploadedPhoto,
 )
 
 from userbot import (
@@ -46,12 +41,40 @@ if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
 else:
     app = None
 
-    
+
 # bye Ice-Userbot
+
+async def create_supergroup(group_name, client, botusername, descript):
+    try:
+        result = await client(
+            functions.channels.CreateChannelRequest(
+                title=group_name,
+                about=descript,
+                megagroup=True,
+            )
+        )
+        created_chat_id = result.chats[0].id
+        result = await client(
+            functions.messages.ExportChatInviteRequest(
+                peer=created_chat_id,
+            )
+        )
+        await client(
+            functions.channels.InviteToChannelRequest(
+                channel=created_chat_id,
+                users=[botusername],
+            )
+        )
+    except Exception as e:
+        return "error", str(e)
+    if not str(created_chat_id).startswith("-100"):
+        created_chat_id = int("-100" + str(created_chat_id))
+    return result, created_chat_id
+
 
 async def autopilot():
     if BOTLOG_CHATID and str(BOTLOG_CHATID).startswith("-100"):
-      return
+        return
     k = []  # To Refresh private ids
     async for x in bot.iter_dialogs():
         k.append(x.id)
@@ -64,8 +87,8 @@ async def autopilot():
     try:
         r = await bot(
             CreateChannelRequest(
-                title="Trⱥภs͢͢͢ 𝕌𝔅0T Logs",
-                about="Group log Trⱥภs͢͢͢ 𝕌𝔅0T.\n\nJoin @Belajarbersamaryuu\n@helpforRYUU",
+                title="**Trⱥภs͢͢͢ 𝕌𝔅0T LOGS **💫",
+                about="Trⱥภs͢͢͢ 𝕌𝔅0T Logs\n\nJoin @helpforRYUU",
                 megagroup=True,
             ),
         )
@@ -76,7 +99,7 @@ async def autopilot():
         exit(1)
     except BaseException:
         LOGS.info(
-            "Terjadi kesalahan, buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
+            "Terjadi kesalahan, Buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
         )
         exit(1)
     chat_id = r.chats[0].id
@@ -94,23 +117,31 @@ async def autopilot():
         anonymous=False,
         manage_call=True,
     )
-
+    if foto:
+        photo = "userbot/resources/logo.jpg"
+        ll = await bot.upload_file(photo)
+        try:
+            await bot(
+                EditPhotoRequest(int("BOTLOG_CHATID"), InputChatUploadedPhoto(ll))
+            )
+        except BaseException as er:
+            LOGS.exception(er)
+        os.remove(photo)
+   
 
 async def autobot():
     if BOT_TOKEN:
         return
     await bot.start()
-    await asyncio.sleep(15)
     await bot.send_message(
         BOTLOG_CHATID, "**SEDANG MEMBUAT BOT TELEGRAM UNTUK ANDA DI @BotFather**"
     )
-    LOGS.info("TUNGGU SEBENTAR. SEDANG MEMBUAT ASSISTANT BOT UNTUK ANDA")
     who = await bot.get_me()
-    name = f"{who.first_name} Assistant Bot"
+    name = who.first_name + " Assistant Bot"
     if who.username:
-        username = f"{who.username}_ubot"
+        username = who.username + "_ubot"
     else:
-        username = f"trans{(str(who.id))[5:]}ubot"
+        username = "trans" + (str(who.id))[5:] + "ubot"
     bf = "@BotFather"
     await bot(UnblockRequest(bf))
     await bot.send_message(bf, "/cancel")
@@ -143,7 +174,7 @@ async def autobot():
     await bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = f"trans{(str(who.id))[6:]}{str(ran)}ubot"
+        username = "trans" + (str(who.id))[6:] + str(ran) + "ubot"
         await bot.send_message(bf, username)
         await asyncio.sleep(1)
         nowdone = (await bot.get_messages(bf, limit=1))[0].text
@@ -172,18 +203,18 @@ async def autobot():
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
             await bot.send_message(
-                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @helpforRYUU ✨"
+                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @Belajarbersamaryuu ✨"
             )
             await bot.send_message(
                 BOTLOG_CHATID,
                 f"**BERHASIL MEMBUAT BOT TELEGRAM DENGAN USERNAME @{username}**",
             )
-            LOGS.info(f"BERHASIL MEMBUAT BOT TELEGRAM DENGAN USERNAME @{username}")
             await bot.send_message(
                 BOTLOG_CHATID,
                 "**Tunggu Sebentar, Sedang MeRestart Heroku untuk Menerapkan Perubahan.**",
             )
             heroku_var["BOT_TOKEN"] = token
+            heroku_var["BOT_USERNAME"] = f"@{username}"
         else:
             LOGS.info(
                 "Silakan Hapus Beberapa Bot Telegram Anda di @Botfather atau Set Var BOT_TOKEN dengan token bot"
@@ -214,7 +245,7 @@ async def autobot():
         await bot.send_message(bf, f"@{username}")
         await asyncio.sleep(1)
         await bot.send_message(
-            bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @helpforRYUU ✨"
+            bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @Belajarbersamaryuu ✨"
         )
         await bot.send_message(
             BOTLOG_CHATID,
@@ -224,19 +255,6 @@ async def autobot():
             BOTLOG_CHATID,
             "**Tunggu Sebentar, Sedang MeRestart Heroku untuk Menerapkan Perubahan.**",
         )
-        rights = ChatAdminRights(
-                 add_admins=False,
-                 invite_users=True,
-                 change_info=True,
-                 ban_users=True,
-                 delete_messages=True,
-                 pin_messages=True,
-                 anonymous=False,
-                 manage_call=True,
-             )
-        await bot(EditAdminRequest(int(BOTLOG_CHATID), f"@{username}", rights, "Cilik Assistant"))
-        ppk = "userbot/resources/logo.jpg"
-        await bot(EditPhotoRequest(BOTLOG_CHATID, await bot.upload_file(ppk)))
         heroku_var["BOT_TOKEN"] = token
         heroku_var["BOT_USERNAME"] = f"@{username}"
     else:
@@ -271,7 +289,7 @@ def load_module(shortname):
         sys.modules[f"userbot.modules.{shortname}"] = mod
         LOGS.info(f"Successfully imported {shortname}")
 
-        
+
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
