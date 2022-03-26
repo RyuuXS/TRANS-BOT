@@ -15,8 +15,7 @@ from importlib import import_module
 
 import requests
 from pytgcalls import idle
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
+from userbot import BOTLOG_CHATID, BOT_TOKEN, BOT_VER
 from userbot import CMD_HANDLER as cmd
 from userbot import LOGS, bot, call_py
 from userbot.modules import ALL_MODULES
