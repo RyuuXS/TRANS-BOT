@@ -12,33 +12,19 @@ from random import randint
 
 import heroku3
 from telethon.errors import (
-    BotMethodInvalidError,
-    ChannelPrivateError,
     ChannelsTooMuchError,
-    ChatAdminRequiredError,
-    UserNotParticipantError,
 )
 from telethon.tl.functions.channels import (
     CreateChannelRequest,
     EditAdminRequest,
     EditPhotoRequest,
-    InviteToChannelRequest,
-    JoinChannelRequest,
 )
 from telethon.tl.types import (
     ChatAdminRights,
-    ChatPhotoEmpty,
-    InputChatUploadedPhoto,
-    InputMessagesFilterDocument,
 )
 
-from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import (
-    ChannelParticipantsAdmins,
     ChatAdminRights,
-    ChatBannedRights,
-    InputChatPhotoEmpty,
-    MessageMediaPhoto,
 )
 
 from userbot import (
