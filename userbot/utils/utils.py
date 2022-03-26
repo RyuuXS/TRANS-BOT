@@ -10,11 +10,35 @@ import sys
 from pathlib import Path
 from random import randint
 
-from telethon.tl.functions.channels import CreateChannelRequest
 import heroku3
-from telethon.tl.functions.contacts import UnblockRequest
+from telethon.errors import (
+    BotMethodInvalidError,
+    ChannelPrivateError,
+    ChannelsTooMuchError,
+    ChatAdminRequiredError,
+    UserNotParticipantError,
+)
+from telethon.tl.functions.channels import (
+    CreateChannelRequest,
+    EditAdminRequest,
+    EditPhotoRequest,
+    InviteToChannelRequest,
+    JoinChannelRequest,
+)
 from telethon.tl.types import (
     ChatAdminRights,
+    ChatPhotoEmpty,
+    InputChatUploadedPhoto,
+    InputMessagesFilterDocument,
+)
+
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import (
+    ChannelParticipantsAdmins,
+    ChatAdminRights,
+    ChatBannedRights,
+    InputChatPhotoEmpty,
+    MessageMediaPhoto,
 )
 
 from userbot import (
@@ -38,37 +62,9 @@ else:
     
 # bye Ice-Userbot
 
-async def create_supergroup(group_name, client, botusername, descript):
-    try:
-        result = await client(
-            functions.channels.CreateChannelRequest(
-                title=group_name,
-                about=descript,
-                megagroup=True,
-            )
-        )
-        created_chat_id = result.chats[0].id
-        result = await client(
-            functions.messages.ExportChatInviteRequest(
-                peer=created_chat_id,
-            )
-        )
-        await client(
-            functions.channels.InviteToChannelRequest(
-                channel=created_chat_id,
-                users=[botusername],
-            )
-        )
-    except Exception as e:
-        return "error", str(e)
-    if not str(created_chat_id).startswith("-100"):
-        created_chat_id = int("-100" + str(created_chat_id))
-    return result, created_chat_id
-
-
 async def autopilot():
     if BOTLOG_CHATID and str(BOTLOG_CHATID).startswith("-100"):
-        return
+      return
     k = []  # To Refresh private ids
     async for x in bot.iter_dialogs():
         k.append(x.id)
@@ -81,8 +77,8 @@ async def autopilot():
     try:
         r = await bot(
             CreateChannelRequest(
-                title="Trⱥภs͢͢͢  Logs",
-                about="Trⱥภs͢͢͢ 𝕌𝔅0T\n\n Join @Belajarbersamaryuu",
+                title="Trⱥภs͢͢͢ 𝕌𝔅0T Logs",
+                about="Group log Trⱥภs͢͢͢ 𝕌𝔅0T.\n\nJoin @Belajarbersamaryuu\n@helpforRYUU",
                 megagroup=True,
             ),
         )
@@ -93,7 +89,7 @@ async def autopilot():
         exit(1)
     except BaseException:
         LOGS.info(
-            "Terjadi kesalahan, Buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
+            "Terjadi kesalahan, buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
         )
         exit(1)
     chat_id = r.chats[0].id
@@ -113,7 +109,6 @@ async def autopilot():
     )
 
 
-    
 async def autobot():
     if BOT_TOKEN:
         return
@@ -238,12 +233,25 @@ async def autobot():
             BOTLOG_CHATID,
             f"**BERHASIL MEMBUAT BOT TELEGRAM DENGAN USERNAME @{username}**",
         )
-        LOGS.info(f"BERHASIL MEMBUAT BOT TELEGRAM DENGAN USERNAME @{username}")
         await bot.send_message(
             BOTLOG_CHATID,
             "**Tunggu Sebentar, Sedang MeRestart Heroku untuk Menerapkan Perubahan.**",
         )
+        rights = ChatAdminRights(
+                 add_admins=False,
+                 invite_users=True,
+                 change_info=True,
+                 ban_users=True,
+                 delete_messages=True,
+                 pin_messages=True,
+                 anonymous=False,
+                 manage_call=True,
+             )
+        await bot(EditAdminRequest(int(BOTLOG_CHATID), f"@{username}", rights, "Cilik Assistant"))
+        ppk = "userbot/resources/logo.jpg"
+        await bot(EditPhotoRequest(BOTLOG_CHATID, await bot.upload_file(ppk)))
         heroku_var["BOT_TOKEN"] = token
+        heroku_var["BOT_USERNAME"] = f"@{username}"
     else:
         LOGS.info(
             "Silakan Hapus Beberapa Bot Telegram Anda di @Botfather atau Set Var BOT_TOKEN dengan token bot"
