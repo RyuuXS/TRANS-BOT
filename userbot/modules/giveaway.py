@@ -8,7 +8,7 @@ from userbot.utils import edit_or_reply, trans_cmd
 
 @trans_cmd(pattern="a(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(event, "**ANJAY ADA GIPEAWAY NIH**")
+    await edit_or_reply(event, "**HALOO KAKAK.. APAKAH DISINI ADA GIVEAWAY?**")
 
 
 @trans_cmd(pattern="b(?: |$)(.*)")
