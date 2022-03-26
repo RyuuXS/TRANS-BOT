@@ -419,15 +419,3 @@ def download_lagu(url: str) -> str:
     ydl.download([url])
     return os.path.join("downloads", f"{info['id']}.{info['ext']}")
 
-
-async def download_file(link, name):
-    """for files, without progress callback with aiohttp"""
-    if not aiohttp:
-        urllib.request.urlretrieve(link, name)
-        return name
-    async with aiohttp.ClientSession() as ses:
-        async with ses.get(link) as re_ses:
-            file = await aiofiles.open(name, "wb")
-            await file.write(await re_ses.read())
-            await file.close()
-    return name
