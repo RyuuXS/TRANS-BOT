@@ -11,6 +11,7 @@ from pathlib import Path
 from random import randint
 
 import heroku3
+from telethon.tl.functions.contacts import UnblockRequest
 from telethon.errors import (
     ChannelsTooMuchError,
 )
