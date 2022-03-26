@@ -143,7 +143,7 @@ async def vc_play(event):
             userid = sender.id
             titlegc = chat.title
             ctitle = await CHAT_TITLE(titlegc)
-            thumb = await gen_thumb(thumbnail, title, userid, ctitle)
+            thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
             if hm == 0:
@@ -247,7 +247,7 @@ async def vc_vplay(event):
             duration = search[2]
             thumbnail = search[3]
             ctitle = await CHAT_TITLE(titlegc)
-            thumb = await gen_thumb(thumbnail, title, userid, ctitle)
+            thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
             if hm == 0:
@@ -338,7 +338,7 @@ async def vc_vplay(event):
             duration = search[2]
             thumbnail = search[3]
             ctitle = await CHAT_TITLE(titlegc)
-            thumb = await gen_thumb(thumbnail, title, userid, ctitle)
+            thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
             if hm == 0:
