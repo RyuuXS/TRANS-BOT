@@ -34,10 +34,10 @@ try:
     bot.start()
     call_py.start()
     user = bot.get_me()
-    blacklistcilik = requests.get(
+    blacklisttrans = requests.get(
         "https://raw.githubusercontent.com/RyuuXS/Reforestation/master/shinblacklist.json"
     ).json()
-    if user.id in blacklistcilik:
+    if user.id in blacklisttrans:
         LOGS.warning(
             "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOTnya GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nCredits: @RYUUSHINNI"
         )
