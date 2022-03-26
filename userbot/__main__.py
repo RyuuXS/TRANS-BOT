@@ -41,34 +41,37 @@ except Exception as e:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-LOGS.info(
-    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/helpforRYUU"
-)
-
-LOGS.info(f"🔥 TRANS-BOT ⚙️ V{BOT_VER} [🔥 BERHASIL DIAKTIFKAN! 🔥]")
-
 if not BOTLOG_CHATID:
     LOGS.info(
         "BOTLOG_CHATID Vars tidak terisi, Memulai Membuat Grup Otomatis..."
     )
     bot.loop.run_until_complete(autopilot())
     
-async def trans_userbot_on():
+LOGS.info(.
+    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/helpforRYUU")
+LOGS.info(
+    f"✨TRANS-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+
+
+async def check_alive():
     try:
         if BOTLOG_CHATID != 0:
-            await bot.send_message(
-                BOTLOG_CHATID,
-                f"✠ **TRANS-BOT Berhasil Di Aktifkan** ✠\n━━━━━━━━╾╼╾╼╾╼╾╼╍\n➠ **Userbot Version -** `{BOT_VER}@{branch}`\n➠ **Ketik** `{cmd}alive` **untuk Mengecek Bot**\n━━━━━━━━━╼╾╼╾╼╳",
-            )
+            await bot.send_message(BOTLOG_CHATID, "✨ **Trⱥภs͢͢͢ 𝕌𝔅0T Berhasil Diaktifkan**!!\n━━━━━━━━╾╼╾╼╾╼╾╼╍\n➠ **Userbot Version** - 1.2@TRANS-BOT\n➠ **Ketik** `.ping` **Untuk Mengecheck Bot**\n━━━━━━━━━╼╾╼╾╼╳\n➠ **Powered By:** @Belajarbersamaryuu ")
     except Exception as e:
         LOGS.info(str(e))
-
+    try:
+        await bot(Addbot(int(BOTLOG_CHATID), [BOT_USERNAME]))
+    except BaseException:
+        pass
     
 bot.loop.run_until_complete(checking())
-bot.loop.run_until_complete(trans_userbot_on())
+bot.loop.run_until_complete(check_alive())
 if not BOT_TOKEN:
+    LOGS.info(
+        "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
+    )
     bot.loop.run_until_complete(autobot())
-idle()
+
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
