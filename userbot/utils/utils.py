@@ -13,6 +13,9 @@ from random import randint
 from telethon.tl.functions.channels import CreateChannelRequest
 import heroku3
 from telethon.tl.functions.contacts import UnblockRequest
+from telethon.tl.types import (
+    ChatAdminRights,
+)
 
 from userbot import (
     BOT_TOKEN,
@@ -32,25 +35,85 @@ if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
 else:
     app = None
 
+    
+# bye Ice-Userbot
+
+async def create_supergroup(group_name, client, botusername, descript):
+    try:
+        result = await client(
+            functions.channels.CreateChannelRequest(
+                title=group_name,
+                about=descript,
+                megagroup=True,
+            )
+        )
+        created_chat_id = result.chats[0].id
+        result = await client(
+            functions.messages.ExportChatInviteRequest(
+                peer=created_chat_id,
+            )
+        )
+        await client(
+            functions.channels.InviteToChannelRequest(
+                channel=created_chat_id,
+                users=[botusername],
+            )
+        )
+    except Exception as e:
+        return "error", str(e)
+    if not str(created_chat_id).startswith("-100"):
+        created_chat_id = int("-100" + str(created_chat_id))
+    return result, created_chat_id
+
 
 async def autopilot():
-    LOGS.info("TUNGGU SEBENTAR. SEDANG MEMBUAT GROUP LOG USERBOT UNTUK ANDA")
-    desc = "Group Log untuk Trⱥภs͢͢͢ 𝕌𝔅0T.\n\nHARAP JANGAN KELUAR DARI GROUP INI.\n\n✨ Powered By ~ @Belajarbersamaryuu ✨"
+    if BOTLOG_CHATID and str(BOTLOG_CHATID).startswith("-100"):
+        return
+    k = []  # To Refresh private ids
+    async for x in bot.iter_dialogs():
+        k.append(x.id)
+    if BOTLOG_CHATID:
+        try:
+            await bot.get_entity(int("BOTLOG_CHATID"))
+            return
+        except BaseException:
+            del heroku_var["BOTLOG_CHATID"]
     try:
-        grup = await bot(
-            CreateChannelRequest(title="Log UserBot", about=desc, megagroup=True)
+        r = await bot(
+            CreateChannelRequest(
+                title="Trⱥภs͢͢͢  Logs",
+                about="Trⱥภs͢͢͢ 𝕌𝔅0T\n\n Join @Belajarbersamaryuu",
+                megagroup=True,
+            ),
         )
-        grup_id = grup.chats[0].id
-    except Exception as e:
-        LOGS.error(str(e))
-        LOGS.warning(
-            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @KryuukX_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
+    except ChannelsTooMuchError:
+        LOGS.info(
+            "Terlalu banyak channel dan grup, hapus salah satu dan restart lagi"
         )
-    if not str(grup_id).startswith("-100"):
-        grup_id = int(f"-100{str(grup_id)}")
-    heroku_var["BOTLOG_CHATID"] = grup_id
+        exit(1)
+    except BaseException:
+        LOGS.info(
+            "Terjadi kesalahan, Buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
+        )
+        exit(1)
+    chat_id = r.chats[0].id
+    if not str(chat_id).startswith("-100"):
+        heroku_var["BOTLOG_CHATID"] = "-100" + str(chat_id)
+    else:
+        heroku_var["BOTLOG_CHATID"] = str(chat_id)
+    rights = ChatAdminRights(
+        add_admins=True,
+        invite_users=True,
+        change_info=True,
+        ban_users=True,
+        delete_messages=True,
+        pin_messages=True,
+        anonymous=False,
+        manage_call=True,
+    )
 
 
+    
 async def autobot():
     if BOT_TOKEN:
         return
