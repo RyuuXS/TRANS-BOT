@@ -8,6 +8,7 @@ import aiohttp
 from PIL import Image, ImageDraw, ImageFont
 from youtubesearchpython.__future__ import VideosSearch
 
+
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
     heightRatio = maxHeight / image.size[1]
@@ -125,3 +126,9 @@ async def gen_thumb(videoid):
             (255, 255, 255),
             font=arial,
         )
+        try:
+            os.remove(f"cache/thumb{videoid}.png")
+        except:
+            pass
+        background.save(f"cache/{videoid}.png")
+        return f"cache/{videoid}.png"
