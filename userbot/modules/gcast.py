@@ -12,6 +12,7 @@ import asyncio
 from requests import get
 from telethon.errors.rpcerrorlist import FloodWaitError
 
+from userbot import BLACKLIST_GCAST
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, DEVS
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -46,7 +47,7 @@ async def gcast(event):
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
-            if chat not in GCAST_BLACKLIST:
+            if chat not in GCAST_BLACKLIST and chat not in BLACKLIST_GCAST:
                 try:
                     await event.client.send_message(chat, msg)
                     await asyncio.sleep(0.1)
