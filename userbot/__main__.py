@@ -21,7 +21,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import LOGS, bot, call_py
 from userbot.modules import ALL_MODULES
 from userbot.modules.misc import branch
-from userbot.utils import autobot, checking, waiting
+from userbot.utils import autopilot, autobot, checking, waiting
 
 try:
     bot.start()
