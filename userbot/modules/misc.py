@@ -1,9 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-# You can find misc modules, which dont fit in anything xD
-# Copyright (C) 2022 @mrismanaziz
-# ReCode by @RYUUSHINNI
 
 import io
 import os
@@ -88,7 +82,7 @@ async def reedme(event):
     await edit_or_reply(
         event,
         "**Berikut sesuatu untuk kamu baca:**\n"
-        "\n┌❏ [Userbot Repo](https://github.com/RyuuXS/TRANS-BOT/blob/PocongUserbot/README.md)"
+        "\n┌❏ [Userbot Repo](https://github.com/RyuuXS/TRANS-BOT/blob/TRANS-BOT/README.md)"
         "\n└❏ [Setup Guide - LastFM Module](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)",
     )
 
@@ -127,8 +121,6 @@ async def string_is_here(event):
         "**List Bot**\n"
         "\n┌❏ **GET STRING BOT:**"
         "\n├❏ [[ KLIK DISINI ]](https://t.me/RyuuString_bot)"
-        "\n├❏ **GET API ID & API HASH :**"
-        "\n└❏ [[ KLIK DISINI ]](https://t.me/pocongscrapbot)",
     )
 
 
