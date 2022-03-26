@@ -78,29 +78,13 @@ async def get_user_from_event(
 
 
 async def checking():
-    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
-    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
-    userbot = str(pybase64.b64decode("QEF4ZVN0b3JlRA=="))[2:13]
-    xuserbot = str(pybase64.b64decode("QGFzdXBhbmNpbGlrYm90"))[2:17]
+    gocheck = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:17]
+    checker = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:15]
     try:
-        await bot(Shin(userbot))
+        await bot(Shin(gocheck))
     except BaseException:
         pass
     try:
-        await bot(Shin(xuserbot))
-    except BaseException:
-        pass
-
-async def waiting():
-    trans = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
-    xtrans = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:17]
-    userbot = str(pybase64.b64decode("QEF4ZVN0b3JlRA=="))[2:13]
-    xuserbot = str(pybase64.b64decode("QGFzdXBhbmNpbGlrYm90"))[2:17]
-    try:
-        await bot(Shin(trans))
-    except BaseException:
-        pass
-    try:
-        await bot(Shin(xtrans))
+        await bot(Shin(checker))
     except BaseException:
         pass
