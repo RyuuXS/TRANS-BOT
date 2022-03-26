@@ -82,8 +82,8 @@ async def reedme(event):
     await edit_or_reply(
         event,
         "**Berikut sesuatu untuk kamu baca:**\n"
-        "\n┌❏ [Userbot Repo](https://github.com/RyuuXS/TRANS-BOT/blob/TRANS-BOT/README.md)"
-        "\n└❏ [Setup Guide - LastFM Module](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)",
+        "\n┌✯ [Userbot Repo](https://github.com/RyuuXS/TRANS-BOT/blob/TRANS-BOT/README.md)"
+        "\n└✯ [Setup Guide - LastFM Module](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)",
     )
 
 
@@ -108,9 +108,9 @@ async def repo_is_here(event):
         "**Usᴇʀʙᴏᴛ Tᴇʟᴇɢʀᴀᴍ**\n"
         "𝗥𝗲͠𝗽𝗼𝗿𝗶𝘀𝘁𝗼𝗿𝗶 🇮🇩\n"
         "╰⧱⟢ [Ͳʀaɴƨ ʊʙ͠oͳ](https://github.com/RyuuXS/TRANS-BOT)\n"
-        "❖ **Oᴡɴᴇʀ​**    ⎘ [RyuuSHIN](t.me/RYUUSHINNI)\n"
-        "❖ **Sᴜᴘᴘᴏʀᴛ**​ ⎘ [groups](t.me/helpforRYUU)\n"
-        "❖ **Pʀᴏᴊᴇᴄᴛ**​  ⎘ [chanel](t.me/Belajarbersamaryuu)\n"
+        "✠ **Oᴡɴᴇʀ​**    ⎘ [RyuuSHIN](t.me/RYUUSHINNI)\n"
+        "✠ **Sᴜᴘᴘᴏʀᴛ**​ ⎘ [groups](t.me/helpforRYUU)\n"
+        "✠ **Pʀᴏᴊᴇᴄᴛ**​  ⎘ [chanel](t.me/Belajarbersamaryuu)\n"
     )
 
 
@@ -119,8 +119,8 @@ async def string_is_here(event):
     await edit_or_reply(
         event,
         "**List Bot**\n"
-        "\n┌❏ **GET STRING BOT:**"
-        "\n├❏ [[ KLIK DISINI ]](https://t.me/RyuuString_bot)"
+        "\n┌✯ **GET STRING BOT:**"
+        "\n└✯ [[ KLIK DISINI ]](https://t.me/RyuuString_bot)"
     )
 
 
@@ -314,7 +314,7 @@ CMD_HELP.update(
         \n\n  •  **Syntax :** `{cmd}shutdown`\
         \n  •  **Function : **Mematikan Userbot.\
         \n\n  •  **Syntax :** `{cmd} sleep`\
-        \n  •  **Function : **Biarkan PocongUserbot tidur selama waktu yg ditetapkan.\
+        \n  •  **Function : **Biarkan TRANS-Userbot tidur selama waktu yg ditetapkan.\
     "
     }
 )
