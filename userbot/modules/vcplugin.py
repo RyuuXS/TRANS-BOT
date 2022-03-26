@@ -139,10 +139,10 @@ async def vc_play(event):
             title = search[0]
             url = search[1]
             duration = search[2]
-            thumbnail = search[3]
-            userid = sender.id
+            search[3]
+            sender.id
             titlegc = chat.title
-            ctitle = await CHAT_TITLE(titlegc)
+            await CHAT_TITLE(titlegc)
             thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
@@ -216,7 +216,7 @@ async def vc_vplay(event):
     title = event.pattern_match.group(1)
     replied = await event.get_reply_message()
     sender = await event.get_sender()
-    userid = sender.id
+    sender.id
     chat = await event.get_chat()
     titlegc = chat.title
     chat_id = event.chat_id
@@ -245,8 +245,8 @@ async def vc_vplay(event):
             title = search[0]
             url = search[1]
             duration = search[2]
-            thumbnail = search[3]
-            ctitle = await CHAT_TITLE(titlegc)
+            search[3]
+            await CHAT_TITLE(titlegc)
             thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
@@ -336,8 +336,8 @@ async def vc_vplay(event):
             title = search[0]
             url = search[1]
             duration = search[2]
-            thumbnail = search[3]
-            ctitle = await CHAT_TITLE(titlegc)
+            search[3]
+            await CHAT_TITLE(titlegc)
             thumb = await gen_thumb(videoid)
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
