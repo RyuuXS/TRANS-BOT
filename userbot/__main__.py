@@ -76,10 +76,15 @@ async def trans_userbot_on():
 bot.loop.run_until_complete(waiting())
 bot.loop.run_until_complete(checking())
 bot.loop.run_until_complete(trans_userbot_on())
+if not BOTLOG_CHATID:
+    LOOP.run_until_complete(autopilot())
 if not BOT_TOKEN:
-    bot.loop.run_until_complete(autobot())
+    LOOP.run_until_complete(autobot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    bot.run_until_disconnected()
+    try:
+        bot.run_until_disconnected()
+    except ConnectionError:
+        pass
