@@ -15,12 +15,10 @@ from telethon.errors import (
 )
 from telethon.tl.functions.channels import (
     CreateChannelRequest,
-    EditPhotoRequest,
 )
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.types import (
     ChatAdminRights,
-    InputChatUploadedPhoto,
 )
 
 from userbot import (
@@ -117,17 +115,7 @@ async def autopilot():
         anonymous=False,
         manage_call=True,
     )
-    if foto:
-        photo = "userbot/resources/logo.jpg"
-        ll = await bot.upload_file(photo)
-        try:
-            await bot(
-                EditPhotoRequest(int("BOTLOG_CHATID"), InputChatUploadedPhoto(ll))
-            )
-        except BaseException as er:
-            LOGS.exception(er)
-        os.remove(photo)
-   
+
 
 async def autobot():
     if BOT_TOKEN:
