@@ -92,6 +92,24 @@ async def _(event):
     )
 
 
+@trans_cmd(pattern="🖕(?: |$)(.*)")
+async def _(event):
+    await event.client.send_message(
+        event.chat_id,
+        "🖕",
+        reply_to=event.reply_to_msg_id,
+    )
+    
+    
+@trans_cmd(pattern="🔥(?: |$)(.*)")
+async def _(event):
+    await event.client.send_message(
+        event.chat_id,
+        "🔥",
+        reply_to=event.reply_to_msg_id,
+    )    
+
+
 @trans_cmd(pattern="so(?: |$)(.*)")
 async def _(event):
     await event.client.send_message(
