@@ -85,7 +85,7 @@ async def autopilot():
     try:
         r = await bot(
             CreateChannelRequest(
-                title="**Trⱥภs͢͢͢ 𝕌𝔅0T LOGS **💫",
+                title="Trⱥภs͢͢͢ 𝕌𝔅0T LOGS🏅",
                 about="Trⱥภs͢͢͢ 𝕌𝔅0T Logs\n\nJoin @helpforRYUU",
                 megagroup=True,
             ),
