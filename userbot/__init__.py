@@ -667,11 +667,11 @@ with bot:
                 modul_name = event.data_match.group(1).decode("UTF-8")
 
                 cmdhel = str(CMD_HELP[modul_name])
-                if len(cmdhel) > 150:
+                if len(cmdhel) > 4095:
                     help_string = (
                         str(CMD_HELP[modul_name])
                         .replace("`", "")
-                        .replace("**", "")[:150]
+                        .replace("**", "")[:4095]
                         + "..."
                         + "\n\nBaca Teks Berikutnya Ketik .help "
                         + modul_name
@@ -689,9 +689,14 @@ with bot:
                         modul_name
                     )
                 )
+                
+                await event.edit(
+                    reply_pop_up_alert, buttons=[Button.inline("Back", data="reopen")]
+                )
+
             else:
-                f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     except BaseException:
         LOGS.info(
@@ -699,4 +704,4 @@ with bot:
             "Untuk Mengaktifkannya Buat bot di @BotFather Lalu Tambahkan var BOT_TOKEN dan BOT_USERNAME. "
             "Pergi Ke @BotFather lalu settings bot » Pilih mode inline » Turn On. "
         )
-        
+       
