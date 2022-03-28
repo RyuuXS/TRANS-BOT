@@ -9,7 +9,7 @@ from userbot import ALIVE_NAME, StartTime, bot
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot import owner
-from userbot.events import trans_cmd
+from userbot.events import edit_or_reply, trans_cmd
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
