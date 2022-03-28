@@ -234,7 +234,7 @@ BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 TERM_ALIAS = os.environ.get("TERM_ALIAS", "TRANS-BOT")
 
 # Bot version
-BOT_VER = os.environ.get("BOT_VER", "1.1")
+BOT_VER = os.environ.get("BOT_VER", "1.3")
 
 # Default .alive username
 ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
