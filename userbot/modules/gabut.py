@@ -101,27 +101,23 @@ async def _(event):
 
 @trans_cmd(pattern="ja(?: |$)(.*)")
 async def _(event):
-    await event.edit("**JAKA SEMBUNG BAWA GOLOK**")
+    xx = await edit_or_reply(event, "**JAKA SEMBUNG BAWA GOLOK**")
     sleep(3)
-    await event.edit("**NIMBRUNG GOBLOKK!!!🔥**")
+    await xx.edit("**NIMBRUNG GOBLOKK!!!🔥**")
 
     
-
-
 @trans_cmd(pattern="kimak(?: |$)(.*)")
 async def _(event):
-    await event.edit(f"**Hallo KIMAAKK SAYA {owner}**")
+    xx = await edit_or_reply(event, f"**Hallo KIMAAKK SAYA {owner}**")
     sleep(2)
-    await event.edit("**LU SEMUA NGENTOT 🔥**")
-
-
+    await xx.edit("**LU SEMUA NGENTOT 🔥**")
 
 
 @trans_cmd(pattern="ass(?: |$)(.*)")
 async def _(event):
-    await event.edit("**Salam Dulu Biar Sopan**")
+    xx = await edit_or_reply(event, "**Salam Dulu Biar Sopan**")
     sleep(2)
-    await event.edit("**السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ**")
+    await xx.edit("**السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ**")
 
     
 CMD_HELP.update(
