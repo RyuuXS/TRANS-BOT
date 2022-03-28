@@ -60,11 +60,12 @@ async def _(event):
     )
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"kping$"))
-async def _(pong):
+@trans_cmd(pattern="kping(?: |$)(.*)")
+async def _(event):
     """For .ping command, ping the userbot from any chat."""
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
+    pong = await edit_or_reply(event, "8✊===D")
     await pong.edit("8✊===D")
     await pong.edit("8=✊==D")
     await pong.edit("8==✊=D")
@@ -91,7 +92,7 @@ async def _(pong):
     )
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"as(?: |$)(.*)"))
+@trans_cmd(pattern="as(?: |$)(.*)")
 async def _(event):
     await event.edit(f"**Haii Salken Saya {owner}**")
     sleep(2)
@@ -100,7 +101,7 @@ async def _(event):
 
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"ja(?: |$)(.*)"))
+@trans_cmd(pattern="ja(?: |$)(.*)")
 async def _(event):
     await event.edit("**JAKA SEMBUNG BAWA GOLOK**")
     sleep(3)
@@ -109,7 +110,7 @@ async def _(event):
     
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"kimak(?: |$)(.*)"))
+@trans_cmd(pattern="kimak(?: |$)(.*)")
 async def _(event):
     await event.edit(f"**Hallo KIMAAKK SAYA {owner}**")
     sleep(2)
@@ -118,7 +119,7 @@ async def _(event):
 
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"ass(?: |$)(.*)"))
+@trans_cmd(pattern="ass(?: |$)(.*)")
 async def _(event):
     await event.edit("**Salam Dulu Biar Sopan**")
     sleep(2)
