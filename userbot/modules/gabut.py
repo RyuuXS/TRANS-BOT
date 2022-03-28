@@ -6,6 +6,9 @@ from platform import uname
 from time import sleep
 
 from userbot import ALIVE_NAME, StartTime, bot
+from userbot import CMD_HANDLER as cmd
+from userbot import CMD_HELP
+from userbot import owner
 from userbot.events import trans_cmd
 
 # ================= CONSTANT =================
@@ -53,7 +56,7 @@ async def _(pong):
         f"**✲ 𝙺𝙾𝙽𝚃𝙾𝙻 𝙼𝙴𝙻𝙴𝙳𝚄𝙶** "
         f"\n ⫸ ᴷᵒⁿᵗᵒˡ `%sms` \n"
         f"**✲ 𝙱𝙸𝙹𝙸 𝙿𝙴𝙻𝙴𝚁** "
-        f"\n ⫸ ᴷᵃᵐᵖᵃⁿᵍ『`{ALIVE_NAME}`』 \n" % (duration)
+        f"\n ⫸ ᴷᵃᵐᵖᵃⁿᵍ『`[{owner}](tg://user?id={aing.id})`』 \n" % (duration)
     )
 
 
@@ -84,7 +87,7 @@ async def _(pong):
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await pong.edit(
-        f"**NGENTOT!! 🐨**\n**KAMPANG** : %sms\n**Bot Uptime** : {uptime}🕛" % (duration)
+        f"**NGENTOT!! 🖕**\n**KAMPANG** : %sms\n**Bot Uptime** : {uptime}⏱" % (duration)
     )
 
 
@@ -120,3 +123,23 @@ async def _(event):
     await event.edit("**Salam Dulu Biar Sopan**")
     sleep(2)
     await event.edit("**السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ**")
+
+    
+CMD_HELP.update(
+    {
+        "gabut": f"➢ **Plugin : **`gabut`\
+        \n\n ┌✯ **Command :** `{cmd}keping`\
+        \n └✯ **Func✯ion : **Untuk mengeluarkan bacotan anak kampang\
+        \n\n ┌✯ **Command :** `{cmd}kping`\
+        \n └✯ **Function : **untuk ping userbot dengan awalan coli kampang\
+        \n\n ┌✯ **Command :** `{cmd}as`\
+        \n └✯ **Function : **untuk mengeluarkan salam sopan\
+        \n\n ┌✯ **Command :** `{cmd}ass`\
+        \n └✯ **Function : **untuk mengeluarkan salam Agama ISLAM\
+        \n\n ┌✯ **Command :** `{cmd}ja`\
+        \n └✯ **Function : **untuk membacot nyuruh nimbrung\
+        \n\n ┌✯ **Command :** `{cmd}kimak`\
+        \n └✯ **Function : **untuk menghina dengan kata kata kimak.\
+    "
+    }
+)
