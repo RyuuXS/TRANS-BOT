@@ -93,7 +93,7 @@ async def _(pong):
 
 @bot.on(trans_cmd(outgoing=True, pattern=r"as(?: |$)(.*)"))
 async def _(event):
-    await event.edit(f"**Haii Salken Saya {DEFAULTUSER}**")
+    await event.edit(f"**Haii Salken Saya {owner}**")
     sleep(2)
     await event.edit("**Assalamualaikum**")
 
@@ -111,7 +111,7 @@ async def _(event):
 
 @bot.on(trans_cmd(outgoing=True, pattern=r"kimak(?: |$)(.*)"))
 async def _(event):
-    await event.edit(f"**Hallo KIMAAKK SAYA {DEFAULTUSER}**")
+    await event.edit(f"**Hallo KIMAAKK SAYA {owner}**")
     sleep(2)
     await event.edit("**LU SEMUA NGENTOT 🔥**")
 
