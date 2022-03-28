@@ -9,7 +9,7 @@ from userbot import ALIVE_NAME, StartTime, bot
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot import owner
-from userbot.events import trans_cmd
+from userbot.events import edit_or_reply, trans_cmd
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
@@ -46,7 +46,7 @@ async def _(event):
     """For .ping command, ping the userbot from any chat."""
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    await pong.edit("**『⍟𝐊𝐎𝐍𝐓𝐎𝐋』**")
+    pong = await edit_or_reply(event, "**『⍟𝐊𝐎𝐍𝐓𝐎𝐋』**")
     await pong.edit("**◆◈𝐊𝐀𝐌𝐏𝐀𝐍𝐆◈◆**")
     await pong.edit("**𝐏𝐄𝐂𝐀𝐇𝐊𝐀𝐍 𝐁𝐈𝐉𝐈 𝐊𝐀𝐔 𝐀𝐒𝐔**")
     await pong.edit("**☬𝐒𝐈𝐀𝐏 𝐊𝐀𝐌𝐏𝐀𝐍𝐆 𝐌𝐄𝐍𝐔𝐌𝐁𝐔𝐊 𝐀𝐒𝐔☬**")
