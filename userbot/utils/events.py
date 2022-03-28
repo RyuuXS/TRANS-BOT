@@ -13,7 +13,7 @@ LOGS = logging.getLogger(__name__)
 async def get_user_from_event(
     event, transevent=None, secondgroup=None, nogroup=False, noedits=False
 ):
-    if transvent is None:
+    if transevent is None:
         transevent = event
     if nogroup is False:
         if secondgroup:
