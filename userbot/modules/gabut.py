@@ -66,7 +66,6 @@ async def _(event):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
     pong = await edit_or_reply(event, "8✊===D")
-    await pong.edit("8✊===D")
     await pong.edit("8=✊==D")
     await pong.edit("8==✊=D")
     await pong.edit("8===✊D")
@@ -94,10 +93,9 @@ async def _(event):
 
 @trans_cmd(pattern="as(?: |$)(.*)")
 async def _(event):
-    await event.edit(f"**Haii Salken Saya {owner}**")
+    xx = await edit_or_reply(event, f"**Haii Salken Saya {owner}**")
     sleep(2)
-    await event.edit("**Assalamualaikum**")
-
+    await xx.edit("**Assalamualaikum**")
 
 
 
