@@ -528,7 +528,7 @@ with bot:
             query = event.text
             if event.query.user_id == uid and query.startswith("@helpforRYUU"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.photo(
+                result = await event.builder.photo(
                     file=logotrans,
                     link_preview=False,
                     text=f"**✠ TRANS - BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
