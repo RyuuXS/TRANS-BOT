@@ -41,8 +41,8 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"keping$"))
-async def _(pong):
+@trans_cmd(pattern="keping(?: |$)(.*)")
+async def _(event):
     """For .ping command, ping the userbot from any chat."""
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
