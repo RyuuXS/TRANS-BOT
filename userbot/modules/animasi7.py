@@ -105,13 +105,13 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi7": f"➢ **Plugin : **`animasi7`\
-        \n\n ┌✯ **Command :** `{cmd}cilik`\
+        \n\n ┌✯ **Syntax :** `{cmd}cilik`\
         \n └✯ **Function : **Animasi Cilik Userbot.\
-        \n\n ┌✯ **Command :** `{cmd}city`\
+        \n\n ┌✯ **Syntax :** `{cmd}city`\
         \n └✯ **Function : **Mengirim Gambar Kota.\
-        \n\n ┌✯ **Command :** `{cmd}plane`\
+        \n\n ┌✯ **Syntax :** `{cmd}plane`\
         \n └✯ **Function : **Mengirim Gambar Animasi Pesawat.\
-        \n\n ┌✯ **Command :** `{cmd}police`\
+        \n\n ┌✯ **Syntax :** `{cmd}police`\
         \n └✯ **Function : **Mengirim Gambar Animasi Polisi.\
     "
     }
