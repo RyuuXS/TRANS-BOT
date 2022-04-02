@@ -105,15 +105,15 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi3": f"➢ **Plugin : **`animasi3`\
-        \n\n ┌✯ **Command :** `{cmd}heu`\
+        \n\n ┌✯ **Syntax :** `{cmd}heu`\
         \n └✯ **Function : **Mengirim Gambar Monyet.\
-        \n\n ┌✯ **Command :** `{cmd}hem`\
+        \n\n ┌✯ **Syntax :** `{cmd}hem`\
         \n └✯ **Function : **Mengirim Gambar Anjing Mencurigakan.\
-        \n\n ┌✯ **Command :** `{cmd}wle`\
+        \n\n ┌✯ **Syntax :** `{cmd}wle`\
         \n └✯ **Function : **Mengirim Gambar Anjing Melet.\
-        \n\n ┌✯ **Command :** `{cmd}peler`\
+        \n\n ┌✯ **Syntax :** `{cmd}peler`\
         \n └✯ **Function : **Mengirim Gambar Peler.\
-        \n\n ┌✯ **Command :** `{cmd}ahh`\
+        \n\n ┌✯ **Syntax :** `{cmd}ahh`\
         \n └✯ **Function : **Mengirim Gambar Uhh Ahh Uhh Ahh.\
     "
     }
