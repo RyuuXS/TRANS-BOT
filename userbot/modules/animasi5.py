@@ -84,17 +84,17 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi5": f"➢ **Plugin : **`animasi5`\
-        \n\n ┌✯ **Command :** `{cmd}thanks`\
+        \n\n ┌✯ **Syntax :** `{cmd}thanks`\
         \n └✯ **Function : **Kata-kata Thanks You.\
-        \n\n ┌✯ **Command :** `{cmd}malam`\
+        \n\n ┌✯ **Syntax :** `{cmd}malam`\
         \n └✯ **Function : **Mengirim Gambar Selamat Malam.\
-        \n\n ┌✯ **Command :** `{cmd}rumah`\
+        \n\n ┌✯ **Syntax :** `{cmd}rumah`\
         \n └✯ **Function : **Mengirim Gambar Rumah.\
-        \n\n ┌✯ **Command :** `{cmd}join`\
+        \n\n ┌✯ **Syntax :** `{cmd}join`\
         \n └✯ **Function : **Mengirim Gambar Join Di Bio.\
-        \n\n ┌✯ **Command :** `{cmd}lari`\
+        \n\n ┌✯ **Syntax :** `{cmd}lari`\
         \n └✯ **Function : **Mengirim Gambar Lari Ipin.\
-        \n\n ┌✯ **Command :** `{cmd}mobil`\
+        \n\n ┌✯ **Syntax :** `{cmd}mobil`\
         \n └✯ **Function : **Mengirim Gambar Mobil Optimus.\
     "
     }
