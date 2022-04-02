@@ -205,13 +205,13 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi11": f"➢ **Plugin : **`animasi11`\
-        \n\n ┌✯ **Command :** `{cmd}lonte`\
+        \n\n ┌✯ **Syntax :** `{cmd}lonte`\
         \n └✯ **Function : **Mengirim Gambar Lonte.\
-        \n\n ┌✯ **Command :** `{cmd}uler`\
+        \n\n ┌✯ **Syntax :** `{cmd}uler`\
         \n └✯ **Function : **Mengirim Gambar Uler.\
-        \n\n ┌✯ **Command :** `{cmd}em`\
+        \n\n ┌✯ **Syntax :** `{cmd}em`\
         \n └✯ **Function : **Mengirim Gambar Emote senyum.\
-        \n\n ┌✯ **Command :** `{cmd}loveyou`\
+        \n\n ┌✯ **Syntax :** `{cmd}loveyou`\
         \n └✯ **Function : **Mengirim Gambar I Love You.\
     "
     }
