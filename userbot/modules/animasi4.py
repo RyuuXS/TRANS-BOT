@@ -90,13 +90,13 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi4": f"➢ **Plugin : **`animasi4`\
-        \n\n ┌✯ **Command :** `{cmd}sadboy`\
+        \n\n ┌✯ **Syntax :** `{cmd}sadboy`\
         \n └✯ **Function : **Kata-kata bocah sadboy.\
-        \n\n ┌✯ **Command :** `{cmd}punten`\
+        \n\n ┌✯ **Syntax :** `{cmd}punten`\
         \n └✯ **Function : **Mengirim Gambar Punten.\
-        \n\n ┌✯ **Command :** `{cmd}pantau`\
+        \n\n ┌✯ **Syntax :** `{cmd}pantau`\
         \n └✯ **Function : **Mengirim Gambar Pantau.\
-        \n\n ┌✯ **Command :** `{cmd}idiot`\
+        \n\n ┌✯ **Syntax :** `{cmd}idiot`\
         \n └✯ **Function : **Mengirim Gambar Idiot.\
     "
     }
