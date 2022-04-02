@@ -1,3 +1,4 @@
+
 # imported from github.com/ravana69/PornHub to userbot by @heyworld
 # please don't nuke my credits 😓
 import asyncio
@@ -26,8 +27,8 @@ from telethon.tl.types import (
 )
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import trans_cmd
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
 normiefont = [
     "a",
@@ -90,11 +91,11 @@ weebyfont = [
 logger = logging.getLogger(__name__)
 thumb_image_path = TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 name = "Profile Photos"
-client = bot
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"app(?: |$)(.*)"))
+@trans_cmd(pattern="app(?: |$)(.*)")
 async def apk(e):
+    xx = await edit_or_reply(e, "`Processing...`")
     try:
         app_name = e.pattern_match.group(1)
         remove_space = app_name.split(" ")
@@ -148,21 +149,22 @@ async def apk(e):
             "\n<b>Features :</b> <a href='" + app_link + "'>View in Play Store</a>"
         )
         app_details += "\n\n===> Support @Lunatic0de <==="
-        await e.edit(app_details, link_preview=True, parse_mode="HTML")
+        await xx.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await e.edit(
-            "**Pencarian tidak ditemukan. Mohon masukkan** `Nama app yang valid`"
+        await edit_delete(
+            xx, "**Pencarian tidak ditemukan. Mohon masukkan** `Nama app yang valid`"
         )
     except Exception as err:
-        await e.edit("Exception Occured:- " + str(err))
+        await edit_delete(xx, "Exception Occured:- " + str(err))
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"calc(?: |$)(.*)"))
+@trans_cmd(pattern="calc(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     input = event.pattern_match.group(1)  # get input
     exp = "Given expression is " + input  # report back input
+    xx = await edit_or_reply(event, "`Processing...`")
     # lazy workaround to add support for two digits
     final_input = tuple(input)
     term1part1 = final_input[0]
@@ -176,29 +178,30 @@ async def _(event):
     final_term2 = int(term2)
     # actual calculations go here
     if input == "help":
-        await event.edit(
+        await xx.edit(
             "Syntax .calc <term1><operator><term2>\nFor eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)"
         )
     elif operator == "*":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
+        await xx.edit("Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
     elif operator == "-":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
+        await xx.edit("Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
     elif operator == "+":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
+        await xx.edit("Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
     elif operator == "/":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
+        await xx.edit("Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
     elif operator == "%":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
+        await xx.edit("Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
     else:
-        await event.edit("use .calc help")
+        await xx.edit("**Ketik** `.help calc` **bila butuh bantuan**")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"xcd(?: |$)(.*)"))
+@trans_cmd(pattern="xcd(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     xkcd_id = None
+    xx = await edit_or_reply(event, "`Processing...`")
     if input_str:
         if input_str.isdigit():
             xkcd_id = input_str
@@ -233,12 +236,12 @@ Month: {}
 Year: {}""".format(
             img, input_str, xkcd_link, safe_title, alt, day, month, year
         )
-        await event.edit(output_str, link_preview=True)
+        await xx.edit(output_str, link_preview=True)
     else:
-        await event.edit("xkcd n.{} not found!".format(xkcd_id))
+        await edit_delete(xx, "xkcd n.{} not found!".format(xkcd_id))
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"remove(?: |$)(.*)"))
+@trans_cmd(pattern="remove(?: |$)(.*)", allow_sudo=False)
 async def _(event):
     if event.fwd_from:
         return
@@ -248,7 +251,7 @@ async def _(event):
     if input_str:
         chat = await event.get_chat()
         if not (chat.admin_rights or chat.creator):
-            await event.edit("`Anda Bukan Admin Disini!`")
+            await edit_delete(event, "`Anda Bukan Admin Disini!`")
             return False
     p = 0
     b = 0
@@ -262,8 +265,8 @@ async def _(event):
     o = 0
     q = 0
     r = 0
-    await event.edit("`Mencari Daftar Peserta....`")
-    async for i in bot.iter_participants(event.chat_id):
+    xx = await edit_or_reply(event, "`Mencari Daftar Peserta....`")
+    async for i in event.client.iter_participants(event.chat_id):
         p += 1
         #
         # Note that it's "reversed". You must set to ``True`` the permissions
@@ -274,8 +277,9 @@ async def _(event):
             if "y" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -285,8 +289,9 @@ async def _(event):
             if "m" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -296,8 +301,9 @@ async def _(event):
             if "w" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -306,9 +312,10 @@ async def _(event):
             o += 1
             if "o" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
-                if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                if not status:                   
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -329,8 +336,9 @@ async def _(event):
             if "r" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -340,8 +348,9 @@ async def _(event):
             if "b" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                     break
@@ -351,8 +360,9 @@ async def _(event):
             if "d" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
-                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
+                    await edit_delete(
+                        xx,
+                        "**Saya memerlukan hak admin untuk melakukan tindakan ini!**",
                     )
                     e.append(str(e))
                 else:
@@ -370,7 +380,7 @@ UserStatusOnline: {}
 UserStatusRecently: {}
 Bots: {}
 None: {}"""
-        await event.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
+        await xx.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await asyncio.sleep(5)
     await event.edit(
         """Total= {} users
@@ -390,18 +400,18 @@ Unidentified= {}""".format(
 
 async def ban_user(chat_id, i, rights):
     try:
-        await bot(functions.channels.EditBannedRequest(chat_id, i, rights))
+        await client(functions.channels.EditBannedRequest(chat_id, i, rights))
         return True, None
     except Exception as exc:
         return False, str(exc)
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"rnupload(?: |$)(.*)"))
+@trans_cmd(pattern="rnupload(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     thumb = thumb_image_path if os.path.exists(thumb_image_path) else None
-    await event.edit("`Rename & Upload in processing ....`")
+    xx = await edit_or_reply(event, "`Rename & Upload in processing ....`")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -412,14 +422,14 @@ async def _(event):
         reply_message = await event.get_reply_message()
         to_download_directory = TEMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await bot.download_media(
+        downloaded_file_name = await event.client.download_media(
             reply_message,
             downloaded_file_name,
         )
         ms_one = (end - start).seconds
         if os.path.exists(downloaded_file_name):
             time.time()
-            await bot.send_file(
+            await event.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=True,
@@ -431,23 +441,23 @@ async def _(event):
             end_two = datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await event.edit(
+            await xx.edit(
                 "**Downloaded in** `{}` **seconds. Uploaded in** `{}` **seconds**".format(
                     ms_one, ms_two
                 )
             )
         else:
-            await event.edit("File Not Found {}".format(input_str))
+            await edit_delete(xx, "File Not Found {}".format(input_str))
     else:
-        await event.edit("Syntax // .rnupload filename.extension <reply ke media>")
+        await edit_delete(xx, "Syntax // .rnupload filename.extension <reply ke media>")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"grab(?: |$)(.*)"))
+@trans_cmd(pattern="grab(?: |$)(.*)")
 async def potocmd(event):
-    """Gets the profile photos of replied users, channels or chats"""
     id = "".join(event.raw_text.split(maxsplit=2)[1:])
     user = await event.get_reply_message()
     chat = event.input_chat
+    xx = await edit_or_reply(event, "`Processing...`")
     if user:
         photos = await event.client.get_profile_photos(user.sender)
     else:
@@ -457,37 +467,35 @@ async def potocmd(event):
             await event.client.send_file(event.chat_id, photos)
         except a:
             photo = await event.client.download_profile_photo(chat)
-            await bot.send_file(event.chat_id, photo)
+            await event.client.send_file(event.chat_id, photo)
     else:
         try:
             id = int(id)
             if id <= 0:
-                await event.edit("**Nomer ID Yang Anda Masukkan Tidak Valid**")
-                return
+                return await edit_delete(
+                    xx, "**Nomer ID Yang Anda Masukkan Tidak Valid**"
+                )
         except BaseException:
-            await event.edit("**Lmao**")
-            return
+            return await edit_delete(xx, "**Lmao**")
         if int(id) <= (len(photos)):
             send_photos = await event.client.download_media(photos[id - 1])
-            await bot.send_file(event.chat_id, send_photos)
+            await event.client.send_file(event.chat_id, send_photos)
+            await xx.delete()
         else:
-            await event.edit("**Tidak Dapat Menemukan Foto Pengguna Ini**")
-            return
+           return await edit_delete(xx, "**Tidak Dapat Menemukan Foto Pengguna Ini**")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"res(?: |$)(.*)"))
+@trans_cmd(pattern="res(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("**Mohon Balas Ke Link.**")
-        return
+        return await edit_delete(event, "**Mohon Balas Ke Link.**")
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await event.edit("**Mohon Balas Ke Link.**")
-        return
+        return await edit_delete(event, "**Mohon Balas Ke Link.**")
     chat = "@CheckRestrictionsBot"
-    await event.edit("```Memproses....```")
+    xx = await edit_or_reply(event, "`Processing...`")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -502,7 +510,7 @@ async def _(event):
         if response.text.startswith(""):
             await event.edit("**Terjadi Error**")
         else:
-            await event.delete()
+            await xx.delete()
             await event.client.send_message(event.chat_id, response.message)
             await event.client.delete_message(chat, event.chat_id, response.message)
 
@@ -574,12 +582,12 @@ def get_provider(url):
     return url
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"watch(?: |$)(.*)"))
+@trans_cmd(pattern="watch(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     query = event.pattern_match.group(1)
-    await event.edit("Finding Sites...")
+    xx = await edit_or_reply(event, "`Processing...`")
     streams = get_stream_data(query)
     title = streams["title"]
     thumb_link = streams["movie_thumb"]
@@ -590,29 +598,24 @@ async def _(event):
         imdb_score = scores["imdb"]
     except KeyError:
         imdb_score = None
-
     try:
         tmdb_score = scores["tmdb"]
     except KeyError:
         tmdb_score = None
-
     stream_providers = streams["providers"]
     if release_date is None:
         release_date = release_year
-
     output_ = f"**Movie:**\n`{title}`\n**Release Date:**\n`{release_date}`"
     if imdb_score:
         output_ = output_ + f"\n**IMDB: **{imdb_score}"
     if tmdb_score:
         output_ = output_ + f"\n**TMDB: **{tmdb_score}"
-
     output_ = output_ + "\n\n**Available on:**\n"
     for provider, link in stream_providers.items():
         if "sonyliv" in link:
             link = link.replace(" ", "%20")
         output_ += f"[{pretty(provider)}]({link})\n"
-
-    await bot.send_file(
+    await event.client.send_file(
         event.chat_id,
         caption=output_,
         file=thumb_link,
@@ -620,7 +623,7 @@ async def _(event):
         allow_cache=False,
         silent=True,
     )
-    await event.delete()
+    await xx.delete()
 
 
 # credits:
@@ -629,9 +632,8 @@ async def _(event):
 # Modified by :- @kirito6969,@deleteduser420
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"weeb(?: |$)(.*)"))
+@trans_cmd(pattern="weeb(?: |$)(.*)")
 async def weebify(event):
-
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
@@ -677,22 +679,21 @@ boldfont = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"bold(?: |$)(.*)"))
+@trans_cmd(pattern="bold(?: |$)(.*)")
 async def thicc(bolded):
-
     args = bolded.pattern_match.group(1)
     if not args:
         get = await bolded.get_reply_message()
         args = get.text
     if not args:
-        await bolded.edit("**Teks Apa Yang Harus Saya Bold Kan?**")
-        return
+        return await edit_delete(bolded, "**Teks Apa Yang Harus Saya Bold Kan?**")
+    xx = await edit_or_reply(bolded, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             boldcharacter = boldfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, boldcharacter)
-    await bolded.edit(string)
+    await xx.edit(string)
 
 
 medievalbold = [
@@ -725,22 +726,23 @@ medievalbold = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"medibold(?: |$)(.*)"))
+@trans_cmd(pattern="medibold(?: |$)(.*)")
 async def mediv(medievalx):
-
     args = medievalx.pattern_match.group(1)
     if not args:
         get = await medievalx.get_reply_message()
         args = get.text
     if not args:
-        await medievalx.edit("**Teks Apa Yang Harus Saya Medibold Kan?**")
-        return
+        return await edit_delete(
+            medievalx, "**Teks Apa Yang Harus Saya Medibold Kan?**"
+        )
+    xx = await edit_or_reply(medievalx, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             medievalcharacter = medievalbold[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, medievalcharacter)
-    await medievalx.edit(string)
+    await xx.edit(string)
 
 
 doublestruckt = [
@@ -773,22 +775,23 @@ doublestruckt = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"doublestruck(?: |$)(.*)"))
+@trans_cmd(pattern="doublestruck(?: |$)(.*)")
 async def doublex(doublestrucktx):
-
     args = doublestrucktx.pattern_match.group(1)
     if not args:
         get = await doublestrucktx.get_reply_message()
         args = get.text
     if not args:
-        await doublestrucktx.edit("**Teks Apa Yang Harus Saya Double Struck Kan?**")
-        return
+        return await edit_delete(
+            doublestrucktx, "**Teks Apa Yang Harus Saya Double Struck Kan?**"
+        )
+    xx = await edit_or_reply(doublestrucktx, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             strucktcharacter = doublestruckt[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, strucktcharacter)
-    await doublestrucktx.edit(string)
+    await xx.edit(string)
 
 
 cursiveboldx = [
@@ -821,22 +824,24 @@ cursiveboldx = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"curbold(?: |$)(.*)"))
+@trans_cmd(pattern="curbold(?: |$)(.*)")
 async def cursive2(cursivebolded):
-
     args = cursivebolded.pattern_match.group(1)
     if not args:
         get = await cursivebolded.get_reply_message()
         args = get.text
     if not args:
-        await cursivebolded.edit("**Teks Apa Yang Harus Saya Cursive Bold Kan?**")
+        await edit_delete.edit(
+            cursivebolded, "**Teks Apa Yang Harus Saya Cursive Bold Kan?**"
+        )
         return
+    xx = await edit_or_reply(cursivebolded, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             cursiveboldcharacter = cursiveboldx[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, cursiveboldcharacter)
-    await cursivebolded.edit(string)
+    await xx.edit(string)
 
 
 medival2 = [
@@ -869,22 +874,22 @@ medival2 = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"medi(?: |$)(.*)"))
+@trans_cmd(pattern="medi(?: |$)(.*)")
 async def medival22(medivallite):
-
     args = medivallite.pattern_match.group(1)
     if not args:
         get = await medivallite.get_reply_message()
         args = get.text
     if not args:
-        await medivallite.edit("****Teks Apa Yang Harus Saya Medival Kan?****")
+        await edit_delete(medivallite, "****Teks Apa Yang Harus Saya Medival Kan?****")
         return
+    xx = await edit_or_reply(medivallite, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             medivalxxcharacter = medival2[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, medivalxxcharacter)
-    await medivallite.edit(string)
+    await xx.edit(string)
 
 
 cursive = [
@@ -917,29 +922,29 @@ cursive = [
 ]
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"cur(?: |$)(.*)"))
+@trans_cmd(pattern="cur(?: |$)(.*)")
 async def xcursive(cursivelite):
-
     args = cursivelite.pattern_match.group(1)
     if not args:
         get = await cursivelite.get_reply_message()
         args = get.text
     if not args:
-        await cursivelite.edit("**Teks Apa Yang Harus Saya Cursive Kan?**")
+        await edit_delete.edit(cursivelite, "**Teks Apa Yang Harus Saya Cursive Kan?**")
         return
+    xx = await edit_or_reply(cursivelite, "`Processing...`")
     string = "".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             cursivecharacter = cursive[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, cursivecharacter)
-    await cursivelite.edit(string)
+    await xx.edit(string)
 
 
 CMD_HELP.update(
     {
-        "watch": f"**Plugin : **`watch`\
-        \n\n  •  **Syntax :** `{cmd}watch` <nama movie/tv>\
-        \n  •  **Function : **Untuk Mengetahui Detail Tentang Film.\
+        "watch": f"**➢ Plugin : **`watch`\
+        \n\n ┌✯ **Syntax :** `{cmd}watch` <nama movie/tv>\
+        \n └✯ **Function : **Untuk Mengetahui Detail Tentang Film.\
     "
     }
 )
@@ -947,8 +952,8 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "randompp": f"**Plugin : **`randompp`\
-        \n\n  •  **Syntax :** `{cmd}randompp`\
-        \n  •  **Function : **Otomatis Mengganti Foto Profile Mu, Untuk Stop ini Ketik .restart\
+        \n\n ┌✯ **Syntax :** `{cmd}randompp`\
+        \n └✯ **Function : **Otomatis Mengganti Foto Profile Mu, Untuk Stop ini Ketik .restart\
     "
     }
 )
@@ -956,8 +961,8 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "glitch": f"**Plugin : **`glitch`\
-        \n\n  •  **Syntax :** `{cmd}glitch` <Reply Ke Media>\
-        \n  •  **Function : **Memberikan Glitch (Gif , Stickers , Gambar, Video) Ke Gif Dan Level Glitch 1 - 8.\nJika Tidak Memberikan Level Otomatis Default Ke Level 2\
+        \n\n ┌✯ **Syntax :** `{cmd}glitch` <Reply Ke Media>\
+        \n └✯ **Function : **Memberikan Glitch (Gif , Stickers , Gambar, Video) Ke Gif Dan Level Glitch 1 - 8.\nJika Tidak Memberikan Level Otomatis Default Ke Level 2\
     "
     }
 )
@@ -965,10 +970,10 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "grab": f"**Plugin : **`grab`\
-        \n\n  •  **Syntax :** `{cmd}grab` <reply ke user yang ingin di grab>\
-        \n  •  **Function : **Balas Ke Pesan Pengguna Telegram dan Ketik `{cmd}grab` Atau `{cmd}grab <count>` Untuk Mengambil Foto Profil.\
-        \n\n  •  **Syntax :** `{cmd}grab` <jumlah foto>\
-        \n  •  **Function : **Untuk Mengambil Foto Profil dengan jumlah foto yg di inginkan.\
+        \n\n ┌✯ **Syntax :** `{cmd}grab` <reply ke user yang ingin di grab>\
+        \n └✯ **Function : **Balas Ke Pesan Pengguna Telegram dan Ketik `{cmd}grab` Atau `{cmd}grab <count>` Untuk Mengambil Foto Profil.\
+        \n\n ┌✯ **Syntax :** `{cmd}grab` <jumlah foto>\
+        \n └✯ **Function : **Untuk Mengambil Foto Profil dengan jumlah foto yg di inginkan.\
     "
     }
 )
@@ -976,27 +981,27 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "bannedall": f"**Plugin : **`bannedall`.\
-        \n\n  •  **Syntax :** `{cmd}remove`\
-        \n  •  **Function : **Untuk Menganalisa user dari grup secara spesifik\
-        \n\n  •  **Syntax :** `{cmd}remove d`\
-        \n  •  **Function : **Untuk mengkik user dari grup secara spesifik\
-        \n\n  •  **Syntax :** `{cmd}remove y`\
-        \n  •  **Function : **Untuk Membanned Akun yang Terakhir Dilihat setahun yang lalu\
-        \n\n  •  **Syntax :** `{cmd}remove m`\
-        \n  •  **Function : **Untuk Membanned Akun yang Terakhir Dilihat sebulan yang lalu\
-        \n\n  •  **Syntax :** `{cmd}remove w`\
-        \n  •  **Function : **Untuk Membanned Akun yang Terakhir Dilihat seminggu yang lalu\
-        \n\n  •  **Syntax :** `{cmd}remove o`\
-        \n  •  **Function : **Untuk Membanned Akun yang sedang offline\
-        \n\n  •  **Syntax :** `{cmd}remove q`\
-        \n  •  **Function : **Untuk Membanned Akun yang sedang online\
-        \n\n  •  **Syntax :** `{cmd}remove r`\
-        \n  •  **Function : **Untuk Membanned Akun yang terakhir dilihat\
-        \n\n  •  **Syntax :** `{cmd}remove b`\
-        \n  •  **Function : **Untuk Membanned Bot yang ada di Grup chat\
-        \n\n  •  **Syntax :** `{cmd}remove n`\
-        \n  •  **Function : **Untuk Membanned Akun yang Last Seen A Long Time Ago\
-        \n\n **HATI HATI PLUGIN INI BERBAHAYA, MOHON GUNAKAN DENGAN BIJAK**\
+        \n\n ┌✯ **Syntax :** `{cmd}remove`\
+        \n └✯ **Function : **Untuk Menganalisa user dari grup secara spesifik\
+        \n\n ┌✯ **Syntax :** `{cmd}remove d`\
+        \n └✯ **Function : **Untuk mengkik user dari grup secara spesifik\
+        \n\n ┌✯ **Syntax :** `{cmd}remove y`\
+        \n └✯ **Function : **Untuk Membanned Akun yang Terakhir Dilihat setahun yang lalu\
+        \n\n ┌✯ **Syntax :** `{cmd}remove m`\
+        \n └✯ **Function : **Untuk Membanned Akun yang Terakhir Dilihat sebulan yang lalu\
+        \n\n ┌✯ **Syntax :** `{cmd}remove w`\
+        \n └✯ **Function : **Untuk Membanned Akun yang Terakhir Dilihat seminggu yang lalu\
+        \n\n ┌✯ **Syntax :** `{cmd}remove o`\
+        \n └✯ **Function : **Untuk Membanned Akun yang sedang offline\
+        \n\n ┌✯ **Syntax :** `{cmd}remove q`\
+        \n └✯ **Function : **Untuk Membanned Akun yang sedang online\
+        \n\n ┌✯ **Syntax :** `{cmd}remove r`\
+        \n └✯ **Function : **Untuk Membanned Akun yang terakhir dilihat\
+        \n\n ┌✯ **Syntax :** `{cmd}remove b`\
+        \n └✯ **Function : **Untuk Membanned Bot yang ada di Grup chat\
+        \n\n ┌✯ **Syntax :** `{cmd}remove n`\
+        \n └✯ **Function : **Untuk Membanned Akun yang Last Seen A Long Time Ago\
+        \n\n ➠ **HATI HATI PLUGIN INI BERBAHAYA, MOHON GUNAKAN DENGAN BIJAK**\
     "
     }
 )
@@ -1004,8 +1009,8 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "rnupload": f"**Plugin : **`rnupload`\
-        \n\n  •  **Syntax :** `{cmd}rnupload`\
-        \n  •  **Function : **Untuk Rename dan Upload, Balas Ke Media Dan Ketik .rnupload xyz.jpg\
+        \n\n ┌✯ **Syntax :** `{cmd}rnupload`\
+        \n └✯ **Function : **Untuk Rename dan Upload, Balas Ke Media Dan Ketik .rnupload xyz.jpg\
     "
     }
 )
