@@ -134,13 +134,13 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "ascii": f"**Plugin : **`ascii`\
-        \n\n  •  **Syntax :** `{cmd}ascii`\
-        \n  •  **Function : **Buat Ascii Art Dari Media.\
-        \n\n  •  **Syntax :** `{cmd}asciis`\
-        \n  •  **Function : **Sama Tapi Unggah Hasilnya Sebagai Sticker.\
-        \n\n  •  **Syntax :** `{cmd}asciibg` <color>\
-        \n  •  **Function : **Untuk Mengubah Warna Background Dari Modul Ascii Contoh `.asciibg black`.\
+        "ascii": f"**➢ Plugin : **`ascii`\
+        \n\n ┌✯ **Syntax :** `{cmd}ascii`\
+        \n └✯ **Function : **Buat Ascii Art Dari Media.\
+        \n\n ┌✯ **Syntax :** `{cmd}asciis`\
+        \n └✯ **Function : **Sama Tapi Unggah Hasilnya Sebagai Sticker.\
+        \n\n ┌✯ **Syntax :** `{cmd}asciibg` <color>\
+        \n └✯ **Function : **Untuk Mengubah Warna Background Dari Modul Ascii Contoh `.asciibg black`.\
     "
     }
 )
