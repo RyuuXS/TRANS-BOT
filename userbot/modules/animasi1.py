@@ -19,7 +19,7 @@ async def _(event):
     sleep(1)
     await xx.edit("gasukaa😫")
     sleep(1)
-    await xx.edit("__GELAYY__🤮")    
+    await xx.edit("GELAYY🤮")    
    
 
 @trans_cmd(pattern="kntl(?: |$)(.*)")
@@ -177,23 +177,23 @@ async def _(event):
 CMD_HELP.update(
     {
     "animasi1": f"➢ **Plugin : **`animasi1`\
-    \n\n ┌✯ **Command :** `{cmd}hai`\
+    \n\n ┌✯ **Syntax :** `{cmd}hai`\
     \n └✯ **Function : ** Cosplay Nissa Sablon\
-    \n\n ┌✯ **Command :** `{cmd}kntl`\
+    \n\n ┌✯ **Syntax :** `{cmd}kntl`\
     \n └✯ **Function : **Kalian kntl\
-    \n\n ┌✯ **Command :** `{cmd}alay`\
+    \n\n ┌✯ **Syntax :** `{cmd}alay`\
     \n └✯ **Function : ** Lumayanlah Buat Nyindir\
-    \n\n ┌✯ **Command :** `{cmd}phe / {cmd}pe`\
+    \n\n ┌✯ **Syntax :** `{cmd}phe / {cmd}pe`\
     \n └✯ **Function : ** Jagoan tele\
-    \n\n ┌✯ **Command :** `{cmd}ehm`\
+    \n\n ┌✯ **Syntax :** `{cmd}ehm`\
     \n └✯ **Function : ** Eum Biasalah cewe mau nya call mulu\
-    \n\n ┌✯ **Command :** `{cmd}lopyu`\
+    \n\n ┌✯ **Syntax :** `{cmd}lopyu`\
     \n └✯ **Function : ** Nyatakan Cinta Ke Cewe Orng\
-    \n\n ┌✯ **Command :** `{cmd}dahlah`\
+    \n\n ┌✯ **Syntax :** `{cmd}dahlah`\
     \n └✯ **Function : ** Cek Aja dh sndri\
-    \n\n ┌✯ **Command :** `{cmd}jawa`\
+    \n\n ┌✯ **Syntax :** `{cmd}jawa`\
     \n └✯ **Function : ** Jawa Pride Ni Bos.\
-    \n\n ┌✯ **Command :** `{cmd}erpe`\
+    \n\n ┌✯ **Syntax :** `{cmd}erpe`\
     \n └✯ **Function : ** Ngatain Bocah Erpe."
 
  
