@@ -79,14 +79,14 @@ async def _(event):
 CMD_HELP.update(
     {
     "animasi9": f"➢ **Plugin : **`animasi9`\
-    \n\n ┌✯ **Command :** `{cmd}sponge`\
+    \n\n ┌✯ **Syntax :** `{cmd}sponge`\
     \n └✯ **Function : **Mengirim Gambar SpongeBoob.\
-    \n\n ┌✯ **Command :** `{cmd}ngok`\
+    \n\n ┌✯ **Syntax :** `{cmd}ngok`\
     \n └✯ **Function : **Mengirim Gambar Babi.\
-    \n\n ┌✯ **Command :** `{cmd}musang`\
+    \n\n ┌✯ **Syntax :** `{cmd}musang`\
     \n └✯ **Function : **Mengirim Gambar Musang.\
-    \n\n ┌✯ **Command :** `{cmd}gajah`\
+    \n\n ┌✯ **Syntax :** `{cmd}gajah`\
     \n └✯ **Function : **Mengirim Gambar Gajah.\
-    \n\n ┌✯ **Command :** `{cmd}liat`\
+    \n\n ┌✯ **Syntax :** `{cmd}liat`\
     \n └✯ **Function : **Mengirim Gambar see."   
 })
