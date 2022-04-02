@@ -149,13 +149,13 @@ async def _(event):
 CMD_HELP.update(
     {
         "animasi8": f"➢ **Plugin : **`animasi8`\
-        \n\n ┌✯ **Command :** `{cmd}train`\
+        \n\n ┌✯ **Syntax :** `{cmd}train`\
         \n └✯ **Function : **Animasi Kereta.\
-        \n\n ┌✯ **Command :** `{cmd}snake`\
+        \n\n ┌✯ **Syntax :** `{cmd}snake`\
         \n └✯ **Function : **Animasi Ular.\
-        \n\n ┌✯ **Command :** `{cmd}bombs`\
+        \n\n ┌✯ **Syntax :** `{cmd}bombs`\
         \n └✯ **Function : **Animasi Bom.\
-        \n\n ┌✯ **Command :** `{cmd}ding`\
+        \n\n ┌✯ **Syntax :** `{cmd}ding`\
         \n └✯ **Function : **Animasi Ding.\
     "
     }
