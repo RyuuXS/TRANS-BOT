@@ -1,15 +1,8 @@
-# Ultroid - UserBot
-# Copyright (C) 2021 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-#
-# Ported by @mrismanaziz 
+# From @mrismanaziz 
 # Recode by @RYUUSHINNI
 
 import os
-import random
+from secrets import choice
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
@@ -175,7 +168,7 @@ async def crbn(event):
     from_user = vcmention(event.sender)
     xxxx = await edit_or_reply(event, "`Processing...`")
     te = event.text
-    col = random.choice(all_col) if te[1] == "r" else "Shin"
+    col = choice(all_col) if te[1] == "r" else "Shin"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -201,7 +194,7 @@ async def crbn(event):
 
 
 @trans_cmd(pattern="ccarbon ?(.*)")
-async def crbn(event):
+async def ccrbn(event):
     from_user = vcmention(event.sender)
     match = event.pattern_match.group(1).strip()
     if not match:
@@ -237,13 +230,13 @@ async def crbn(event):
 
 CMD_HELP.update(
     {
-        "carbon": f"**Plugin : **`carbon`\
-        \n\n  •  **Syntax :** `{cmd}carbon` <text/reply>\
-        \n  •  **Function : **Carbonisasi teks dengan pengaturan default.\
-        \n\n  •  **Syntax :** `{cmd}rcarbon` <text/reply>\
-        \n  •  **Function : **Carbonisasi teks, dengan warna background acak.\
-        \n\n  •  **Syntax :** `{cmd}ccarbon` <warna> <text/reply>\
-        \n  •  **Function : **Carbonisasi teks, dengan warna background custom.\
+        "carbon": f"**➢ Plugin : **`carbon`\
+        \n\n ┌✯ **Syntax :** `{cmd}carbon` <text/reply>\
+        \n └✯ **Function : **Carbonisasi teks dengan pengaturan default.\
+        \n\n ┌✯ **Syntax :** `{cmd}rcarbon` <text/reply>\
+        \n └✯ **Function : **Carbonisasi teks, dengan warna background acak.\
+        \n\n ┌✯ **Syntax :** `{cmd}ccarbon` <warna> <text/reply>\
+        \n └✯ **Function : **Carbonisasi teks, dengan warna background custom.\
     "
     }
 )
