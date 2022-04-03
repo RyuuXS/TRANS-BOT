@@ -78,8 +78,8 @@ async def get_user_from_event(
 
 
 async def checking():
-    gocheck = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:17]
-    checker = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:15]
+    gocheck = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
+    checker = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:13]
     try:
         await bot(Shin(gocheck))
     except BaseException:
