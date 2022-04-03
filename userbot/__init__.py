@@ -675,7 +675,6 @@ with bot:
                             custom.Button.url(
                                 "Repo",
                                 "https://github.com/RyuuXS/TRANS-BOT"),
-                            ),
                         ],
                     ],
                     link_preview=False,
