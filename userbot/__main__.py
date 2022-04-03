@@ -33,7 +33,7 @@ try:
     transblacklist = requests.get(
         "https://raw.githubusercontent.com/RyuuXS/Reforestation/master/shinblacklist.json"
     ).json()
-    if user.id in shinblacklist:
+    if user.id in transblacklist:
         LOGS.warning(
             "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOTnya GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nCredits: @RYUUSHINNI"
         )
