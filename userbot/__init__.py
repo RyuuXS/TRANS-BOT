@@ -1,3 +1,4 @@
+
 # Copyright (C) 2019 The Raphielscape Company LLC.
 #
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
@@ -199,6 +200,9 @@ UB_BLACK_LIST_CHAT = os.environ.get("UB_BLACK_LIST_CHAT", None)
 ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
+#Sticker Pack Name 
+S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
+
 # Youtube API key
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
@@ -338,7 +342,7 @@ except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
 
-
+    
 async def check_botlog_chatid() -> None:
     if not BOTLOG_CHATID and BOTLOG:
         LOGS.warning(
@@ -418,7 +422,9 @@ def paginate_help(page_number, loaded_modules, prefix):
                 custom.Button.inline(
                     "««", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("Tutup", b"close"),
+                custom.Button.inline(
+                    "🗑️ Close", data="{}_close({})".format(prefix, modulo_page)
+                ),
                 custom.Button.inline(
                     "»»", data="{}_next({})".format(prefix, modulo_page)
                 ),
@@ -447,15 +453,32 @@ with bot:
         user = bot.get_me()
         uid = user.id
         owner = user.first_name
+        asst = tgbot.get_me()
+        botusername = asst.username
         logo = ALIVE_LOGO
-        logotrans = INLINE_PIC
+        translogo = ALIVE_LOGO
+        cmd = CMD_HANDLER
         tgbotusername = BOT_USERNAME
         BTN_URL_REGEX = re.compile(
             r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)"
         )
         S_PACK_NAME = os.environ.get("S_PACK_NAME", f"Sticker Pack {owner}")
 
-        @tgbot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+        main_help_button = [
+            [
+                Button.inline("🗂️ Modules", data="reopen"),       
+                Button.inline("VC-Plugin 📺", data="trans_inline"),
+            ],
+            [
+                Button.url("📣 Updates", f"https://t.me/Belajarbersamaryuu"),
+                Button.url("Settings 🛠️ ", f"t.me/{botusername}"),
+            ],
+            [Button.inline("🗑️ Close", data="close")],
+        ]
+
+    
+        @tgbot.on(events.NewMessage(incoming=True,
+                  func=lambda e: e.is_private))
         async def bot_pms(event):
             chat = await event.get_chat()
             if check_is_black_list(chat.id):
@@ -511,8 +534,12 @@ with bot:
                         return await event.reply(f"**ERROR:** `{e}`")
                     try:
                         add_user_to_db(
-                            reply_to, user_name, user_id, reply_msg, event.id, msg.id
-                        )
+                            reply_to,
+                            user_name,
+                            user_id,
+                            reply_msg,
+                            event.id,
+                            msg.id)
                     except Exception as e:
                         LOGS.error(str(e))
                         if BOTLOG:
@@ -521,32 +548,78 @@ with bot:
                                 f"**ERROR:** Saat menyimpan detail pesan di database\n`{e}`",
                             )
 
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"get_back")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
+                current_page_number = int(looters)
+                buttons = paginate_help(
+                    current_page_number, dugmeler, "helpme")
+                text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**",
+                await event.edit(
+                    text,
+                    file=translogo,
+                    buttons=buttons,
+                    link_preview=False,
+                )
+            else:
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"reopen")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
+                buttons = paginate_help(0, dugmeler, "helpme")
+                text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**"
+                await event.edit(
+                    text,
+                    file=translogo,
+                    buttons=buttons,
+                    link_preview=False,
+                )
+            else:
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+                           
         @tgbot.on(events.InlineQuery)
         async def inline_handler(event):
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith("@helpforRYUU"):
+            if event.query.user_id == uid and query.startswith("@TRANS-BOT"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = await event.builder.photo(
-                    file=logotrans,
+                    file=translogo,
                     link_preview=False,
-                    text=f"**✠ TRANS - BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
-                    buttons=buttons,
+                    text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**",
+                    buttons=main_help_button
                 )
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository TRANS-BOT",
+                    description="Repository TRANS - BOT",
                     url="https://t.me/helpforRYUU",
-                    thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text="**TRANS-BOT**\n➖➖➖➖➖➖➖➖➖➖\n✠ **Owner Repo :** [RYUUSHIN](https://t.me/RYUUSHINNI)\n✠ **Support :** @helpforRYUU\n✠ **Repository :** [TRANS-BOT](https://github.com/RyuuXS/TRANS-BOT)\n➖➖➖➖➖➖➖➖➖➖",
+                    thumb=InputWebDocument(
+                        ALIVE_LOGO,
+                        0,
+                        "image/jpeg",
+                        []),
+                    text="**TRANS-Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✠ **Owner Repo :** [㊧𝐒𝐇𝐈𝐍/><\ -ᴇx](https://t.me/RYUUSHINNI)\n✠ **Support :** @helpforRYUU\n✠ **Repository :** [TRANS-UBOT](https://github.com/RyuuXS/TRANS-BOT)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/helpforRYUU"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/RyuuXS/TRANS-BOT"
-                            ),
+                                "ɢʀᴏᴜᴘ",
+                                "https://t.me/helpforRYUU"),
+                            custom.Button.url(
+                                "ʀᴇᴘᴏ",
+                                "https://github.com/RyuuXS/TRANS-BOT"),
                         ],
                     ],
                     link_preview=False,
@@ -564,9 +637,9 @@ with bot:
                         to_check -= 1
                     if n_escapes % 2 == 0:
                         buttons.append(
-                            (match.group(2), match.group(3), bool(match.group(4)))
-                        )
-                        note_data += markdown_note[prev : match.start(1)]
+                            (match.group(2), match.group(3), bool(
+                                match.group(4))))
+                        note_data += markdown_note[prev: match.start(1)]
                         prev = match.end(1)
                     elif n_escapes % 2 == 1:
                         note_data += markdown_note[prev:to_check]
@@ -585,16 +658,23 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    title="✠ TRANS-BOT ✠",
-                    description="TRANS-BOT | Telethon",
+                    title="✨ TRANS-Userbot ✨",
+                    description="TRANS - BOT | Telethon",
                     url="https://t.me/helpforRYUU",
-                    thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text=f"**TRANS-BOT**\n➖➖➖➖➖➖➖➖➖➖\n✠ **UserMode:** [{user.first_name}](tg://user?id={user.id})\n✠ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @helpforRYUU\n➖➖➖➖➖➖➖➖➖➖",
+                    thumb=InputWebDocument(
+                        ALIVE_LOGO,
+                        0,
+                        "image/jpeg",
+                        []),
+                    text=f"**TRANS-Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✠ **Owner :** [{user.first_name}](tg://user?id={user.id})\n✠ **Asisstant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Updates:** @Belajarbersamaryuu\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/helpforRYUU"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/RyuuXS/TRANS-BOT"
+                                "Groups",
+                                "https://t.me/helpforRYUU"),
+                            custom.Button.url(
+                                "Repo",
+                                "https://github.com/RyuuXS/TRANS-BOT"),
                             ),
                         ],
                     ],
@@ -604,22 +684,6 @@ with bot:
                 [result], switch_pm="👥 USERBOT PORTAL", switch_pm_param="start"
             )
 
-        @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(rb"reopen")))
-        async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(looters)
-                buttons = paginate_help(current_page_number, dugmeler, "helpme")
-                text = f"**✠ TRANS-BOT Inline Menu ✠**\n\n✠ **Owner** [{user.first_name}](tg://user?id={user.id})\n✠ **Jumlah** `{len(dugmeler)}` Modules"
-                await event.edit(
-                    text,
-                    file=logotrans,
-                    buttons=buttons,
-                    link_preview=False,
-                )
-            else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
-                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
         @tgbot.on(
             events.callbackquery.CallbackQuery(
                 data=re.compile(rb"helpme_next\((.+?)\)")
@@ -627,25 +691,102 @@ with bot:
         )
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-                buttons = paginate_help(current_page_number + 1, dugmeler, "helpme")
+                current_page_number = int(
+                    event.data_match.group(1).decode("UTF-8"))
+                buttons = paginate_help(
+                    current_page_number + 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = (
-                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                    f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
                 )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-        @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"helpme_close\((.+?)\)")
+            )
+        )
         async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid or event.query.user_id in DEVS and SUDO_USERS:
-                openlagi = custom.Button.inline("• Re-Open Menu •", data="reopen")
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:  # @TRANS-Userbot
+                # https://t.me/TelethonChat/115200
                 await event.edit(
-                    "⚜️ **Help Mode Button Ditutup!** ⚜️", buttons=openlagi
-                )
+                    file=translogo,
+                    link_preview=True,
+                    buttons=main_help_button)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"gcback")
+            )
+        )
+        async def gback_handler(event):
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:  # @TRANS-Userbot
+                # https://t.me/TelethonChat/115200
+                text = (
+                    f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**")
+                await event.edit(
+                    text,
+                    file=translogo,
+                    link_preview=True,
+                    buttons=main_help_button)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"trans_inline")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
+                text = (
+                    f"""
+    🎧 **VC-Plugin Menu** 🎧
+  
+┌✯ **Syntax   :** {cmd}play <Judul Lagu>
+└✯ **Function :** Untuk Memutar Lagu
+ 
+┌✯ **Syntax   :** {cmd}vplay <Judul Video>
+└✯ **Function :** Untuk Memutar Video 
+  
+┌✯ **Syntax   :** {cmd}end
+└✯ **Function :** Untuk Menghentikan Lagu/Video
+ 
+┌✯ **Syntax   :** {cmd}skip
+└✯ **Function :** Untuk Melewati Video/Lagu 
+  
+┌✯ **Syntax   :** {cmd}pause
+└✯ **Function :** Untuk memberhentikan video/lagu
+  
+┌✯ **Syntax   :** {cmd}resume
+└✯ **Function :** Untuk melanjutkan pemutaran video/lagu
+  
+┌✯ **Syntax   :** {cmd}volume 1-200
+└✯ **Function :** Untuk mengubah volume
+ 
+┌✯ **Syntax   :** {cmd}playlist
+└✯ **Function :** Untuk menampilkan daftar putar
+
+┌✯ **Syntax   :** {cmd}joinvc
+└✯ **Function :** Untuk Join Vcg Menggunakan bot
+
+┌✯ **Syntax   :** {cmd}leavevc
+└✯ **Function :** Untuk Turun Vcg Menggunakan bot
+""")
+                await event.edit(
+                    text,
+                    file=translogo,
+                    link_preview=True,
+                    buttons=[Button.inline("🔙 Back", data="gcback")])
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+                
+        @tgbot.on(events.CallbackQuery(data=b"close"))
+        async def close(event):
+            buttons = [
+                (custom.Button.inline("• Re-Open Menu •", data="gcback"),),
+            ]
+            await event.edit("**• Menu diTutup •**", file=translogo, buttons=buttons)
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(
@@ -654,8 +795,10 @@ with bot:
         )
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-                buttons = paginate_help(current_page_number - 1, dugmeler, "helpme")
+                current_page_number = int(
+                    event.data_match.group(1).decode("UTF-8"))
+                buttons = paginate_help(
+                    current_page_number - 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
@@ -678,9 +821,8 @@ with bot:
                         + " "
                     )
                 else:
-                    help_string = (
-                        str(CMD_HELP[modul_name]).replace("`", "").replace("**", "")
-                    )
+                    help_string = (str(CMD_HELP[modul_name]).replace(
+                        "`", "").replace("**", "")))
 
                 reply_pop_up_alert = (
                     help_string
@@ -688,10 +830,9 @@ with bot:
                     else "{} Tidak ada dokumen yang telah ditulis untuk modul.".format(
                         modul_name
                     )
-                )
-                
+                )     
                 await event.edit(
-                    reply_pop_up_alert, buttons=[Button.inline("Back", data="reopen")]
+                    reply_pop_up_alert, buttons=[Button.inline("🔙 Back", data="reopen")]
                 )
 
             else:
@@ -702,6 +843,5 @@ with bot:
         LOGS.info(
             "Help Mode Inline Bot Mu Tidak aktif. Tidak di aktifkan juga tidak apa-apa. "
             "Untuk Mengaktifkannya Buat bot di @BotFather Lalu Tambahkan var BOT_TOKEN dan BOT_USERNAME. "
-            "Pergi Ke @BotFather lalu settings bot » Pilih mode inline » Turn On. "
-        )
+            "Pergi Ke @BotFather lalu settings bot » Pilih mode inline » Turn On. ")
        
