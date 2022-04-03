@@ -8,12 +8,12 @@
 from telethon.tl import functions
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
+from userbot import CMD_HELP
+from userbot.utils import trans_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"buat (gb|g|c)(?: |$)(.*)"))
-async def telegraphs(grop):
+@trans_cmd(pattern="buat (gb|g|c)(?: |$)(.*)")
+async def _(grop):
     """For .create command, Creating New Group & Channel"""
     if grop.text[0].isalpha() or grop.text[0] in ("/", "#", "@", "!"):
         return
@@ -24,7 +24,7 @@ async def telegraphs(grop):
     if type_of_group == "gb":
         try:
             result = await grop.client(
-                functions.messages.CreateChatRequest(  # pylint:disable=E0602
+                functions.messages.CreateChatRequest(
                     users=["@MissRose_bot"],
                     # Not enough users (to create a chat, for example)
                     # Telegram, no longer allows creating a chat with
@@ -43,7 +43,7 @@ async def telegraphs(grop):
                     group_name, group_name, result.link
                 )
             )
-        except Exception as e:  # pylint:disable=C0103,W0703
+        except Exception as e:
             await grop.edit(str(e))
     elif type_of_group in ["g", "c"]:
         try:
@@ -66,19 +66,19 @@ async def telegraphs(grop):
                     group_name, group_name, result.link
                 )
             )
-        except Exception as e:  # pylint:disable=C0103,W0703
+        except Exception as e:
             await grop.edit(str(e))
 
 
 CMD_HELP.update(
     {
-        "membuat": f"**Plugin : **`membuat`\
-        \n\n  •  **Syntax :** `{cmd}buat g` <nama grup>\
-        \n  •  **Function : **Membuat grup telegram.\
-        \n\n  •  **Syntax :** `{cmd}buat gb` <nama grup>\
-        \n  •  **Function : **Membuat Grup bersama bot.\
-        \n\n  •  **Syntax :** `{cmd}buat c` <nama channel>\
-        \n  •  **Function : **Membuat sebuah Channel.\
+        "membuat": f"➢ **Plugin : **`membuat`\
+        \n\n ┌✯ **Syntax :** `{cmd}buat g` <nama grup>\
+        \n └✯ **Function : **Membuat grup telegram.\
+        \n\n ┌✯ **Syntax :** `{cmd}buat gb` <nama grup>\
+        \n └✯ **Function : **Membuat Grup bersama bot.\
+        \n\n ┌✯ **Syntax :** `{cmd}buat c` <nama channel>\
+        \n └✯ **Function : **Membuat sebuah Channel.\
     "
     }
 )
