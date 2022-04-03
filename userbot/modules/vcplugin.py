@@ -518,7 +518,7 @@ async def join_(event):
         stream_type=StreamType().pulse_stream,
     )
     try:
-        await xnxx.edit("`Joined To Voice Chat`")
+        await xnxx.edit(f"🥵 **Berhasil Join Ke Obrolan Suara**\n└ **Chat ID:** `{chat}`")
     except Exception as ex:
         await edit_delete(event, f"**ERROR:** `{ex}`")
 
@@ -534,7 +534,7 @@ async def leavevc(event):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await xnxx.edit("`Left the voice chat.`")
+        await xnxx.edit("`Gimana sih Tadi suruh naik, Sekarang malah suruh turun😒.`")
     else:
         await edit_delete(event, f"**Maaf {owner} Tidak Berada Di VCG**")
         
