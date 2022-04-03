@@ -21,7 +21,7 @@ import psutil
 from pytgcalls import __version__ as pytgcalls
 from telethon import __version__, version
 
-from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER, CHANNEL
+from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_NAME, BOT_VER, CHANNEL
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, GROUP, StartTime, bot
 from userbot.utils import bash, edit_or_reply, trans_cmd
@@ -35,7 +35,7 @@ except ImportError:
 
 modules = CMD_HELP
 emoji = ALIVE_EMOJI
-alive_text = ALIVE_TEKS_CUSTOM
+alive_text = ALIVE_NAME
 
 
 @trans_cmd(
