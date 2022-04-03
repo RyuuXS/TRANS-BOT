@@ -216,7 +216,7 @@ ALIVE_NAME = os.environ.get("ALIVE_NAME", "TRANS-BOT")
 ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡")
 
 # Custom Emoji Alive
-INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "🗿")
+INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "💡")
 
 # Custom icon HELP
 ICON_HELP = os.environ.get("ICON_HELP", "⚐")
@@ -423,7 +423,7 @@ def paginate_help(page_number, loaded_modules, prefix):
                     "««", data="{}_prev({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline(
-                    "🗑️ Close", data="{}_close({})".format(prefix, modulo_page)
+                    "🗑️ Close 🗑️", data="{}_close({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline(
                     "»»", data="{}_next({})".format(prefix, modulo_page)
@@ -466,14 +466,14 @@ with bot:
 
         main_help_button = [
             [
-                Button.inline("🗂️ Modules", data="reopen"),       
-                Button.inline("VC-Plugin 📺", data="trans_inline"),
+                Button.inline("🗃 Modules", data="reopen"),       
+                Button.inline("VC-Plugin 📹", data="trans_inline"),
             ],
             [
                 Button.url("📣 Updates", f"https://t.me/Belajarbersamaryuu"),
                 Button.url("Settings 🛠️ ", f"t.me/{botusername}"),
             ],
-            [Button.inline("🗑️ Close", data="close")],
+            [Button.inline("🗑️ Close 🗑️", data="close")],
         ]
 
     
@@ -558,7 +558,7 @@ with bot:
                 current_page_number = int(looters)
                 buttons = paginate_help(
                     current_page_number, dugmeler, "helpme")
-                text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**",
+                text = f"**📱 TRANS-Userbot Inline Menu ☎️**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n☕ **Jumlah :** `{len(dugmeler)}` **Modules**",
                 await event.edit(
                     text,
                     file=translogo,
@@ -577,7 +577,7 @@ with bot:
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 buttons = paginate_help(0, dugmeler, "helpme")
-                text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**"
+                text = f"**📱 TRANS-Userbot Inline Menu ☎️**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n☕ **Jumlah :** `{len(dugmeler)}` **Modules**"
                 await event.edit(
                     text,
                     file=translogo,
@@ -598,7 +598,7 @@ with bot:
                 result = await event.builder.photo(
                     file=translogo,
                     link_preview=False,
-                    text = f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**",
+                    text = f"**📱 TRANS-Userbot Inline Menu ☎️**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n☕ **Jumlah :** `{len(dugmeler)}` **Modules**",
                     buttons=main_help_button
                 )
             elif query.startswith("repo"):
@@ -723,7 +723,7 @@ with bot:
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:  # @TRANS-Userbot
                 # https://t.me/TelethonChat/115200
                 text = (
-                    f"**🕹 TRANS-Userbot Inline Menu 🕹**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n🔮 **Jumlah :** `{len(dugmeler)}` **Modules**")
+                    f"**📱 TRANS-Userbot Inline Menu ☎️**\n\n🐥 **Owner :** [{user.first_name}](tg://user?id={user.id})\n☕ **Jumlah :** `{len(dugmeler)}` **Modules**")
                 await event.edit(
                     text,
                     file=translogo,
