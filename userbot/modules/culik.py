@@ -93,7 +93,9 @@ async def get_users(event):
 
 CMD_HELP.update(
     {
-        "culik": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.culik groups username`\
-          \n📌 : __Scrapes users from the given chat to your group__."
+        "culik": f"**➢ Plugin : **`culik`\
+        \n\n ┌✯ **Syntax :** `{cmd}culik` <username grup yang mau diculik> \
+        \n └✯ **Function : **Menculik Member dari Grup Lain ke Grup chat Anda.\
+    "
     }
 )
