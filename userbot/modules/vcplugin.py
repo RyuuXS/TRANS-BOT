@@ -130,11 +130,11 @@ async def vc_play(event):
     ):
         return await edit_or_reply(event, "**Silahkan Masukan Judul Lagu**")
     elif replied and not replied.audio and not replied.voice or not replied:
-        bottrans = await edit_or_reply(event, "`Mencari lagu...`")
+        botman = await edit_or_reply(event, "`Mencari lagu...`")
         query = event.text.split(maxsplit=1)[1]
         search = ytsearch(query)
         if search == 0:
-            await bottrans.edit(
+            await botman.edit(
                 "**Tidak Dapat Menemukan Lagu** Coba cari dengan Judul yang Lebih Spesifik"
             )
         else:
@@ -150,11 +150,11 @@ async def vc_play(event):
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
             if hm == 0:
-                await bottrans.edit(f"`{ytlink}`")
+                await botman.edit(f"`{ytlink}`")
             elif chat_id in QUEUE:
                 pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                 caption = f"💡 **Lagu Ditambahkan Ke antrian »** `#{pos}`\n\n**🏷 Judul:** [{songname}]({url})\n**⏱ Durasi:** `{duration}`\n🎧 **Atas permintaan:** {from_user}"
-                await bottrans.delete()
+                await botman.delete()
                 await event.client.send_file(chat_id, thumb, caption=caption)
             else:
                 try:
@@ -167,14 +167,14 @@ async def vc_play(event):
                     )
                     add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                     caption = f"🏷 **Judul:** [{songname}]({url})\n**⏱ Durasi:** `{duration}`\n💡 **Status:** `Sedang Memutar`\n🎧 **Atas permintaan:** {from_user}"
-                    await bottrans.delete()
+                    await botman.delete()
                     await event.client.send_file(chat_id, thumb, caption=caption)
                 except Exception as ep:
                     clear_queue(chat_id)
-                    await bottrans.edit(f"`{ep}`")
+                    await botman.edit(f"`{ep}`")
 
     else:
-        bottrans = await edit_or_reply(event, "📥 **Sedang Mendownload**")
+        botman = await edit_or_reply(event, "📥 **Sedang Mendownload**")
         dl = await replied.download_media()
         link = f"https://t.me/c/{chat.id}/{event.reply_to_msg_id}"
         if replied.audio:
@@ -185,7 +185,7 @@ async def vc_play(event):
             pos = add_to_queue(chat_id, songname, dl, link, "Audio", 0)
             caption = f"💡 **Lagu Ditambahkan Ke antrian »** `#{pos}`\n\n**🏷 Judul:** [{songname}]({link})\n**👥 Chat ID:** `{chat_id}`\n🎧 **Atas permintaan:** {from_user}"
             await event.client.send_file(chat_id, ngantri, caption=caption)
-            await bottrans.delete()
+            await botman.delete()
         else:
             try:
                 await call_py.join_group_call(
@@ -198,10 +198,10 @@ async def vc_play(event):
                 add_to_queue(chat_id, songname, dl, link, "Audio", 0)
                 caption = f"🏷 **Judul:** [{songname}]({link})\n**👥 Chat ID:** `{chat_id}`\n💡 **Status:** `Sedang Memutar Lagu`\n🎧 **Atas permintaan:** {from_user}"
                 await event.client.send_file(chat_id, fotoplay, caption=caption)
-                await bottrans.delete()
+                await botman.delete()
             except Exception as ep:
                 clear_queue(chat_id)
-                await bottrans.edit(f"`{ep}`")
+                await botman.edit(f"`{ep}`")
 
 
 @trans_cmd(pattern="vplay(?:\\s|$)([\\s\\S]*)")
@@ -448,6 +448,51 @@ async def vc_volume(event):
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
 
+@trans_cmd(pattern="joinvc(?: |$)(.*)") 
+async def join_(event):
+    geezav = await edit_or_reply(event, f"**Processing**")
+    if len(event.text.split()) > 1:
+        chat = event.chat_id
+        chats = event.pattern_match.group(1)
+        try:
+            chat = await event.client(GetFullUserRequest(chats))
+        except AlreadyJoinedError as e:
+            await call_py.leave_group_call(chat)
+            clear_queue(chat)
+            await asyncio.sleep(3)
+            return await edit_delete(event, f"**ERROR:** `{e}`", 30)
+        except (NodeJSNotInstalled, TooOldNodeJSVersion):
+            return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
+    else:
+        chat_id = event.chat_id
+        chats = event.pattern_match.group(1)
+        from_user = vcmention(event.sender)
+    if not call_py.is_connected:
+        await call_py.start()
+    await call_py.join_group_call(
+        chat_id,
+        AudioPiped(
+            'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+        ),
+        chats,
+        stream_type=StreamType().pulse_stream,
+    )
+    await geezav.edit(f"**{from_user} Berhasil Naik Ke VCG!**")
+
+@trans_cmd(pattern="leavevc(?: |$)(.*)")
+async def leavevc(event):
+    """ leave video chat """
+    geezav = await edit_or_reply(event, "Processing")
+    chat_id = event.chat_id
+    from_user = vcmention(event.sender)
+    if from_user:
+        try:
+            await call_py.leave_group_call(chat_id)
+        except (NotInGroupCallError, NoActiveGroupCall):
+            await edit_or_reply(event, f"{from_user} Tidak Berada Di VC Group.")
+        await geezav.edit(f"**{from_user} Berhasil Turun Dari VCG.**")
+
+
 
 @trans_cmd(pattern="playlist$")
 async def vc_playlist(event):
@@ -472,53 +517,6 @@ async def vc_playlist(event):
             await edit_or_reply(event, PLAYLIST, link_preview=False)
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
-
-
-# credits by @vckyaz < vicky \>
-# FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
-# ambil boleh apus credits jangan ya ka:)
-
-@trans_cmd(pattern="joinvc(?: |$)(.*)")
-async def join_(event):
-    xnxx = await edit_or_reply(event, f"**Processing**")
-    if len(event.text.split()) > 1:
-        chat = event.text.split()[1]
-        try:
-            chat = await event.client(GetFullUserRequest(chat))
-        except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`", 30)
-    else:
-        chat = event.chat_id
-        vcmention(event.sender)
-    if not call_py.is_connected:
-        await call_py.start()
-    await call_py.join_group_call(
-        chat,
-        AudioPiped(
-            'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
-        ),
-        stream_type=StreamType().pulse_stream,
-    )
-    try:
-        await xnxx.edit("**{} Berhasil Naik Ke VCG** `{}`".format(owner, str(event.chat_id)))
-    except Exception as ex:
-        await edit_delete(event, f"**ERROR:** `{ex}`")
-
-
-@trans_cmd(pattern="leavevc(?: |$)(.*)")
-async def leavevc(event):
-    """ leave video chat """
-    xnxx = await edit_or_reply(event, "Processing")
-    chat_id = event.chat_id
-    from_user = vcmention(event.sender)
-    if from_user:
-        try:
-            await call_py.leave_group_call(chat_id)
-        except (NotInGroupCallError, NoActiveGroupCall):
-            pass
-        await xnxx.edit("**{} Berhasil Turun Dari VCG** `{}`".format(owner, str(event.chat_id)))
-    else:
-        await edit_delete(event, f"**Maaf {owner} Tidak Berada Di VCG**")
 
 
 @call_py.on_stream_end()
@@ -566,5 +564,16 @@ CMD_HELP.update(
         \n\n  •  **Syntax :** `{cmd}playlist`\
         \n  •  **Function : **Untuk menampilkan daftar putar Lagu/Video\
     "
+    }
+)
+
+CMD_HELP.update(
+    {
+        "vctools": f"**Plugin : **`vctools`\
+        \n\n • **Syntax :** `{cmd}joinvc`\
+        \n  •  **Function : **Naik Os Menggunakan Bot\
+        \n\n  •  **Syntax :** `{cmd}leavevc`\
+        \n  •  **Function : **Turun Os Menggunakan Bot\
+        "
     }
 )
