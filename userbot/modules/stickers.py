@@ -34,7 +34,7 @@ from telethon.utils import get_input_document
 from userbot import BOT_USERNAME
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot import S_PACK_NAME as custompack
+from userbot import S_PACK_NAME as packcustom
 from userbot import tgbot, user
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, trans_cmd
@@ -114,7 +114,7 @@ async def kang(args):
         u_id = user.id
         f_name = user.first_name
         packname = f"Sticker_u{u_id}_Ke{pack}"
-        custom_packnick = f"{custompack}" or f"{f_name} Sticker Pack"
+        custom_packnick = f"{packcustom}" or f"{f_name} Sticker Pack"
         packnick = f"{custom_packnick}"
         cmd = "/newpack"
         file = io.BytesIO()
