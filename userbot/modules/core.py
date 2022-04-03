@@ -1,52 +1,47 @@
 # Credits: @mrismanaziz
-# FROM Man-Userbot
 # Recode by @RYUUSHINNI
 
 import os
 from pathlib import Path
 
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
-from userbot.utils import edit_or_reply, load_module, remove_plugin, reply_id
+from userbot import CMD_HELP
+from userbot.utils import edit_or_reply, load_module, trans_cmd, remove_plugin, reply_id
 
 
-@bot.on(trans_cmd(outgoing=True, pattern="install$"))
+@trans_cmd(pattern="install$")
 async def _(event):
     if event.fwd_from:
         return
     if event.reply_to_msg_id:
         try:
-            await event.edit("`Installing Modules...`")
-            downloaded_file_name = (
-                await event.client.download_media(  # pylint:disable=E0602
-                    await event.get_reply_message(),
-                    "userbot/modules/",  # pylint:disable=E0602
-                )
+            xx = await edit_or_reply(event, "`Installing Modules...`")
+            downloaded_file_name = await event.client.download_media(
+                await event.get_reply_message(),
+                "userbot/modules/",
             )
             if "(" not in downloaded_file_name:
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit(
-                    "**Plugin** `{}` **Berhasil di install**".format(
-                        os.path.basename(downloaded_file_name)
-                    )
+                await xx.edit(
+                    f"**Plugin** `{os.path.basename(downloaded_file_name)}` **Berhasil di install**"
                 )
+                
             else:
                 os.remove(downloaded_file_name)
-                await event.edit("**Error!** Plugin ini sudah terinstall di userbot.")
+                await xx.edit("**Error!** Plugin ini sudah terinstall di userbot.")
         except Exception as e:
-            await event.edit(str(e))
+            await xx.edit(str(e))
             os.remove(downloaded_file_name)
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"psend ([\s\S]*)"))
+@trans_cmd(pattern="psend ([\s\S]*)")
 async def send(event):
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
     the_plugin_file = f"./userbot/modules/{input_str}.py"
     if os.path.exists(the_plugin_file):
-        caat = await event.client.send_file(
+        await event.client.send_file(
             event.chat_id,
             the_plugin_file,
             force_document=True,
@@ -60,18 +55,19 @@ async def send(event):
         await edit_or_reply(event, "**ERROR: Modules Tidak ditemukan**")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"uninstall (?P<shortname>\w+)"))
+@trans_cmd(pattern="uninstall (?P<shortname>\w+)")
 async def uninstall(event):
     if event.fwd_from:
         return
     shortname = event.pattern_match["shortname"]
     dir_path = f"./userbot/modules/{shortname}.py"
+    xx = await edit_or_reply(event, "`Processing...`")
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
         await event.edit(f"**Berhasil Menghapus Modules** `{shortname}`")
     except OSError as e:
-        await event.edit("**ERROR:** `%s` : %s" % (dir_path, e.strerror))
+        await xx.edit(f"**ERROR:** `{dir_path}` : {e.strerror}")
 
 
 CMD_HELP.update(
