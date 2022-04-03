@@ -162,7 +162,7 @@ async def _(event):
             except BaseException:
                 await event.client.send_message(
                     event.chat_id,
-                    f"\n❏ **{owner} Telah AFK**\n└ **Karena:** `{reason}`",",
+                    f"\n❏ **{owner} Telah AFK**\n└ **Karena:** `{reason}`",
                 )
         else:
             try:
