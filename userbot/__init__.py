@@ -593,7 +593,7 @@ with bot:
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith("@TRANS-BOT"):
+            if event.query.user_id == uid and query.startswith("@TRANSUserbot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = await event.builder.photo(
                     file=translogo,
