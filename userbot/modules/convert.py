@@ -1,12 +1,5 @@
-# Copyright (C) 2020 Yusuf Usta.
-#
-# Licensed under the  GPL-3.0 License;
-# you may not use this file except in compliance with the License.
-#
-# Ported by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-#
+# ©RYUUSHINNI
+# https://github.com/RyuuXS
 
 import asyncio
 import io
@@ -21,9 +14,9 @@ from userbot.utils import edit_delete, edit_or_reply, trans_cmd, runcmd
 
 @trans_cmd(pattern="convert ?(foto|audio|gif|voice|photo|mp3)? ?(.*)")
 async def cevir(event):
-    botman = event.pattern_match.group(1)
+    bottrans = event.pattern_match.group(1)
     try:
-        if len(botman) < 1:
+        if len(bottrans) < 1:
             await edit_delete(
                 event,
                 "**Perintah tidak diketahui! ketik** `.help convert` **bila butuh bantuan**",
@@ -37,7 +30,7 @@ async def cevir(event):
             30,
         )
         return
-    if botman in ["foto", "photo"]:
+    if bottrans in ["foto", "photo"]:
         rep_msg = await event.get_reply_message()
         if not event.is_reply or not rep_msg.sticker:
             await edit_delete(event, "**Harap balas ke stiker.**")
@@ -54,7 +47,7 @@ async def cevir(event):
         )
         await xxnx.delete()
         os.remove("sticker.png")
-    elif botman in ["sound", "audio"]:
+    elif bottrans in ["sound", "audio"]:
         EFEKTLER = ["bengek", "robot", "jedug", "fast", "echo"]
         efekt = event.pattern_match.group(2)
         if len(efekt) < 1:
@@ -93,7 +86,7 @@ async def cevir(event):
             await xxx.edit(
                 "**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** bengek/robot/jedug/fast/echo`"
             )
-    elif botman == "mp3":
+    elif bottrans == "mp3":
         rep_msg = await event.get_reply_message()
         if not event.is_reply or not rep_msg.video:
             return await edit_delete(event, "**Harap balas ke Video!**")
@@ -137,28 +130,28 @@ async def makevoice(event):
     file = await msg.download_media(dl)
     await xxnx.edit("`Converting to Voice Note...`")
     await runcmd(
-        f"ffmpeg -i '{file}' -map 0:a -codec:a libopus -b:a 100k -vbr on man.opus"
+        f"ffmpeg -i '{file}' -map 0:a -codec:a libopus -b:a 100k -vbr on trans.opus"
     )
     await event.client.send_message(
-        event.chat_id, file="man.opus", force_document=False, reply_to=msg
+        event.chat_id, file="trans.opus", force_document=False, reply_to=msg
     )
     await xxnx.delete()
     os.remove(file)
-    os.remove("man.opus")
+    os.remove("trans.opus")
 
 
 CMD_HELP.update(
     {
-        "convert": f"**Plugin : **`core`\
-        \n\n  •  **Syntax :** `{cmd}convert foto`\
-        \n  •  **Function : **Untuk Mengconvert sticker ke foto\
-        \n\n  •  **Syntax :** `{cmd}convert mp3`\
-        \n  •  **Function : **Untuk Mengconvert dari video ke file mp3\
-        \n\n  •  **Syntax :** `{cmd}makevoice`\
-        \n  •  **Function : **Untuk Mengconvert audio ke voice note\
-        \n\n  •  **Syntax :** `{cmd}convert audio` <efek>\
-        \n  •  **Function : **Untuk Menambahkan efek suara jadi berskin\
-        \n  •  **List Efek :** `bengek`, `jedug`, `echo`, `robot`\
+        "convert": f"**➢ Plugin : **`core`\
+        \n\n ┌✯ **Syntax :** `{cmd}convert foto`\
+        \n └✯ **Function : **Untuk Mengconvert sticker ke foto\
+        \n\n ┌✯ **Syntax :** `{cmd}convert mp3`\
+        \n └✯ **Function : **Untuk Mengconvert dari video ke file mp3\
+        \n\n ┌✯ **Syntax :** `{cmd}makevoice`\
+        \n └✯ **Function : **Untuk Mengconvert audio ke voice note\
+        \n\n ┌✯ **Syntax :** `{cmd}convert audio` <efek>\
+        \n └✯ **Function : **Untuk Menambahkan efek suara jadi berskin\
+        \n ➟ **List Efek :** `bengek`, `jedug`, `echo`, `robot`\
     "
     }
 )
