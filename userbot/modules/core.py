@@ -5,8 +5,8 @@ import os
 from pathlib import Path
 
 from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, load_module, trans_cmd, remove_plugin, reply_id
-
+from userbot.utils import load_module, trans_cmd, remove_plugin, reply_id
+from userbot.utils import edit_or_reply as eor
 
 @trans_cmd(pattern="install$")
 async def _(event):
@@ -14,7 +14,7 @@ async def _(event):
         return
     if event.reply_to_msg_id:
         try:
-            xx = await edit_or_reply(event, "`Installing Modules...`")
+            xx = await eor(event, "`Installing Modules...`")
             downloaded_file_name = await event.client.download_media(
                 await event.get_reply_message(),
                 "userbot/modules/",
@@ -52,7 +52,7 @@ async def send(event):
         )
         await event.delete()
     else:
-        await edit_or_reply(event, "**ERROR: Modules Tidak ditemukan**")
+        await eor(event, "**ERROR: Modules Tidak ditemukan**")
 
 
 @trans_cmd(pattern="uninstall (?P<shortname>\w+)")
@@ -61,7 +61,7 @@ async def uninstall(event):
         return
     shortname = event.pattern_match["shortname"]
     dir_path = f"./userbot/modules/{shortname}.py"
-    xx = await edit_or_reply(event, "`Processing...`")
+    xx = await eor(event, "`Processing...`")
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
@@ -72,13 +72,13 @@ async def uninstall(event):
 
 CMD_HELP.update(
     {
-        "core": "**Plugin : **`core`\
-        \n\n  •  **Syntax :** `.install` <reply ke file module>\
-        \n  •  **Function : **Untuk Menginstall module userbot secara instan.\
-        \n\n  •  **Syntax :** `.uninstall` <nama module>\
-        \n  •  **Function : **Untuk Menguninstall / Menghapus module userbot secara instan.\
-        \n\n  •  **Syntax :** `.psend` <nama module>\
-        \n  •  **Function : **Untuk Mengirim module userbot secara instan.\
+        "core": "**➢ Plugin : **`core`\
+        \n\n ┌✯ **Syntax :** `.install` <reply ke file module>\
+        \n └✯ **Function : **Untuk Menginstall module userbot secara instan.\
+        \n\n ┌✯ **Syntax :** `.uninstall` <nama module>\
+        \n └✯ **Function : **Untuk Menguninstall / Menghapus module userbot secara instan.\
+        \n\n ┌✯ **Syntax :** `.psend` <nama module>\
+        \n └✯ **Function : **Untuk Mengirim module userbot secara instan.\
     "
     }
 )
