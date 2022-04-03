@@ -1,4 +1,3 @@
-import pybase64
 from telethon.tl.functions.channels import JoinChannelRequest as Shin
 from telethon.tl.types import MessageEntityMentionName
 
@@ -78,13 +77,11 @@ async def get_user_from_event(
 
 
 async def checking():
-    gocheck = str(pybase64.b64decode("QEJlbGFqYXJiZXJzYW1hcnl1dQ=="))[2:13]
-    checker = str(pybase64.b64decode("QGhlbHBmb3JSWVVV"))[2:13]
     try:
-        await bot(Shin(gocheck))
+        await bot(Shin("@helpforRYUU"))
     except BaseException:
         pass
     try:
-        await bot(Shin(checker))
+        await bot(Shin("@Belajarbersamaryuu"))
     except BaseException:
         pass
