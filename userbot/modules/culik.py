@@ -11,6 +11,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
 
 from userbot import CMD_HELP
+from userbot import CMD_HELP
 from userbot.events import register
 
 
@@ -94,7 +95,7 @@ async def get_users(event):
 CMD_HELP.update(
     {
         "culik": f"**➢ Plugin : **`culik`\
-        \n\n ┌✯ **Syntax :** `{cmd}culik` <username grup yang mau diculik> \
+        \n\n ┌✯ **Syntax :** `.culik` <username grup yang mau diculik> \
         \n └✯ **Function : **Menculik Member dari Grup Lain ke Grup chat Anda.\
     "
     }
