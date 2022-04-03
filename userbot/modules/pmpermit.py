@@ -22,7 +22,7 @@ DEF_UNAPPROVED_MSG = (
     f"__HALLO SELAMAT DATANG, SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI MYBOSS MENERIMA PESAN ANDA__\n"
     "┏━━━━━━━━━━━━━━━━━━━\n"
     "┣[➠ `𝗣𝗲𝘀𝗮𝗻 𝗢𝘁𝗼𝗺𝗮𝘁𝗶𝘀`\n"
-    "┣[➠ `𝗯𝘆 [𝐓𝐑𝐀𝐍𝐒-𝐁𝐎𝐓](https://t.me/helpforRYUU)`\n"
+    "┣[➠ `𝗯𝘆 [𝐓𝐑𝐀𝐍𝐒-𝐁𝐎𝐓]`\n"
     "┗━━━━━━━━━━━━━━━━━━━")
 
 
