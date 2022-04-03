@@ -821,7 +821,7 @@ with bot:
                     )
                 else:
                     help_string = (str(CMD_HELP[modul_name]).replace(
-                        "`", "").replace("**", "")))
+                        "`", "").replace("**", ""))
 
                 reply_pop_up_alert = (
                     help_string
