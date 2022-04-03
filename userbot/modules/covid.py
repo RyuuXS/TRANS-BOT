@@ -3,16 +3,17 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 
+
 from covid import Covid
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
+from userbot import CMD_HELP
+from userbot.utils import edit_or_reply, trans_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"covid (.*)"))
+@trans_cmd(pattern="covid (.*)")
 async def corona(event):
-    await event.edit("`Processing...`")
+    xx = await edit_or_reply(event, "`Processing...`")
     country = event.pattern_match.group(1)
     covid = Covid(source="worldometers")
     country_data = covid.get_status_by_country_name(country)
@@ -29,12 +30,12 @@ async def corona(event):
     else:
         output_text = "No information yet about this country!"
 
-    await event.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
+    await xx.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern="covid$"))
-async def corona(event):
-    await event.edit("`Processing...`")
+@trans_cmd(pattern="covid$")
+async def coronaworld(event):
+    xx = await edit_or_reply(event, "`Processing...`")
     country = "World"
     covid = Covid(source="worldometers")
     country_data = covid.get_status_by_country_name(country)
@@ -51,16 +52,16 @@ async def corona(event):
     else:
         output_text = "No information yet about this country!"
 
-    await event.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
+    await xx.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
 
 
 CMD_HELP.update(
     {
-        "covid": f"**Plugin : **`covid`\
-        \n\n  •  **Syntax :** `{cmd}covid`\
-        \n  •  **Function : **Memberikan Informasi semua data COVID-19 dari semua negara.\
-        \n\n  •  **Syntax :** `{cmd}covid` <nama negara>\
-        \n  •  **Function : **Memberikan Informasi tentang data COVID-19 dari negara.\
+        "covid": f"➢ **Plugin : **`covid`\
+        \n\n ┌✯ **Syntax :** `{cmd}covid`\
+        \n └✯ **Function : **Memberikan Informasi semua data COVID-19 dari semua negara.\
+        \n\n ┌✯ **Syntax :** `{cmd}covid` <nama negara>\
+        \n └✯ **Function : **Memberikan Informasi tentang data COVID-19 dari negara.\
     "
     }
 )
