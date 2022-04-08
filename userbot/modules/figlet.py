@@ -2,7 +2,7 @@ import pyfiglet
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import deEmojify, edit_delete, cilik_cmd
+from userbot.utils import deEmojify, edit_delete
 
 
 @trans_cmd(pattern="figlet (\w+) (.+)")
