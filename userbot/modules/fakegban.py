@@ -62,9 +62,9 @@ async def gbun(event):
 
 CMD_HELP.update(
     {
-        "fakegban": f"**Plugin : **`fakegban`\
-        \n\n  •  **Syntax :** `{cmd}fgban` <reply> <reason>\
-        \n  •  **Function : **Untuk melakukan aksi Fake global banned , just for fun\
+        "fakegban": f"**➢ Plugin : **`fakegban`\
+        \n\n ┌✯ **Syntax :** `{cmd}fgban` <reply> <reason>\
+        \n └✯ **Function : **Untuk melakukan aksi Fake global banned , just for fun\
     "
     }
 )
