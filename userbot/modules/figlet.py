@@ -1,22 +1,11 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
-# Recode by @mrismanaziz
-# FROM Man-Userbot
-# t.me/SharingUserbot
-#
-
 import pyfiglet
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
-from userbot.utils import deEmojify
+from userbot import CMD_HELP
+from userbot.utils import deEmojify, edit_delete, cilik_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"figlet (\w+) (.+)"))
+@trans_cmd(pattern="figlet (\w+) (.+)")
 async def figlet(event):
     if event.fwd_from:
         return
@@ -40,8 +29,9 @@ async def figlet(event):
     try:
         font = style_list[style]
     except KeyError:
-        return await event.edit(
-            "**Style yang dipilih tidak valid, ketik** `.help figlet` **bila butuh bantuan**"
+        return await edit_delete(
+            event,
+            "**Style yang dipilih tidak valid, ketik** `.help figlet` **bila butuh bantuan**",
         )
     result = pyfiglet.figlet_format(deEmojify(text), font=font)
     await event.respond(f"‌‌‎`{result}`")
@@ -50,10 +40,10 @@ async def figlet(event):
 
 CMD_HELP.update(
     {
-        "figlet": f"**Plugin : **`figlet`\
-        \n\n  •  **Syntax :** `{cmd}figlet` <style> <text>\
-        \n  •  **Function : **Menyesuaikan gaya teks Anda dengan figlet.\
-        \n\n  •  **List style :** `slant`, `3d`, `5line`, `alpha`, `banner`, `doh`, `iso`, `letter`, `allig`, `dotm`, `bubble`, `bulb`, `digi`\
+        "figlet": f"**➢ Plugin : **`figlet`\
+        \n\n ┌✯ **Syntax :** `{cmd}figlet` <style> <text>\
+        \n └✯ **Function : **Menyesuaikan gaya teks Anda dengan figlet.\
+        \n\n ➠ **List style :** `slant`, `3d`, `5line`, `alpha`, `banner`, `doh`, `iso`, `letter`, `allig`, `dotm`, `bubble`, `bulb`, `digi`\
     "
     }
 )
