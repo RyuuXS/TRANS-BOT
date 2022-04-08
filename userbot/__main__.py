@@ -67,17 +67,9 @@ async def trans_userbot_on():
     except Exception as e:
         LOGS.info(str(e))
     try:
-        await bot(shin("@Belajarbersamaryuu"))
-    except BaseException:
-        pass
-    try:
         await bot(trans(int(BOTLOG_CHATID), [BOT_USERNAME]))
     except BaseException:
         pass
-    try:
-        await bot(shin("@helpforRYUU"))
-    except BaseException:
-        pass 
 
 bot.loop.run_until_complete(checking())    
 bot.loop.run_until_complete(trans_userbot_on())
