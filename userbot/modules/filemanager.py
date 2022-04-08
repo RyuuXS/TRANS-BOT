@@ -16,14 +16,13 @@ from natsort import os_sorted
 from rarfile import BadRarFile, RarFile, is_rarfile
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import trans_cmd
-from userbot.utils import humanbytes
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
+from userbot.utils import humanbytes, cilik_cmd
 
 MAX_MESSAGE_SIZE_LIMIT = 4095
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"ls(?: |$)(.*)"))
+@trans_cmd(pattern="ls(?: |$)(.*)")
 async def lst(event):
     if event.fwd_from:
         return
@@ -123,7 +122,7 @@ async def lst(event):
         await event.edit(msg)
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"rm(?: |$)(.*)"))
+@trans_cmd(pattern="rm(?: |$)(.*)")
 async def rmove(event):
     """Removing Directory/File"""
     cat = event.pattern_match.group(1)
@@ -140,7 +139,7 @@ async def rmove(event):
     await event.edit(f"Dihapus `{cat}`")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"rn ([^|]+)\|([^|]+)"))
+@trans_cmd(pattern=r"rn ([^|]+)\|([^|]+)")
 async def rname(event):
     """Renaming Directory/File"""
     cat = str(event.pattern_match.group(1)).strip()
@@ -153,7 +152,7 @@ async def rname(event):
     await event.edit(f"Diganti nama dari `{cat}` ke `{new_path}`")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"zip (.*)"))
+@trans_cmd(pattern="zip (.*)")
 async def zip_file(event):
     if event.fwd_from:
         return
@@ -202,7 +201,7 @@ async def zip_file(event):
         await event.edit("`404: Not Found`")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"unzip (.*)"))
+@trans_cmd(pattern="unzip (.*)")
 async def unzip_file(event):
     if event.fwd_from:
         return
@@ -243,18 +242,18 @@ async def unzip_file(event):
 
 CMD_HELP.update(
     {
-        "file": f"**Plugin : **`file`\
-        \n\n  •  **Syntax :** `{cmd}ls`\
-        \n  •  **Function : **Untuk Melihat Daftar file di dalam direktori server\
-        \n\n  •  **Syntax :** `{cmd}rm` <directory/file>\
-        \n  •  **Function : **Untuk Menghapus File atau folder yg tersimpan di server\
-        \n\n  •  **Syntax :** `{cmd}rn` <directory/file> | <nama baru>\
-        \n  •  **Function : **Untuk Mengubah nama file atau direktori\
-        \n\n  •  **Syntax :** `{cmd}zip` <file/folder path> | <nama zip> (optional)\
-        \n  •  **Function : **Untuk mengcompress file atau folder.\
-        \n\n  •  **Syntax :** `{cmd}unzip` <path ke zip file>\
-        \n  •  **Function : **Untuk mengekstrak file arsip.\
-        \n  •  **NOTE : **Hanya bisa untuk file ZIP, RAR dan TAR!\
+        "file": f"**➢ Plugin : **`file`\
+        \n\n ┌✯ **Syntax :** `{cmd}ls`\
+        \n └✯ **Function : **Untuk Melihat Daftar file di dalam direktori server\
+        \n\n ┌✯ **Syntax :** `{cmd}rm` <directory/file>\
+        \n └✯ **Function : **Untuk Menghapus File atau folder yg tersimpan di server\
+        \n\n ┌✯ **Syntax :** `{cmd}rn` <directory/file> | <nama baru>\
+        \n └✯ **Function : **Untuk Mengubah nama file atau direktori\
+        \n\n ┌✯ **Syntax :** `{cmd}zip` <file/folder path> | <nama zip> (optional)\
+        \n └✯ **Function : **Untuk mengcompress file atau folder.\
+        \n\n ┌✯ **Syntax :** `{cmd}unzip` <path ke zip file>\
+        \n └✯ **Function : **Untuk mengekstrak file arsip.\
+        \n ➠ **NOTE : **Hanya bisa untuk file ZIP, RAR dan TAR!\
     "
     }
 )
