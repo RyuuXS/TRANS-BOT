@@ -17,7 +17,7 @@ from rarfile import BadRarFile, RarFile, is_rarfile
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from userbot.utils import humanbytes, trans_cmd
+from userbot.utils import humanbytes, trans_cmd, edit_or_reply
 
 MAX_MESSAGE_SIZE_LIMIT = 4095
 
@@ -29,7 +29,7 @@ async def lst(event):
     cat = event.pattern_match.group(1)
     path = cat or os.getcwd()
     if not exists(path):
-        await event.edit(
+        await edit_or_reply(event,
             f"Tidak ada direktori atau file dengan nama `{cat}` coba check lagi!"
         )
         return
@@ -119,7 +119,7 @@ async def lst(event):
             )
             await event.delete()
     else:
-        await event.edit(msg)
+        await edit_or_reply(event, msg)
 
 
 @trans_cmd(pattern="rm(?: |$)(.*)")
@@ -127,16 +127,16 @@ async def rmove(event):
     """Removing Directory/File"""
     cat = event.pattern_match.group(1)
     if not cat:
-        await event.edit("`Lokasi file tidak ada!`")
+        await edit_or_reply(event, "`Lokasi file tidak ada!`")
         return
     if not exists(cat):
-        await event.edit("`Lokasi file tidak ada!`")
+        await edit_or_reply(event, "`Lokasi file tidak ada!`")
         return
     if isfile(cat):
         os.remove(cat)
     else:
         rmtree(cat)
-    await event.edit(f"Dihapus `{cat}`")
+    await edit_or_reply(event, f"Dihapus `{cat}`")
 
 
 @trans_cmd(pattern=r"rn ([^|]+)\|([^|]+)")
@@ -145,11 +145,11 @@ async def rname(event):
     cat = str(event.pattern_match.group(1)).strip()
     new_name = str(event.pattern_match.group(2)).strip()
     if not exists(cat):
-        await event.edit(f"file path : {cat} tidak ada!")
+        await edit_or_reply(event, f"file path : {cat} tidak ada!")
         return
     new_path = join(dirname(cat), new_name)
     shutil.move(cat, new_path)
-    await event.edit(f"Diganti nama dari `{cat}` ke `{new_path}`")
+    await edit_or_reply(event, f"Diganti nama dari `{cat}` ke `{new_path}`")
 
 
 @trans_cmd(pattern="zip (.*)")
