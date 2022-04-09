@@ -200,9 +200,9 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "json": f"**Plugin : **`json`\
-        \n\n  •  **Syntax :** `{cmd}json` <reply ke pesan>\
-        \n  •  **Function : **Untuk mendapatkan detail pesan dalam format json.\
+        "json": f"**➢ Plugin : **`json`\
+        \n\n ┌✯ **Syntax :** `{cmd}json` <reply ke pesan>\
+        \n └✯ **Function : **Untuk mendapatkan detail pesan dalam format json.\
     "
     }
 )
@@ -210,9 +210,9 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "eval": f"**Plugin : **`eval`\
-        \n\n  •  **Syntax :** `{cmd}eval` <cmd>\
-        \n  •  **Function : **Evaluasi ekspresi Python dalam argumen skrip yang sedang berjalan\
+        "eval": f"**➢ Plugin : **`eval`\
+        \n\n ┌✯ **Syntax :** `{cmd}eval` <cmd>\
+        \n └✯ **Function : **Evaluasi ekspresi Python dalam argumen skrip yang sedang berjalan\
     "
     }
 )
@@ -220,9 +220,9 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "exec": f"**Plugin : **`exec`\
-        \n\n  •  **Syntax :** `{cmd}exec print('hello')`\
-        \n  •  **Function : **Jalankan skrip python kecil di subproses.\
+        "exec": f"**➢ Plugin : **`exec`\
+        \n\n ┌✯ **Syntax :** `{cmd}exec print('hello')`\
+        \n └✯ **Function : **Jalankan skrip python kecil di subproses.\
     "
     }
 )
@@ -230,9 +230,9 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "term": f"**Plugin : **`term`\
-        \n\n  •  **Syntax :** `{cmd}term` <cmd>\
-        \n  •  **Function : **Jalankan perintah dan skrip bash di server Anda.\
+        "term": f"**➢ Plugin : **`term`\
+        \n\n ┌✯ **Syntax :** `{cmd}term` <cmd>\
+        \n └✯ **Function : **Jalankan perintah dan skrip bash di server Anda.\
     "
     }
 )
