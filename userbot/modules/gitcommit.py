@@ -14,12 +14,12 @@ from github import Github
 # from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
 # from userbot.events import humanbytes, progress, time_formatter
 from userbot import CMD_HELP, GIT_REPO_NAME, GITHUB_ACCESS_TOKEN, bot
-from userbot.events import trans_cmd
+from userbot.utils import trans_cmd
 
 GIT_TEMP_DIR = "./userbot/temp/"
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"gcommit(?: |$)(.*)"))
+@trans_cmd(pattern="gcommit(?: |$)(.*)")
 async def download(event):
     if event.fwd_from:
         return
@@ -93,10 +93,10 @@ async def git_commit(file_name, mone):
 
 CMD_HELP.update(
     {
-        "gcommit": "**Plugin : **`gcommit`\
-        \n\n  •  **Syntax :** `.gcommit`\
-        \n  •  **Function : **Plugin Pengunggah File GITHUB untuk userbot. Otomatisasi Heroku harus Diaktifkan. Untuk orang pemalas\
-        \n\n  •  **Instructions:-** Pertama Atur variabel GITHUB_ACCESS_TOKEN dan GIT_REPO_NAME di Heroku vars.\n.commit reply_to_any_plugin bisa menjadi tipe berkas apapun juga. tetapi untuk plugin harus di .py\
+        "gcommit": "**➢ Plugin : **`gcommit`\
+        \n\n ┌✯ **Syntax :** `.gcommit`\
+        \n └✯ **Function : **Plugin Pengunggah File GITHUB untuk userbot. Otomatisasi Heroku harus Diaktifkan. Untuk orang pemalas\
+        \n\n ➠ **Instructions:-** Pertama Atur variabel GITHUB_ACCESS_TOKEN dan GIT_REPO_NAME di Heroku vars.\n.commit reply_to_any_plugin bisa menjadi tipe berkas apapun juga. tetapi untuk plugin harus di .py\
     "
     }
 )
