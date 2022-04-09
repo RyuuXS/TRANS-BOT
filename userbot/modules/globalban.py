@@ -117,7 +117,7 @@ async def ungban(event):
         await ungbun.edit("**Anda Tidak mempunyai GC yang anda admin 🥺**")
         return
     await ungbun.edit(
-        f"**Prosess ungban** [Y TEAM](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
+        f"**Prosess ungban** [JAMET TELE](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
     )
     for i in range(fiz):
         try:
@@ -197,13 +197,13 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "gban": f"**Plugin : **`gban`\
-        \n\n  •  **Syntax :** `{cmd}gban` <username/id>\
-        \n  •  **Function : **Melakukan Banned Secara Global Ke Semua Grup Dimana anda Sebagai Admin.\
-        \n\n  •  **Syntax :** `{cmd}ungban` <username/id>\
-        \n  •  **Function : **Membatalkan Global Banned\
-        \n\n  •  **Syntax :** `{cmd}listgban`\
-        \n  •  **Function : **Menampilkan List Global Banned\
+        "gban": f"**➢ Plugin : **`gban`\
+        \n\n ┌✯ **Syntax :** `{cmd}gban` <username/id>\
+        \n └✯ **Function : **Melakukan Banned Secara Global Ke Semua Grup Dimana anda Sebagai Admin.\
+        \n\n ┌✯ **Syntax :** `{cmd}ungban` <username/id>\
+        \n └✯ **Function : **Membatalkan Global Banned\
+        \n\n ┌✯ **Syntax :** `{cmd}listgban`\
+        \n └✯ **Function : **Menampilkan List Global Banned\
     "
     }
 )
