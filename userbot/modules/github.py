@@ -10,14 +10,13 @@ import requests
 from pySmartDL import SmartDL
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
-from userbot.utils import edit_delete, edit_or_reply, reply_id
+from userbot import CMD_HELP
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd, reply_id
 
 ppath = os.path.join(os.getcwd(), "temp", "githubuser.jpg")
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"github( -l(\d+))? ([\s\S]*)"))
+@trans_cmd(pattern="github( -l(\d+))? ([\s\S]*)")
 async def _(event):
     "Get info about an GitHub User"
     reply_to = await reply_id(event)
@@ -73,9 +72,9 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "github": f"**Plugin : **`github`\
-        \n\n  •  **Syntax :** `{cmd}github` <username>\
-        \n  •  **Function : **Menampilkan informasi tentang user di GitHub dari username yang diberikan\
+        "github": f"**➢ Plugin : **`github`\
+        \n\n ┌✯ **Syntax :** `{cmd}github` <username>\
+        \n └✯ **Function : **Menampilkan informasi tentang user di GitHub dari username yang diberikan\
     "
     }
 )
