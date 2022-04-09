@@ -8,19 +8,18 @@ import json
 import re
 import urllib.parse
 from os import popen
-from random import choice
+from secrets import choice
 
 import requests
 from bs4 import BeautifulSoup
 from humanize import naturalsize
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, LOGS, bot
-from userbot.events import trans_cmd
-from userbot.utils import edit_delete, edit_or_reply
+from userbot import CMD_HELP, LOGS
+from userbot.utils import edit_delete, edit_or_reply, trans_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
+@trans_cmd(pattern="direct(?: |$)([\s\S]*)")
 async def direct_link_generator(event):
     textx = await event.get_reply_message()
     message = event.pattern_match.group(1)
@@ -352,10 +351,10 @@ def useragent():
 
 CMD_HELP.update(
     {
-        "direct": f"**Plugin : **`direct`\
-        \n\n  •  **Syntax :** `{cmd}direct` <url>\
-        \n  •  **Function : **Balas tautan atau tempel URL untuk membuat tautan unduhan langsung.\
-        \n\n  •  **Supported URL :** `Google Drive` - `Cloud Mail` - `Yandex.Disk` - `AFH` - `ZippyShare` - `MediaFire` - `SourceForge` - `OSDN` - `GitHub`\
+        "direct": f"**➢ Plugin : **`direct`\
+        \n\n ┌✯ **Syntax :** `{cmd}direct` <url>\
+        \n └✯ **Function : **Balas tautan atau tempel URL untuk membuat tautan unduhan langsung.\
+        \n\n ➠ **Supported URL :** `Google Drive` - `Cloud Mail` - `Yandex.Disk` - `AFH` - `ZippyShare` - `MediaFire` - `SourceForge` - `OSDN` - `GitHub`\
     "
     }
 )
