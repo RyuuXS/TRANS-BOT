@@ -6,11 +6,11 @@
 from telethon.tl.types import InputMediaDice
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import trans_cmd
+from userbot import CMD_HELP
+from userbot.utils import trans_cmd
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"dice(?: |$)(.*)"))
+@trans_cmd(pattern="dice(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -27,7 +27,7 @@ async def _(event):
             pass
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"dart(?: |$)(.*)"))
+@trans_cmd(pattern="dart(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -44,7 +44,7 @@ async def _(event):
             pass
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"basket(?: |$)(.*)"))
+@trans_cmd(pattern="basket(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -61,7 +61,7 @@ async def _(event):
             pass
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"bowling(?: |$)(.*)"))
+@trans_cmd(pattern="bowling(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -78,7 +78,7 @@ async def _(event):
             pass
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"ball(?: |$)(.*)"))
+@trans_cmd(pattern="ball(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -95,7 +95,7 @@ async def _(event):
             pass
 
 
-@bot.on(trans_cmd(outgoing=True, pattern=r"jackpot(?: |$)(.*)"))
+@trans_cmd(pattern="jackpot(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -114,20 +114,20 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "emojigames": f"**Plugin : **`emojigames`\
-        \n\n  •  **Syntax :** `{cmd}dice` 1-6\
-        \n  •  **Function : **Memainkan emoji game dice dengan score yg di tentukan kita.\
-        \n\n  •  **Syntax :** `{cmd}dart` 1-6\
-        \n  •  **Function : **Memainkan emoji game dart dengan score yg di tentukan kita.\
-        \n\n  •  **Syntax :** `{cmd}basket` 1-5\
-        \n  •  **Function : **Memainkan emoji game basket dengan score yg di tentukan kita.\
-        \n\n  •  **Syntax :** `{cmd}bowling` 1-6\
-        \n  •  **Function : **Memainkan emoji game bowling dengan score yg di tentukan kita.\
-        \n\n  •  **Syntax :** `{cmd}ball` 1-5\
-        \n  •  **Function : **Memainkan emoji game ball telegram score yg di tentukan kita.\
-        \n\n  •  **Syntax :** `{cmd}jackpot` 1\
-        \n  •  **Function : **Memainkan emoji game jackpot dengan score yg di tentukan kita.\
-        \n\n  •  **NOTE: **Jangan gunakan nilai lebih atau bot akan Crash**\
+        "emojigames": f"**➢ Plugin : **`emojigames`\
+        \n\n ┌✯ **Syntax :** `{cmd}dice` 1-6\
+        \n └✯ **Function : **Memainkan emoji game dice dengan score yg di tentukan kita.\
+        \n\n ┌✯ **Syntax :** `{cmd}dart` 1-6\
+        \n └✯ **Function : **Memainkan emoji game dart dengan score yg di tentukan kita.\
+        \n\n ┌✯ **Syntax :** `{cmd}basket` 1-5\
+        \n └✯ **Function : **Memainkan emoji game basket dengan score yg di tentukan kita.\
+        \n\n ┌✯ **Syntax :** `{cmd}bowling` 1-6\
+        \n └✯ **Function : **Memainkan emoji game bowling dengan score yg di tentukan kita.\
+        \n\n ┌✯ **Syntax :** `{cmd}ball` 1-5\
+        \n └✯ **Function : **Memainkan emoji game ball telegram score yg di tentukan kita.\
+        \n\n ┌✯ **Syntax :** `{cmd}jackpot` 1\
+        \n └✯ **Function : **Memainkan emoji game jackpot dengan score yg di tentukan kita.\
+        \n\n ➠ **NOTE: **Jangan gunakan nilai lebih atau bot akan Crash**\
     "
     }
 )
