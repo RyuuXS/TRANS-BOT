@@ -186,6 +186,9 @@ async def apiset(event):
                 Button.inline("ᴏᴄʀ ᴀᴘɪ", data="ocrapi"),
                 Button.inline("ʀᴇᴍᴏᴠᴇ.ʙɢ ᴀᴘɪ", data="rmbgapi"),
             ],
+            [   
+                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ", data="pmpermitmenu"),
+            ],
             [Button.inline("ʙᴀᴄᴋ", data="settings")],
         ],
     )
@@ -503,6 +506,67 @@ async def sdhndlr(event):
                 f"{name} **Berhasil diganti Menjadi** `{themssg}`",
                 buttons=get_back_button("hndlrmenu"),
             )
+
+
+@callback(data=re.compile(b"pmpermitmenu"))
+async def alivemenu(event):
+    await event.edit(
+        "**Silahkan Pilih VAR yang ingin anda Setting**",
+        buttons=[
+            [
+                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ ᴏɴ", data="pmon"),
+                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ ᴏꜰꜰ", data="pmoff"),
+            ],
+            [
+                Button.inline("ᴀʟɪᴠᴇ ɴᴀᴍᴇ", data="alvname"),
+            ],
+            [Button.inline("ʙᴀᴄᴋ", data="apiset")],
+        ],
+    )
+
+
+@callback(data=re.compile(b"pmon"))
+async def pmonn(event):
+    var = "PM_AUTO_BAN"
+    await setit(event, var, "True")
+    await event.edit(
+        "Done! PMPermit telah berubah on!!",
+        buttons=get_back_button("settings"),
+    )
+
+
+@callback(data=re.compile(b"pmoff"))
+async def pmofff(event):
+    var = "PM_AUTO_BAN"
+    await setit(event, var, "False")
+    await event.edit(
+        "Done! PMPermit telah berubah off!!",
+        buttons=get_back_button("settings"),
+    )
+
+
+@callback(data=re.compile(b"alvname"))
+async def alvname(event):
+    await event.delete()
+    pru = event.sender_id
+    var = "ALIVE_NAME"
+    async with event.client.conversation(pru) as conv:
+        await conv.send_message(
+            "**Silahkan Kirimkan Nama Untuk var ALIVE_NAME anda**\n\nGunakan /cancel untuk membatalkan."
+        )
+        response = conv.wait_event(events.NewMessage(chats=pru))
+        response = await response
+        themssg = response.message.message
+        if themssg == "/cancel":
+            return await conv.send_message(
+                "Membatalkan Proses Settings VAR!",
+                buttons=get_back_button("alivemenu"),
+            )
+        await setit(event, var, themssg)
+        await conv.send_message(
+            f"**ALIVE_NAME Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
+            buttons=get_back_button("alivemenu"),
+        )
 
 
 @callback(data=re.compile(b"rmbgapi"))
