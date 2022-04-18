@@ -166,6 +166,8 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL", "https://github.com/RyuuXS/TRANS-BOT.git"
 )
+UPSTREAM_REPO_BRANCH = os.environ.get(
+    "UPSTREAM_REPO_BRANCH", "Trans-Ubot")
 
 # SQL Database URI
 DB_URI = os.environ.get("DATABASE_URL", None)
