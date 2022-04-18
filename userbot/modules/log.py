@@ -1,7 +1,6 @@
 # Credits: mrconfused
 # Ported by @mrismanaziz
 # FROM Man-Userbot
-# Recode by @Pocongonlen
 
 import asyncio
 
