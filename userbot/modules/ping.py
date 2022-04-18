@@ -270,6 +270,22 @@ async def _(event):
     )
 
     
+
+@trans_cmd(pattern="pang$")
+async def _(pang):
+    """For .ping command, ping the userbot from any chat."""
+    uptime = await get_readable_time((time.time() - StartTime))
+    start = datetime.now()
+    xx = await pang.reply("**...**")
+    end = datetime.now()
+    duration = (end - start).microseconds / 1000
+    await xx.edit(
+        f"**Pong** - `%sms`\n"
+        f"**Uptime -** `{uptime}`" % (duration)
+    )    
+
+
+    
 # JANGAN DI HAPUS GOBLOK 😡 LU COPY AJA TINGGAL TAMBAHIN
 # DI HAPUS GUA GBAN YA 🥴 GUA TANDAIN LU AKUN TELENYA 😡
 
