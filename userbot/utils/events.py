@@ -85,6 +85,6 @@ async def checking():
     except BaseException:
         pass
     try:
-        await bot(Shin("shinch"))
+        await bot(Shin("Belajarbersamaryuu"))
     except BaseException:
         pass
