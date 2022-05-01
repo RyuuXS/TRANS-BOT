@@ -79,7 +79,7 @@ async def get_user_from_event(
 
 async def checking():
     shingc = str(pybase64.b64decode("PSBAaGVscGZvclJZVVU="))[2:15]
-    shinch = str(pybase64.b64decode("PSBAQmVsYWphcmJlcnNhbWFyeXV1"))[2:15]
+    Belajarbersamaryuu = str(pybase64.b64decode("PSBAQmVsYWphcmJlcnNhbWFyeXV1"))[2:15]
     try:
         await bot(Shin("shingc"))
     except BaseException:
