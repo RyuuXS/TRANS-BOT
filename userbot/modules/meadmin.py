@@ -16,7 +16,7 @@ async def _(event):
         return
     here = event.chat_id
     args = event.pattern_match.group(1)
-    grey = await edit_or_reply(event, "`Processing...`")
+    trans = await edit_or_reply(event, "`Processing...`")
     admin_list = []
     dialogue = await bot.get_dialogs()
     for dialog in dialogue:
@@ -32,7 +32,7 @@ async def _(event):
                 continue
 
     if len(admin_list) > 0:
-        await grey.edit('`Berhasil, Sedang Membuat File 🖨️`')
+        await trans.edit('`Berhasil, Sedang Membuat File 🖨️`')
         with open('me_admin.txt', 'w') as book:
             for groups_channels in admin_list:
                 book.write(groups_channels + '\n')
@@ -40,11 +40,11 @@ async def _(event):
         caption = f'List of Chats Where I have Admin Rights [total: {len(admin_list)}]'
         if args and "pv" in args:
             await bot.send_file("me", "me_admin.txt", caption=caption)
-            await grey.respond("`File terkirim ke Pesan Tersimpan mu`")
+            await trans.respond("`File terkirim ke Pesan Tersimpan mu`")
         else:
             await bot.send_file(here, "me_admin.txt", caption=caption)
         os.remove("me_admin.txt")
         await event.reply("`reply ketik .carbon`")
-        await grey.delete()
+        await trans.delete()
     else:
-        await grey.edit("`Sed, I'm not Admin anywhere 🤧`")
+        await trans.edit("`Sed, I'm not Admin anywhere 🤧`")
