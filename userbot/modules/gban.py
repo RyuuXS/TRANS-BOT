@@ -41,8 +41,8 @@ async def handler(tele):
                         return
 
 
-@trans_cmd(pattern="gband(?: |$)(.*)")
-@register(pattern=r"^\.cgband(?: |$)(.*)", sudo=True)
+@trans_cmd(pattern="gban(?: |$)(.*)")
+@register(pattern=r"^\.cgban(?: |$)(.*)", sudo=True)
 async def gben(userbot):
     dc = userbot
     sender = await dc.get_sender()
@@ -109,8 +109,8 @@ async def gben(userbot):
         f"**Action:** `Global Banned by {owner}`"
     )
 
-@trans_cmd(pattern=r"ungband(?: |$)(.*)")
-@register(pattern=r"^\.cungband(?: |$)(.*)", sudo=True)
+@trans_cmd(pattern=r"ungban(?: |$)(.*)")
+@register(pattern=r"^\.cungban(?: |$)(.*)", sudo=True)
 async def gunben(userbot):
     dc = userbot
     sender = await dc.get_sender()
