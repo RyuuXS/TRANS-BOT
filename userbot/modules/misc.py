@@ -108,7 +108,7 @@ async def repo_is_here(event):
         "**Usᴇʀʙᴏᴛ Tᴇʟᴇɢʀᴀᴍ**\n"
         "𝗥𝗲͠𝗽𝗼𝗿𝗶𝘀𝘁𝗼𝗿𝗶 🇮🇩\n"
         "╰⧱⟢ [Ͳʀaɴƨ ʊʙ͠oͳ](https://github.com/RyuuXS/TRANS-BOT)\n"
-        "✠ **Oᴡɴᴇʀ​**    ⎘ [RyuuSHIN](t.me/RYUUSHINNI)\n"
+        "✠ **Oᴡɴᴇʀ​**    ⎘ [RyuuSHIN](t.me/SH1NN_bot)\n"
         "✠ **Sᴜᴘᴘᴏʀᴛ**​ ⎘ [groups](t.me/helpforRYUU)\n"
         "✠ **Pʀᴏᴊᴇᴄᴛ**​  ⎘ [chanel](t.me/Belajarbersamaryuu)\n"
     )
